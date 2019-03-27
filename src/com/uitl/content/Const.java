@@ -33,25 +33,16 @@ public class Const {
 	public static final String COLUNM_COMMODITY_SHELVES = "commodityShelves";
 
 	// 用户表字段
-	public static final String COLUNM_USER_ID = "UserId";
-	public static final String COLUNM_USER_PASSWORD = "UserPassword";
-	public static final String COLUNM_IDCARD = "IdCard";
-	public static final String COLUNM_USER_TYPE = "UserType";
-	public static final String COLUNM_USER_PHONENUMBER = "UserPhoneNumber";
-	public static final String COLUNM_USER_ADDR1 = "UserAddr1";
-	public static final String COLUNM_USER_ADDR2 = "UserAddr2";
-	public static final String COLUNM_USER_ADDR3 = "UserAddr3";
-	public static final String COLUNM_USER_ADDR4 = "UserAddr4";
-	public static final String COLUNM_USER_ADDR5 = "UserAddr5";
-
-	// 残疾人表字段
-	public static final String COLUNM_HANDICAPPED_ID = "handicappedId";
-	public static final String COLUNM_HANDICAPPED_NAME = "handicappedName";
-	public static final String COLUNM_HANDICAPPED_IDCARD = "handicappedIdCard";
-	public static final String COLUNM_HANDICAPPED_ADDR = "handicappedAddr";
-	public static final String COLUNM_HANDICAPPED_PHONE = "handicappedPhone";
-	public static final String COLUNM_HANDICAPPED_TYPE = "handicappedType";
-	public static final String COLUNM_HANDICAPPED_LEVEL = "handicappedLevel";
+	public static final String COLUNM_USER_ID = "userId";
+	public static final String COLUNM_USER_NAME = "userName";
+	public static final String COLUNM_USER_PASSWORD = "userPassword";
+	public static final String COLUNM_USER_TYPE = "userType";
+	public static final String COLUNM_USER_PHONENUMBER = "userPhoneNumber";
+	public static final String COLUNM_USER_ADDR1 = "userAddr1";
+	public static final String COLUNM_USER_ADDR2 = "userAddr2";
+	public static final String COLUNM_USER_ADDR3 = "userAddr3";
+	public static final String COLUNM_USER_ADDR4 = "userAddr4";
+	public static final String COLUNM_USER_ADDR5 = "userAddr5";
 
 	// 购物车表字段
 	public static final String COLUNM_SHOPPING_CARTID = "ShoppingCartId";
@@ -78,8 +69,6 @@ public class Const {
 	public static final String COLUNM_COMMENT_ID = "commentId";
 	public static final String COLUNM_COMMENT_CONTENT = "commentContent";
 	public static final String COLUNM_COMMENT_DTIME = "commentDTime";
-	
-	
 
 	public enum SearchCondition {
 		// 相等
@@ -93,13 +82,8 @@ public class Const {
 		// 大于等于
 		MOREEQUAL
 	}
-	
-	public enum DisabilityType{
-		视力残疾,
-		听力残疾,
-		言语残疾,
-		智力残疾,
-		精神残疾,
-		肢体残疾,
+
+	public enum DisabilityType {
+		视力残疾, 听力残疾, 言语残疾, 智力残疾, 精神残疾, 肢体残疾,
 	}
 }
