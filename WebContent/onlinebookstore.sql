@@ -174,6 +174,22 @@ CREATE TABLE `user` (
   `userAddr5` varchar(45) DEFAULT NULL COMMENT '用户地址5',
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*!用户表 新*/;
+CREATE TABLE `user` (
+  `userId` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID(主键自增长)',
+  `userName` varchar(45) DEFAULT NULL COMMENT '用户名',
+  `userPassword` varchar(45) DEFAULT NULL COMMENT '用户密码',
+  `userType` varchar(45) DEFAULT NULL COMMENT '用户权限（管理员/普通/会员）',
+  `userPhoneNumber` varchar(45) DEFAULT NULL COMMENT '用户电话',
+  `userAddr1` varchar(45) DEFAULT NULL COMMENT '用户地址1',
+  `userAddr2` varchar(45) DEFAULT NULL COMMENT '用户地址2',
+  `userAddr3` varchar(45) DEFAULT NULL COMMENT '用户地址3',
+  `userAddr4` varchar(45) DEFAULT NULL COMMENT '用户地址4',
+  `userAddr5` varchar(45) DEFAULT NULL COMMENT '用户地址5',
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
