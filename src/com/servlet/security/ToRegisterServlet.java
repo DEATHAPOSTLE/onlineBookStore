@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.entity.user;
+import com.entity.User;
 import com.service.UserService;
 
 /**
@@ -48,7 +48,7 @@ public class ToRegisterServlet extends HttpServlet {
 		String password = request.getParameter("form-password");
 		UserService userService = new UserService();
 		try {
-			user users = userService.getUserByName(userName);
+			User users = userService.getUserByName(userName);
 
 			if (users != null) {
 				System.out.println("身份证已经被注册");

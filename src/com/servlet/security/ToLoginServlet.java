@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.entity.user;
+import com.entity.User;
 import com.service.UserService;
 
 /**
@@ -48,7 +48,7 @@ public class ToLoginServlet extends HttpServlet {
 		UserService userService = new UserService();
 
 		try {
-			user user = userService.getUserByName(userName);
+			User user = userService.getUserByName(userName);
 			// TODO
 			if (user == null) {
 				System.out.println("用户不存在");

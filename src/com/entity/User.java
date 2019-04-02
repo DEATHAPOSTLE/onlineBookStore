@@ -1,6 +1,6 @@
 package com.entity;
 
-public class user {
+public class User {
 	// 用户ID(主键自增长)
 	private int userId;
 	// 用户名

@@ -1,6 +1,6 @@
 package com.entity;
 
-public class comment {
+public class Comment {
 	
 	// 评论ID(主键自增长)
     private int commentId;
