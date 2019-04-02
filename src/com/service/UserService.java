@@ -13,6 +13,31 @@ import com.util.dbTools.DBTools;
 public class UserService {
 
 	// 根据用户name获取用户
+	public User getUserAll(String table) throws SQLException {
+		DBTools dbTools = new DBTools();
+		User user = new User();
+		ResultSet rs = dbTools.selectAll(Const.TABLE_USER);
+		while (rs.next()) {
+
+			user.setUserId(rs.getInt(Const.COLUNM_USER_ID));
+			user.setUserName(Const.COLUNM_USER_NAME);
+			user.setUserPassword(Const.COLUNM_USER_PASSWORD);
+			user.setUserType(rs.getString(Const.COLUNM_USER_TYPE));
+			user.setUserPhoneNumber(rs.getString(Const.COLUNM_USER_PHONENUMBER));
+			user.setUserAddr1(rs.getString(Const.COLUNM_USER_ADDR1));
+			user.setUserAddr2(rs.getString(Const.COLUNM_USER_ADDR2));
+			user.setUserAddr3(rs.getString(Const.COLUNM_USER_ADDR3));
+			user.setUserAddr4(rs.getString(Const.COLUNM_USER_ADDR4));
+			user.setUserAddr5(rs.getString(Const.COLUNM_USER_ADDR5));
+			System.out.println("登陆成功：" + user.toString());
+
+		}
+		dbTools.closeDB();
+		return user;
+
+	}
+
+	// 根据用户name获取用户
 	public User getUserByName(String userName) throws SQLException {
 		DBTools dbTools = new DBTools();
 		User user = new User();

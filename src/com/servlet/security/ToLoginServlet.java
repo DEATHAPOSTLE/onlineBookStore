@@ -48,6 +48,7 @@ public class ToLoginServlet extends HttpServlet {
 		UserService userService = new UserService();
 
 		try {
+			User users = userService.getUserAll("");
 			User user = userService.getUserByName(userName);
 			// TODO
 			if (user == null) {
