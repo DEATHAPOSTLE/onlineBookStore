@@ -1,6 +1,7 @@
 package com.servlet.security;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,17 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.entity.User;
+import com.service.UserService;
+
 /**
- * Servlet implementation class Test 会员功能
+ * Servlet implementation class Test 充值功能
  */
-@WebServlet("/member")
-public class MemberServlet extends HttpServlet {
+@WebServlet("/recharge")
+public class ToRechargeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public final static String USER_INFORMATION = "user_information";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MemberServlet() {
+	public ToRechargeServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -29,7 +34,19 @@ public class MemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String money = request.getParameter("money");
+		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
+		UserService userService = new UserService();
+		int moneyint = Integer.parseInt(money);
+		if (moneyint >= 500)
+			user.setUserType("2");
+		user.setMoney(money);
+		try {
+			userService.updateUserById(user);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 	}
 

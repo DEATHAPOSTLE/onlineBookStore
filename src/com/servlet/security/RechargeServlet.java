@@ -1,8 +1,6 @@
-package com.servlet.book.audit;
+package com.servlet.security;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.entity.CommodityBaseExamine;
-import com.service.ExamineService;
-
 /**
- * Servlet implementation class Test 书本审核
+ * Servlet implementation class Test 充值功能
  */
-@WebServlet("/bookAudit")
-public class BookAuditServlet extends HttpServlet {
+@WebServlet("/recharge")
+public class RechargeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public final static String USER_INFORMATION = "user_information";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BookAuditServlet() {
+	public RechargeServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,14 +30,7 @@ public class BookAuditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ExamineService examineService = new ExamineService();
-		try {
-			List<CommodityBaseExamine> list = examineService.getAllExamineCommodity();
-			request.setAttribute("list", list);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 	}
 

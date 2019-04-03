@@ -130,11 +130,11 @@ public class UserService {
 	}
 
 	// 修改用户
-	public int updateUserById(int userId, User updateUser) throws SQLException {
+	public int updateUserById(User updateUser) throws SQLException {
 		DBTools dbTools = new DBTools();
 		LinkedHashMap<String, Object> colunmValue = new LinkedHashMap<>();
 		LinkedHashMap<String, Object> condition = new LinkedHashMap<>();
-		condition.put(Const.COLUNM_USER_ID, userId);
+		condition.put(Const.COLUNM_USER_ID, updateUser.getUserId());
 		colunmValue.put(Const.COLUNM_USER_PASSWORD, updateUser.getUserPassword());
 		colunmValue.put(Const.COLUNM_USER_TYPE, updateUser.getUserType());
 		colunmValue.put(Const.COLUNM_USER_PHONENUMBER, updateUser.getUserPhoneNumber());
@@ -144,6 +144,7 @@ public class UserService {
 		colunmValue.put(Const.COLUNM_USER_ADDR4, updateUser.getUserAddr4());
 		colunmValue.put(Const.COLUNM_USER_ADDR5, updateUser.getUserAddr5());
 		colunmValue.put(Const.COLUNM_USER_NAME, updateUser.getUserName());
+		colunmValue.put(Const.COLUNM_USER_MONEY, updateUser.getMoney());
 
 		int result = dbTools.multiConditionalUpdate(Const.TABLE_USER, condition, colunmValue);
 		return result;

@@ -187,8 +187,21 @@ CREATE TABLE `user` (
   `userAddr3` varchar(45) DEFAULT NULL COMMENT '用户地址3',
   `userAddr4` varchar(45) DEFAULT NULL COMMENT '用户地址4',
   `userAddr5` varchar(45) DEFAULT NULL COMMENT '用户地址5',
+  `money` varchar(45) DEFAULT NULL COMMENT '余额',
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
+
+/*!审核表*/;
+CREATE TABLE `commodity_base_examine` (
+  `examineId` int(11) NOT NULL AUTO_INCREMENT COMMENT '审核ID(主键自增长)',
+  `commodityName` varchar(45) DEFAULT NULL COMMENT '商品名称',
+  `commodityPicture` varchar(1024) DEFAULT NULL COMMENT '商品图片',
+  `commodityType` varchar(45) DEFAULT NULL COMMENT '商品类型',
+  `commodityPrice` double DEFAULT NULL COMMENT '商品价格',
+  `commodityIntroduce` varchar(1024) DEFAULT NULL COMMENT '商品介绍',
+  `commodityExamine` varchar(45) DEFAULT NULL COMMENT '审核阶段',
+  PRIMARY KEY (`examineId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 

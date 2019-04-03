@@ -30,6 +30,17 @@ public class User {
 	// 用户地址5
 	private String userAddr5;
 
+	// 余额
+	private String money;
+
+	public String getMoney() {
+		return money;
+	}
+
+	public void setMoney(String money) {
+		this.money = money;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

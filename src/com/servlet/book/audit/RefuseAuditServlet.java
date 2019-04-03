@@ -1,6 +1,7 @@
 package com.servlet.book.audit;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.entity.CommodityBaseExamine;
+import com.service.ExamineService;
+
 /**
- * Servlet implementation class Test 会员功能
+ * Servlet implementation class Test 拒绝通过审核
  */
 @WebServlet("/refuseAudit")
 public class RefuseAuditServlet extends HttpServlet {
@@ -29,6 +33,19 @@ public class RefuseAuditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		String bookId = request.getParameter("id");
+		ExamineService examineService = new ExamineService();
+		try {
+			CommodityBaseExamine commodityBaseExamine = examineService.getExamineCommodityById(bookId);
+
+			commodityBaseExamine.setCommodityExamine(2);
+
+			// 添加商品和修改审核内容
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 	}

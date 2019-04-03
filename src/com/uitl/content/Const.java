@@ -10,6 +10,7 @@ public class Const {
 	public static final String TABLE_SHOPPING_CART = "shopping_cart";
 	public static final String TABLE_COMMENT = "comment";
 	public static final String TABLE_USER = "user";
+	public static final String TABLE_EXAMINE = "commodity_base_examine";
 
 	// bean类名
 	public static final String BEAN_COMMODITY_BASE = "com.util.entity.CommodityBase";
@@ -20,6 +21,7 @@ public class Const {
 	public static final String BEAN_USER = "com.util.entity.User";
 	public static final String BEAN_COMMENT = "com.util.entity.Comment";
 	public static final String BEAN_COMMODITY_SHOPPING_CART = "com.util.entity.CommodityShoppingCart";
+	public static final String BEAN_COMMODITY_BASE_EXAMINE = "com.util.entity.CommodityBaseExamine";
 
 	// 商品表字段
 	public static final String COLUNM_COMMODITY_ID = "commodityId";
@@ -31,6 +33,15 @@ public class Const {
 	public static final String COLUNM_COMMODITY_RATE = "commodityRate";
 	public static final String COLUNM_COMMODITY_NAME = "commodityName";
 	public static final String COLUNM_COMMODITY_SHELVES = "commodityShelves";
+	// 审核表
+
+	public static final String COLUNM_EXAMINE_ID = "examineId";
+	public static final String COLUNM_EXAMINE_COMMODITY_PICTURE = "commodityPicture";
+	public static final String COLUNM_EXAMINE_COMMODITY_TYPE = "commodityType";
+	public static final String COLUNM_EXAMINE_COMMODITY_PRICE = "commodityPrice";
+	public static final String COLUNM_EXAMINE_COMMODITY_INTRODUCE = "commodityIntroduce";
+	public static final String COLUNM_EXAMINE_COMMODITY_NAME = "commodityName";
+	public static final String COLUNM_EXAMINE_EXAMINE = "commodityExamine";
 
 	// 用户表字段
 	public static final String COLUNM_USER_ID = "userId";
@@ -43,6 +54,7 @@ public class Const {
 	public static final String COLUNM_USER_ADDR3 = "userAddr3";
 	public static final String COLUNM_USER_ADDR4 = "userAddr4";
 	public static final String COLUNM_USER_ADDR5 = "userAddr5";
+	public static final String COLUNM_USER_MONEY = "money";
 
 	// 购物车表字段
 	public static final String COLUNM_SHOPPING_CARTID = "ShoppingCartId";
