@@ -52,6 +52,8 @@ public class AdoptAuditServlet extends HttpServlet {
 			commodityBaseExamine.setCommodityExamine(1);
 
 			// 添加商品和修改审核内容
+			examineService.updateExamine(commodityBaseExamine);
+			commodityService.addCommodity(commodityBase);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

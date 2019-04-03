@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import com.entity.CommodityBase;
 import com.entity.CommodityBaseExamine;
 import com.uitl.content.Const;
 import com.util.dbTools.DBTools;
@@ -17,7 +16,7 @@ public class ExamineService {
 	public List<CommodityBaseExamine> getAllExamineCommodity() throws SQLException {
 		DBTools dbTools = new DBTools();
 		// 商品结果集
-		ResultSet rs = dbTools.selectAll(Const.TABLE_COMMODITY_BASE);
+		ResultSet rs = dbTools.selectAll(Const.TABLE_EXAMINE);
 		// 全部商品
 		List<CommodityBaseExamine> allShoplist = new ArrayList<CommodityBaseExamine>();
 		while (rs.next()) {
@@ -37,15 +36,15 @@ public class ExamineService {
 
 	}
 
-	// 修改商品的数量
-	public int updateCommodity(CommodityBase commodityBase) throws SQLException {
+	// 修改审核阶段
+	public int updateExamine(CommodityBaseExamine commodityBaseExamine) throws SQLException {
 		DBTools dbTools = new DBTools();
 		LinkedHashMap<String, Object> conditionMap = new LinkedHashMap<String, Object>();
 		LinkedHashMap<String, Object> colunmValueMap = new LinkedHashMap<String, Object>();
-		conditionMap.put("commodityId", commodityBase.getCommodityId());
-		colunmValueMap.put("commoditySurplus", commodityBase.getCommoditySurplus());
+		conditionMap.put("examineId", commodityBaseExamine.getExamineId());
+		colunmValueMap.put("commodityExamine", commodityBaseExamine.getCommodityExamine());
 
-		int result = dbTools.multiConditionalUpdate(Const.TABLE_COMMODITY_BASE, conditionMap, colunmValueMap);
+		int result = dbTools.multiConditionalUpdate(Const.TABLE_EXAMINE, conditionMap, colunmValueMap);
 		dbTools.closeDB();
 		return result;
 	}

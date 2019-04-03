@@ -341,4 +341,11 @@ public class CommodityService {
 		return result;
 	}
 
+	// 更新评分
+	public int addCommodity(CommodityBase commodity) {
+		DBTools dbTools = new DBTools();
+		int result = dbTools.insertAll(commodity);
+		return result;
+	}
+
 }
