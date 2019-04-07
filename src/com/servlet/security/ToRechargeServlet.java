@@ -15,7 +15,7 @@ import com.service.UserService;
 /**
  * Servlet implementation class Test 充值功能
  */
-@WebServlet("/recharge")
+@WebServlet("/toRecharge")
 public class ToRechargeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public final static String USER_INFORMATION = "user_information";
