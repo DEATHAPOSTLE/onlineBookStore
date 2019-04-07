@@ -63,9 +63,8 @@ public class SaveCommodityServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		// 存储路径
-		String savePath = SAVEPATH;
 		// 获取上传的文件集合
-		System.out.println(savePath);
+		System.out.println(SAVEPATH);
 		Collection<Part> parts = request.getParts();
 		// 上传单个文件
 		if (parts.size() != 0) {
@@ -78,7 +77,7 @@ public class SaveCommodityServlet extends HttpServlet {
 			// 获取文件名
 			String fileName = getFileName(header);
 			// 把文件写到指定路径
-			part.write(savePath + File.separator + fileName);
+			part.write(SAVEPATH + File.separator + fileName);
 			commodityPicture=fileName;
 		} else {
 			System.out.println("请上传图片");
