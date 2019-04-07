@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -59,38 +60,35 @@
 	</div>
 </div>
 <!-- end banner_x -->
-<!-- self_info -->
-<div class="grzxbj">
-	<div class="selfinfo center">
-	<div class="lfnav fl">
-		<div class="ddzx">订单中心</div>
-		<div class="subddzx">
-			<ul>
-				<li><a href="" style="color:#ff6700;font-weight:bold;">我的订单</a></li>
-			</ul>
-		</div>
-		<div class="ddzx">个人中心</div>
-		<div class="subddzx">
-			<ul>
-				<li><a href="./self_info.html">我的个人中心</a></li>
-			</ul>
-		</div>
-	</div>
-		<div class="rtcont fr">
-			<div class="grzlbt ml40">我的资料</div>
-			<div class="subgrzl ml40"><span>昵称</span><span>啦啦维吉尔</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>手机号</span><span>15669097417</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>密码</span><span>************</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>收货地址</span><span>浙江省杭州市江干区19号大街571号</span><span><a href="">编辑</a></span></div>
+
+	<!-- start banner_y -->
+	<!-- end banner -->
+
+	<!-- start danpin -->
+		<div class="danpin center">
 			
+			<div class="biaoti center">图书列表</div>
+			<div class="main center">
+				<div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+					<div class="sub_mingxing"><a href="./xiangqing.html" target="_blank"><img src="./image/liebiao_xiaomi6.jpg" alt=""></a></div>
+					<div class="pinpai"><a href="./xiangqing.html" target="_blank">图书</a></div>
+					<div class="youhui">5.16早10点开售</div>
+					<div class="jiage">2499.00元</div>
+				</div>
+
+
+				<div class="clear"></div>
+			</div>
 		</div>
 		<div class="clear"></div>
-		</div>
-	</div>
-<!-- self_info -->
 		
-<footer class="mt20 center">			
-	<div class="mt20">Copyright © 2019 - 2019 All Rights Reserved.图书公司 版权所有</div>
-</footer>
+
+		<footer class="mt20 center">			
+			<div class="mt20">Copyright © 2019 - 2019 All Rights Reserved.图书公司 版权所有</div>
+		</footer>
+
+	<!-- end danpin -->
+
+
 	</body>
 </html>

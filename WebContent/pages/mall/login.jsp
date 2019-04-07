@@ -1,35 +1,43 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: S
-  Date: 2019/2/25
-  Time: 23:35
-  To change this template use File | Settings | File Templates.
---%>
-
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="author" content="order by dede58.com"/>
+		<title>会员登录</title>
+		<link rel="stylesheet" type="text/css" href="./css/login.css">
+		
+	</head>
+	<body>
+		<!-- login -->
+		<div class="top center">
+			<div class="logo center">
+				<a href="./index.html" target="_blank"><img src="./image/mistore_logo.png" alt=""></a>
+			</div>
+		</div>
+		<form  method="post" action="./login.php" class="form center">
+		<div class="login">
+			<div class="login_center">
+				<div class="login_top">
+					<div class="left fl">会员登录</div>
+					<div class="right fr">您还不是我们的会员？<a href="./register.html" target="_self">立即注册</a></div>
+					<div class="clear"></div>
+					<div class="xian center"></div>
+				</div>
+				<div class="login_main center">
+					<div class="username">用户名:&nbsp;<input class="shurukuang" type="text" name="username" placeholder="请输入你的用户名"/></div>
+					<div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;<input class="shurukuang" type="password" name="password" placeholder="请输入你的密码"/></div>
+				</div>
+				<div class="login_submit">
+					<input class="submit" type="submit" name="submit" value="立即登录" >
+				</div>
+				
+			</div>
+		</div>
+		</form>
+		<footer>
+			<div class="copyright">Copyright © 2019 - 2019 All Rights Reserved.图书公司 版权所有</div>
 
-<body>
-                    <form role="form" action="/onlineBookStore/toLogin" method="post" class="login-form">
-                        <div class="form-group">
-                            <label class="sr-only" for="form-username">Username</label>
-                            <input type="text" name="form-userName" placeholder="请输入身份证..." class="form-username form-control" id="form-username">
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="form-password">Password</label>
-                            <input type="password" name="form-password" placeholder="请输入密码..." class="form-password form-control" id="form-password">
-                        </div>
-                        <button type="submit" class="btn btn-success">点此登录</button>
-                        <button type="button" class="btn logoutBtn">点此返回</button>
-                    </form>
-              
-              
-</body>
+		</footer>
+	</body>
 </html>
-
-<script type="text/javascript">
-$(".logoutBtn").on("click", function () {
-	window.location.href="./index"
-})
-</script>
