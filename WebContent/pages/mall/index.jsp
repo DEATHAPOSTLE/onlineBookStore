@@ -8,7 +8,6 @@
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
 	<body>
-		
 	<!-- start header -->
 		<header>
 			<div class="top center">
