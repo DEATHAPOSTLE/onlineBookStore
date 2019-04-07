@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 import com.entity.User;
-import com.google.gson.Gson;
 
 /**
  * Servlet implementation class Test
@@ -42,13 +43,6 @@ public class CollectionServlet extends HttpServlet {
 
 		System.out.println("UserName:" + username + ";" + "PassWord:" + password);
 
-		Gson gson = new Gson();
-
-		String info = gson.toJson("数据存在这里转json");
-		System.out.println(info);
-
-		out.write(info);
-		// out.print("success");
 		// out.flush();
 		// out.close();
 
