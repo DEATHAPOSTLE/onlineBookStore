@@ -41,7 +41,7 @@ public class UserService {
 	public User getUserByName(String userName) throws SQLException {
 		DBTools dbTools = new DBTools();
 		User user = new User();
-		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_USER, "userName", userName);
+		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_USER, Const.COLUNM_USER_NAME, userName);
 		while (rs.next()) {
 
 			user.setUserId(rs.getInt(Const.COLUNM_USER_ID));

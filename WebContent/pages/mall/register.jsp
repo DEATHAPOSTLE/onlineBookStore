@@ -1,40 +1,34 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: S
-  Date: 2019/2/25
-  Time: 23:35
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="author" content="order by dede58.com"/>
+		<title>用户注册</title>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/login.css">
 
-<body>
-
-<div class="bg">
-   
-                    <form role="form" action="/onlineBookStore/toRegister" method="post" class="login-form">
-                        <div class="form-group">
-                            <label class="sr-only" for="form-username">姓名</label>
-                            <input type="text" name="form-nameCn" placeholder="请输入姓名..." class="form-username form-control" id="form-username">
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="form-password">Password</label>
-                            <input type="password" name="form-password" placeholder="请输入密码..." class="form-password form-control" id="form-password">
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="form-password">Password</label>
-                            <input type="password" name="form-password" placeholder="请再次输入密码..." class="form-password form-control" id="form-password">
-                        </div>
-                        <button type="submit" class="btn btn-success">点此注册</button>
-                            <button type="button" class="btn logoutBtn">返回登录</button>
-                    </form>
-              
-</div>
-</body>
+	</head>
+	<body>
+		<form  method="post" action="/toRegister">
+		<div class="regist">
+			<div class="regist_center">
+				<div class="regist_top">
+					<div class="left fl">会员注册</div>
+					<div class="right fr"><a href="./index.html" target="_self">图书商城</a></div>
+					<div class="clear"></div>
+					<div class="xian center"></div>
+				</div>
+				<div class="regist_maisn center">
+					<div class="username">用&nbsp;&nbsp;户&nbsp;&nbsp;名:&nbsp;&nbsp;<input class="shurukuang" type="text" name="username" placeholder="请输入你的用户名"/><span>请不要输入汉字</span></div>
+					<div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;<input class="shurukuang" type="password" name="password" placeholder="请输入你的密码"/><span>请输入6位以上字符</span></div>
+					<div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;<input class="shurukuang" type="text" name="tel" placeholder="请填写正确的手机号"/><span>填写下手机号吧，方便我们联系您！</span></div>
+				</div>
+				<span>${error}</span>
+				<div class="regist_submit">
+					<input class="submit" type="submit" name="submit" value="立即注册" >
+				</div>
+			</div>
+		</div>
+		</form>
+	</body>
 </html>
-
-<script type="text/javascript">
-$(".logoutBtn").on("click", function () {
-	window.location.href="./login"
-})
-</script>
