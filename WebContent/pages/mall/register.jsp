@@ -24,10 +24,10 @@
 					
 					<div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;<input class="shurukuang" type="text" name="tel" placeholder="请填写正确的手机号"/><span>填写下手机号吧，方便我们联系您！</span></div>
 				</div>
+				<span>${error}</span>
 				<div class="regist_submit">
 					<input class="submit" type="submit" name="submit" value="立即注册" >
 				</div>
-				
 			</div>
 		</div>
 		</form>

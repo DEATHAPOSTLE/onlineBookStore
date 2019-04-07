@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
 		<title>会员登录</title>
-		<link rel="stylesheet" type="text/css" href="./css/login.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/login.css">
 		
 	</head>
 	<body>
@@ -28,6 +28,7 @@
 					<div class="username">用户名:&nbsp;<input class="shurukuang" type="text" name="username" placeholder="请输入你的用户名"/></div>
 					<div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;<input class="shurukuang" type="password" name="password" placeholder="请输入你的密码"/></div>
 				</div>
+				<span>${error}</span>
 				<div class="login_submit">
 					<input class="submit" type="submit" name="submit" value="立即登录" >
 				</div>

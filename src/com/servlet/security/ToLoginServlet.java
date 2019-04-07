@@ -34,6 +34,7 @@ public class ToLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		doPost(request, response);
 	}
 
 	/**
@@ -48,26 +49,28 @@ public class ToLoginServlet extends HttpServlet {
 		UserService userService = new UserService();
 
 		try {
-			User users = userService.getUserAll("");
 			User user = userService.getUserByName(userName);
-			// TODO
-			if (user == null) {
+			if (user.getUserName() == null) {
 				System.out.println("用户不存在");
 				request.setAttribute("error", "用户不存在");
-				request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
-			} else if (!user.getUserPassword().equals(password)) {
+				request.getRequestDispatcher("pages/mall/login.jsp").forward(request, response);
+				return;
+			} else if (!password.equals(user.getUserPassword())) {
 				System.out.println("密码错误");
 				request.setAttribute("error", "密码错误");
-				request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
+				request.getRequestDispatcher("pages/mall/login.jsp").forward(request, response);
+				return;
 			} else {
 				request.getSession().setAttribute(USER_INFORMATION, user);
 				System.out.println("登陆成功");
 				if ("2".equals(user.getUserType())) {
 					System.out.println("管理员");
 					response.sendRedirect("/handicappedmall/rejectedList");
+					return;
 				} else {
 					System.out.println("用户");
 					response.sendRedirect("/handicappedmall/index");
+					return;
 				}
 			}
 		} catch (SQLException e) {

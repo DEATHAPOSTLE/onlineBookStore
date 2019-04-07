@@ -44,16 +44,17 @@ public class ToRegisterServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String userName = request.getParameter("form-username");
-		String password = request.getParameter("form-password");
+		String userName = request.getParameter("username");
+		String password = request.getParameter("password");
 		UserService userService = new UserService();
 		try {
 			User users = userService.getUserByName(userName);
 
-			if (users != null) {
-				System.out.println("身份证已经被注册");
-				request.setAttribute("error", "身份证已经被注册");
+			if (users.getUserName() != null) {
+				System.out.println("用户已经被注册");
+				request.setAttribute("error", "用户已经被注册");
 				request.getRequestDispatcher("/pages/mall/register.jsp").forward(request, response);
+				return;
 			} else {
 				userService.setUser(password, userName);
 				System.out.println("注册成功");
