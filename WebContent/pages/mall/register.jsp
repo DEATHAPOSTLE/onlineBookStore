@@ -9,7 +9,7 @@
 
 	</head>
 	<body>
-		<form  method="post" action="./regist.php">
+		<form  method="post" action="/onlineBookStore/toRegister">
 		<div class="regist">
 			<div class="regist_center">
 				<div class="regist_top">
