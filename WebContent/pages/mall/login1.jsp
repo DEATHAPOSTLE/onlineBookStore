@@ -5,14 +5,14 @@
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
 		<title>会员登录</title>
-		<link rel="stylesheet" type="text/css" href="./css/login.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/login.css">
 		
 	</head>
 	<body>
 		<!-- login -->
 		<div class="top center">
 			<div class="logo center">
-				<a href="./index.html" target="_blank"><img src="./image/mistore_logo.png" alt=""></a>
+				<a href="./index.html" target="_blank"><img src="${pageContext.request.contextPath}/pages/mall/image/mistore_logo.png" alt=""></a>
 			</div>
 		</div>
 		<form  method="post" action="./login.php" class="form center">

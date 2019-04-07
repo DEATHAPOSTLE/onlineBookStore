@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>图书商城</title>
-		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/style.css">
 	</head>
 	<body>
 	<!-- start header -->
@@ -36,8 +36,7 @@
 
 <!-- start banner_x -->
 		<div class="banner_x center">
-			<a href="./index.html" target="_blank"><div class="logo fl"></div></a>
-			<a href=""><div class="ad_top fl"></div></a>
+			<a href="./index.html" target="_blank"><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
 					<li><a href="./liebiao.html" target="_blank">图书</a></li>

@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
 		<title>我的购物车-小米商城</title>
-		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/style.css">
 	</head>
 	<body>
 	<!-- start header -->
@@ -13,7 +13,7 @@
 
 <!-- start banner_x -->
 		<div class="banner_x center">
-			<a href="./index.html" target="_blank"><div class="logo fl"></div></a>
+			<a href="./index.html" target="_blank"><div class="ad_top fl"></div></a>
 			
 			<div class="wdgwc fl ml40">我的购物车</div>
 			<div class="wxts fl ml20">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</div>
