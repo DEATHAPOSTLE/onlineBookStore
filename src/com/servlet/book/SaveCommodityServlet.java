@@ -1,16 +1,10 @@
 package com.servlet.book;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,12 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import com.entity.CommodityBaseExamine;
-import com.service.CommodityService;
 import com.service.ExamineService;
 
 /**
@@ -62,7 +51,7 @@ public class SaveCommodityServlet extends HttpServlet {
 		// 商品名称
 		String commodityName = request.getParameter("commodityName");
 		// 商品图片
-		String commodityPicture ="";
+		String commodityPicture = "";
 		// 商品类型
 		String commodityType = request.getParameter("commodityType");
 		// 商品价格
