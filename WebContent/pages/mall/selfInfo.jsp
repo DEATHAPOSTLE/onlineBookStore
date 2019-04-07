@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -60,38 +61,29 @@
 </div>
 <!-- end banner_x -->
 <!-- self_info -->
-	<div class="grzxbj">
-		<div class="selfinfo center">
-		<div class="lfnav fl">
-			<div class="ddzx">订单中心</div>
-			<div class="subddzx">
-				<ul>
-					<li><a href="" style="color:#ff6700;font-weight:bold;">我的订单</a></li>
-				</ul>
-			</div>
-			<div class="ddzx">个人中心</div>
-			<div class="subddzx">
-				<ul>
-					<li><a href="./self_info.html">我的个人中心</a></li>
-				</ul>
-			</div>
+<div class="grzxbj">
+	<div class="selfinfo center">
+	<div class="lfnav fl">
+		<div class="ddzx">订单中心</div>
+		<div class="subddzx">
+			<ul>
+				<li><a href="" style="color:#ff6700;font-weight:bold;">我的订单</a></li>
+			</ul>
 		</div>
-		<div class="rtcont fr" style="height: auto">
-			<div class="ddzxbt">交易订单</div>
-			<div class="ddxq">
-				<div class="ddspt fl"><img src="./image/gwc_xiaomi6.jpg" alt=""></div>
-				<div class="ddbh fl">订单号:1705205643098724</div>
-				<div class="ztxx fr">
-					<ul>
-						<li>已发货</li>
-						<li>￥2499.00</li>
-						<li>2017/05/20 13:30</li>
-						<li><a href="">订单详情></a></li>
-						<div class="clear"></div>
-					</ul>
-				</div>
-				<div class="clear"></div>
-			</div>
+		<div class="ddzx">个人中心</div>
+		<div class="subddzx">
+			<ul>
+				<li><a href="./self_info.html">我的个人中心</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class="rtcont fr">
+			<div class="grzlbt ml40">我的资料</div>
+			<div class="subgrzl ml40"><span>昵称</span><span>啦啦维吉尔</span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>手机号</span><span>15669097417</span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>密码</span><span>************</span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>收货地址</span><span>浙江省杭州市江干区19号大街571号</span><span><a href="">编辑</a></span></div>
+			
 		</div>
 		<div class="clear"></div>
 		</div>
