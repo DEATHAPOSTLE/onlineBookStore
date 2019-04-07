@@ -43,8 +43,8 @@ public class ToLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String userName = request.getParameter("form-userName");
-		String password = request.getParameter("form-password");
+		String userName = request.getParameter("username");
+		String password = request.getParameter("password");
 		UserService userService = new UserService();
 
 		try {
