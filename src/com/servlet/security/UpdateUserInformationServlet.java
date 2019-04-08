@@ -13,15 +13,15 @@ import com.entity.User;
 /**
  * Servlet implementation class Test
  */
-@WebServlet("/admin")
-public class AdminServlet extends HttpServlet {
+@WebServlet("/updateUserInformation")
+public class UpdateUserInformationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public final static String USER_INFORMATION = "user_information";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AdminServlet() {
+	public UpdateUserInformationServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,14 +34,17 @@ public class AdminServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
-		if (!"2".equals(user.getUserType()))
-			request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
-		else {
+		if (user.getUserName() == null || "".equals(user.getUserName())) {
+			System.out.println("请登录");
+			request.setAttribute("error", "请登录");
+			response.sendRedirect("/onlineBookStore/index");
 
-			request.getRequestDispatcher("/pages/security/admin.jsp").forward(request, response);
+		} else {
+
+			request.setAttribute("user", user);
+			request.getRequestDispatcher("/pages/mall/security/update_selfInfo.jsp").forward(request, response);
 
 		}
-
 	}
 
 	/**

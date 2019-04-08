@@ -384,6 +384,7 @@ public class DBTools {
 		int result = 0;
 		String tableName = "";
 		String beanName = bean.getClass().getName();
+
 		switch (beanName) {
 		case Const.BEAN_COMMODITY_BASE:
 			tableName = Const.TABLE_COMMODITY_BASE;

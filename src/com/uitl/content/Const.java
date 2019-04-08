@@ -33,6 +33,9 @@ public class Const {
 	public static final String COLUNM_COMMODITY_RATE = "commodityRate";
 	public static final String COLUNM_COMMODITY_NAME = "commodityName";
 	public static final String COLUNM_COMMODITY_SHELVES = "commodityShelves";
+	public static final String COLUNM_COMMODITY_PRESS = "commodityPress";
+	public static final String COLUNM_COMMODITY_AUTHOR = "commodityAuthor";
+
 	// 审核表
 
 	public static final String COLUNM_EXAMINE_ID = "examineId";
@@ -42,6 +45,8 @@ public class Const {
 	public static final String COLUNM_EXAMINE_COMMODITY_INTRODUCE = "commodityIntroduce";
 	public static final String COLUNM_EXAMINE_COMMODITY_NAME = "commodityName";
 	public static final String COLUNM_EXAMINE_EXAMINE = "commodityExamine";
+	public static final String COLUNM_EXAMINE__PRESS = "commodityPress";
+	public static final String COLUNM_EXAMINE__AUTHOR = "commodityAuthor";
 
 	// 用户表字段
 	public static final String COLUNM_USER_ID = "userId";

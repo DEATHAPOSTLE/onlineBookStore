@@ -9,7 +9,7 @@ public class User {
 	// 用户密码
 	private String userPassword;
 
-	// 用户权限（管理员/普通/会员）
+	// 用户权限（3管理员/1普通/2会员）
 	private String userType;
 
 	// 用户电话
@@ -31,13 +31,13 @@ public class User {
 	private String userAddr5;
 
 	// 余额
-	private String money;
+	private double money;
 
-	public String getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(String money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 

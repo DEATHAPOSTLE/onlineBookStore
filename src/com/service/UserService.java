@@ -20,8 +20,8 @@ public class UserService {
 		while (rs.next()) {
 
 			user.setUserId(rs.getInt(Const.COLUNM_USER_ID));
-			user.setUserName(Const.COLUNM_USER_NAME);
-			user.setUserPassword(Const.COLUNM_USER_PASSWORD);
+			user.setUserName(rs.getString(Const.COLUNM_USER_NAME));
+			user.setUserPassword(rs.getString(Const.COLUNM_USER_PASSWORD));
 			user.setUserType(rs.getString(Const.COLUNM_USER_TYPE));
 			user.setUserPhoneNumber(rs.getString(Const.COLUNM_USER_PHONENUMBER));
 			user.setUserAddr1(rs.getString(Const.COLUNM_USER_ADDR1));
@@ -29,6 +29,8 @@ public class UserService {
 			user.setUserAddr3(rs.getString(Const.COLUNM_USER_ADDR3));
 			user.setUserAddr4(rs.getString(Const.COLUNM_USER_ADDR4));
 			user.setUserAddr5(rs.getString(Const.COLUNM_USER_ADDR5));
+			user.setMoney(rs.getDouble(Const.COLUNM_USER_MONEY));
+
 			System.out.println("登陆成功：" + user.toString());
 
 		}
@@ -45,8 +47,8 @@ public class UserService {
 		while (rs.next()) {
 
 			user.setUserId(rs.getInt(Const.COLUNM_USER_ID));
-			user.setUserName(Const.COLUNM_USER_NAME);
-			user.setUserPassword(Const.COLUNM_USER_PASSWORD);
+			user.setUserName(rs.getString(Const.COLUNM_USER_NAME));
+			user.setUserPassword(rs.getString(Const.COLUNM_USER_PASSWORD));
 			user.setUserType(rs.getString(Const.COLUNM_USER_TYPE));
 			user.setUserPhoneNumber(rs.getString(Const.COLUNM_USER_PHONENUMBER));
 			user.setUserAddr1(rs.getString(Const.COLUNM_USER_ADDR1));
@@ -54,6 +56,8 @@ public class UserService {
 			user.setUserAddr3(rs.getString(Const.COLUNM_USER_ADDR3));
 			user.setUserAddr4(rs.getString(Const.COLUNM_USER_ADDR4));
 			user.setUserAddr5(rs.getString(Const.COLUNM_USER_ADDR5));
+			user.setMoney(rs.getDouble(Const.COLUNM_USER_MONEY));
+
 			System.out.println("登陆成功：" + user.toString());
 
 		}
@@ -70,8 +74,8 @@ public class UserService {
 		while (rs.next()) {
 
 			user.setUserId(rs.getInt(Const.COLUNM_USER_ID));
-			user.setUserName(Const.COLUNM_USER_NAME);
-			user.setUserPassword(Const.COLUNM_USER_PASSWORD);
+			user.setUserName(rs.getString(Const.COLUNM_USER_NAME));
+			user.setUserPassword(rs.getString(Const.COLUNM_USER_PASSWORD));
 			user.setUserType(rs.getString(Const.COLUNM_USER_TYPE));
 			user.setUserPhoneNumber(rs.getString(Const.COLUNM_USER_PHONENUMBER));
 			user.setUserAddr1(rs.getString(Const.COLUNM_USER_ADDR1));
@@ -79,6 +83,8 @@ public class UserService {
 			user.setUserAddr3(rs.getString(Const.COLUNM_USER_ADDR3));
 			user.setUserAddr4(rs.getString(Const.COLUNM_USER_ADDR4));
 			user.setUserAddr5(rs.getString(Const.COLUNM_USER_ADDR5));
+			user.setMoney(rs.getDouble(Const.COLUNM_USER_MONEY));
+
 			System.out.println("登陆成功：" + user.toString());
 		}
 		dbTools.closeDB();
@@ -100,6 +106,7 @@ public class UserService {
 		user.setUserAddr5("");
 		// 1为用户，2为管理员，默认注册为用户。
 		user.setUserType("1");
+		user.setMoney(0);
 		dbTools.insertAll(user);
 		dbTools.closeDB();
 		return user;
@@ -123,6 +130,7 @@ public class UserService {
 			// 1为用户，2为管理员，默认注册为用户。
 			user.setUserType(rs.getString(Const.COLUNM_USER_TYPE));
 			user.setUserId(rs.getInt(Const.COLUNM_USER_ID));
+			user.setMoney(rs.getDouble(Const.COLUNM_USER_MONEY));
 			users.add(user);
 		}
 		dbTools.closeDB();

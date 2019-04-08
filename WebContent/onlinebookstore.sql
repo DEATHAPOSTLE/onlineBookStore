@@ -189,7 +189,7 @@ CREATE TABLE `user` (
   `userAddr5` varchar(45) DEFAULT NULL COMMENT '用户地址5',
   `money` varchar(45) DEFAULT NULL COMMENT '余额',
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 /*!审核表*/;
 CREATE TABLE `commodity_base_examine` (

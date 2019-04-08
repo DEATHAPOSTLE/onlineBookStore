@@ -22,6 +22,10 @@ public class CommodityBaseExamine {
 
 	// 审核步骤
 	private int commodityExamine;
+	// 出版社
+	private String commodityPress;
+	// 作者
+	private String commodityAuthor;
 
 	public int getExamineId() {
 		return examineId;
@@ -77,6 +81,22 @@ public class CommodityBaseExamine {
 
 	public void setCommodityIntroduce(String commodityIntroduce) {
 		this.commodityIntroduce = commodityIntroduce;
+	}
+
+	public String getCommodityPress() {
+		return commodityPress;
+	}
+
+	public void setCommodityPress(String commodityPress) {
+		this.commodityPress = commodityPress;
+	}
+
+	public String getCommodityAuthor() {
+		return commodityAuthor;
+	}
+
+	public void setCommodityAuthor(String commodityAuthor) {
+		this.commodityAuthor = commodityAuthor;
 	}
 
 }

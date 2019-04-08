@@ -11,17 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.entity.User;
 
 /**
- * Servlet implementation class Test 充值功能
+ * Servlet implementation class Test
  */
-@WebServlet("/recharge")
-public class RechargeServlet extends HttpServlet {
+@WebServlet("/userInformation")
+public class UserInformationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public final static String USER_INFORMATION = "user_information";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RechargeServlet() {
+	public UserInformationServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -32,16 +32,18 @@ public class RechargeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		if (user.getUserName() == null || "".equals(user.getUserName())) {
 			System.out.println("请登录");
-			request.setAttribute("error", "请登录");
+			request.setAttribute("error", "请登录update_selfInfo");
 			response.sendRedirect("/onlineBookStore/index");
 
 		} else {
-			request.setAttribute("user", user);
 
-			request.getRequestDispatcher("/pages/mall/security/user_recharge.jsp").forward(request, response);
+			request.setAttribute("user", user);
+			request.getRequestDispatcher("/pages/mall/security/selfInfo.jsp").forward(request, response);
+
 		}
 	}
 

@@ -49,6 +49,14 @@ public class ExamineService {
 		return result;
 	}
 
+	// 注册
+	public int addExamine(CommodityBaseExamine commodityBaseExamine) throws SQLException {
+		DBTools dbTools = new DBTools();
+		int result = dbTools.insertAll(commodityBaseExamine);
+		dbTools.closeDB();
+		return result;
+	}
+
 	// 按条件查询
 	public CommodityBaseExamine getExamineCommodityById(String id) throws SQLException {
 		DBTools dbTools = new DBTools();

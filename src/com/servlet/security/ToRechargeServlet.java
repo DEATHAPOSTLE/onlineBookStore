@@ -34,20 +34,6 @@ public class ToRechargeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String money = request.getParameter("money");
-		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
-		UserService userService = new UserService();
-		int moneyint = Integer.parseInt(money);
-		if (moneyint >= 500)
-			user.setUserType("2");
-		user.setMoney(money);
-		try {
-			userService.updateUserById(user);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 	}
 
 	/**
@@ -56,6 +42,22 @@ public class ToRechargeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		String money = request.getParameter("money");
+		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
+		UserService userService = new UserService();
+		Double moneyint = Double.parseDouble(money);
+		if (moneyint >= 500)
+			user.setUserType("2");
+
+		user.setMoney(user.getMoney() + moneyint);
+		try {
+			userService.updateUserById(user);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		response.sendRedirect("/onlineBookStore/userInformation");
 
 	}
 

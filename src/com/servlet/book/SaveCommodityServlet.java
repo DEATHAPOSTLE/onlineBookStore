@@ -22,8 +22,8 @@ import com.service.ExamineService;
 @WebServlet("/saveCommodity")
 public class SaveCommodityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	//储存地址
-	public final static String SAVEPATH = "G:\\git项目\\handicappedmall\\WebContent\\pages\\img";
+	// 储存地址
+	public final static String SAVEPATH = "C:\\Users\\qinhaoran\\Desktop\\xiangmu\\onlineBookStore\\WebContent\\pages\\mall\\bookImage";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -52,12 +52,18 @@ public class SaveCommodityServlet extends HttpServlet {
 		String commodityName = request.getParameter("commodityName");
 		// 商品图片
 		String commodityPicture = "";
+		// 商品详情图片
+		String commodityIntroduce = "";
 		// 商品类型
 		String commodityType = request.getParameter("commodityType");
 		// 商品价格
-		double commodityPrice = (double) request.getAttribute("commodityPrice");
-		// 商品介绍
-		String commodityIntroduce = request.getParameter("commodityIntroduce");
+		String commodityPrice = request.getParameter("commodityPrice");
+
+		Double commodityPriceDouble = Double.parseDouble(commodityPrice);
+		// 出版社
+		String commodityPress = request.getParameter("commodityPress");
+		// 作者
+		String commodityAuthor = request.getParameter("commodityAuthor");
 
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -66,19 +72,31 @@ public class SaveCommodityServlet extends HttpServlet {
 		// 获取上传的文件集合
 		System.out.println(SAVEPATH);
 		Collection<Part> parts = request.getParts();
+
 		// 上传单个文件
-		if (parts.size() != 0) {
+		if (parts.size() == 2) {
 			// Servlet3.0将multipart/form-data的POST请求封装成Part，通过Part对上传的文件进行操作。
 			// Part part = parts[0];//从上传的文件集合中获取Part对象
-			Part part = request.getPart("file");// 通过表单file控件(<input type="file" name="file">)的名字直接获取Part对象
+			Part part = request.getPart("commodityPicture");// 通过表单file控件(<input
+															// type="file"
+			Part part2 = request.getPart("commodityIntroduce");// 通过表单file控件(<input
+																// type="file"
+
+			// name="file">)的名字直接获取Part对象
 			// Servlet3没有提供直接获取文件名的方法,需要从请求头中解析出来
 			// 获取请求头，请求头的格式：form-data; name="file"; filename="snmp4j--api.zip"
 			String header = part.getHeader("content-disposition");
+			String header2 = part2.getHeader("content-disposition");
+
 			// 获取文件名
 			String fileName = getFileName(header);
+			String fileName2 = getFileName(header2);
+
 			// 把文件写到指定路径
 			part.write(SAVEPATH + File.separator + fileName);
-			commodityPicture=fileName;
+			part.write(SAVEPATH + File.separator + fileName2);
+			commodityPicture = fileName;
+			commodityIntroduce = fileName2;
 		} else {
 			System.out.println("请上传图片");
 		}
@@ -93,12 +111,13 @@ public class SaveCommodityServlet extends HttpServlet {
 		commodityBaseExamine.setCommodityIntroduce(commodityIntroduce);
 		commodityBaseExamine.setCommodityName(commodityName);
 		commodityBaseExamine.setCommodityPicture(commodityPicture);
-		commodityBaseExamine.setCommodityPrice(commodityPrice);
+		commodityBaseExamine.setCommodityPrice(commodityPriceDouble);
 		commodityBaseExamine.setCommodityType(commodityType);
-		
+		commodityBaseExamine.setCommodityAuthor(commodityAuthor);
+		commodityBaseExamine.setCommodityPress(commodityPress);
 
 		try {
-			examineService.updateExamine(commodityBaseExamine);
+			examineService.addExamine(commodityBaseExamine);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,13 +132,16 @@ public class SaveCommodityServlet extends HttpServlet {
 	 * filename="snmp4j--api.zip" IE浏览器下：form-data; name="file";
 	 * filename="E:\snmp4j--api.zip"
 	 * 
-	 * @param header 请求头
+	 * @param header
+	 *            请求头
 	 * @return 文件名
 	 */
 	public String getFileName(String header) {
 		/**
-		 * String[] tempArr1 = header.split(";");代码执行完之后，在不同的浏览器下，tempArr1数组里面的内容稍有区别
-		 * 火狐或者google浏览器下：tempArr1={form-data,name="file",filename="snmp4j--api.zip"}
+		 * String[] tempArr1 =
+		 * header.split(";");代码执行完之后，在不同的浏览器下，tempArr1数组里面的内容稍有区别
+		 * 火狐或者google浏览器下：tempArr1={form-data,name="file",filename=
+		 * "snmp4j--api.zip"}
 		 * IE浏览器下：tempArr1={form-data,name="file",filename="E:\snmp4j--api.zip"}
 		 */
 		String[] tempArr1 = header.split(";");

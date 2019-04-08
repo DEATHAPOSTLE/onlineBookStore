@@ -28,6 +28,10 @@ public class CommodityBase {
 
 	// 商品上下架标记
 	private String commodityShelves;
+	// 出版社
+	private String commodityPress;
+	// 作者
+	private String commodityAuthor;
 
 	public int getCommodityId() {
 		return this.commodityId;
@@ -99,5 +103,21 @@ public class CommodityBase {
 
 	public void setCommodityShelves(String commodityShelves) {
 		this.commodityShelves = commodityShelves;
+	}
+
+	public String getCommodityPress() {
+		return commodityPress;
+	}
+
+	public void setCommodityPress(String commodityPress) {
+		this.commodityPress = commodityPress;
+	}
+
+	public String getCommodityAuthor() {
+		return commodityAuthor;
+	}
+
+	public void setCommodityAuthor(String commodityAuthor) {
+		this.commodityAuthor = commodityAuthor;
 	}
 }

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -76,14 +78,51 @@
 			</ul>
 		</div>
 	</div>
+	<form  method="post" action="/onlineBookStore/saveUserInformation" class="">
 		<div class="rtcont fr">
 			<div class="grzlbt ml40">我的资料</div>
-			<div class="subgrzl ml40"><span>昵称</span><span>啦啦维吉尔</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>手机号</span><span>15669097417</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>密码</span><span>************</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>收货地址</span><span>浙江省杭州市江干区19号大街571号</span><span><a href="">编辑</a></span></div>
-			
+			<div class="subgrzl ml40"><span>昵称</span><span>${user.userName}</span></div>
+			<div class="subgrzl ml40"><span>密码</span>
+			  <span>
+			   <input class="" type="password" name="userPassword" value="${user.userPassword}" placeholder="更改密码"/>
+			  </span>
+			</div>
+			<div class="subgrzl ml40"><span>手机号</span>
+			  <span> 
+			    <input class="" type="text" name="userPhoneNumber" value="${user.userPhoneNumber}" placeholder="更改电话"/>
+			  </span>
+			</div>
+			<div class="subgrzl ml40"><span>收货地址1</span>
+			  <span>
+			    <input class="" type="text" name="userAddr1" value="${user.userAddr1}" placeholder="请输入地址1"/>
+			  </span>
+			</div>
+			<div class="subgrzl ml40"><span>收货地址2</span>
+			  <span>
+			    <input class="" type="text" name="userAddr2" value="${user.userAddr2}" placeholder="请输入地址2"/>
+			  </span>
+			</div>
+			<div class="subgrzl ml40"><span>收货地址3</span>
+			  <span>
+                <input class="" type="text" name="userAddr3" value="${user.userAddr3}" placeholder="请输入地址3"/>
+			  </span>
+			</div>
+			<div class="subgrzl ml40"><span>收货地址4</span>
+			  <span>
+			    <input class="" type="text" name="userAddr4" value="${user.userAddr4}" placeholder="请输入地址4"/>
+			  </span>
+			</div>
+			<div class="subgrzl ml40"><span>收货地址5</span>
+			  <span>
+                 <input class="" type="text" name="userAddr5" value="${user.userAddr5}" placeholder="请输入地址5"/> 
+			  </span>
+			</div>
 		</div>
+		<div class="login_submit">
+					<input class="submit" type="submit" name="submit" value="提交" >
+		</div>
+</form>
+		
 		<div class="clear"></div>
 		</div>
 	</div>
