@@ -13,15 +13,15 @@ public class Const {
 	public static final String TABLE_EXAMINE = "commodity_base_examine";
 
 	// bean类名
-	public static final String BEAN_COMMODITY_BASE = "com.util.entity.CommodityBase";
-	public static final String BEAN_HANDICAPPED = "com.util.entity.Handicapped";
-	public static final String BEAN_ORDERS = "com.util.entity.Orders";
-	public static final String BEAN_REJECTED = "com.util.entity.Rejected";
-	public static final String BEAN_SHOPPING_CART = "com.util.entity.ShoppingCart";
-	public static final String BEAN_USER = "com.util.entity.User";
-	public static final String BEAN_COMMENT = "com.util.entity.Comment";
-	public static final String BEAN_COMMODITY_SHOPPING_CART = "com.util.entity.CommodityShoppingCart";
-	public static final String BEAN_COMMODITY_BASE_EXAMINE = "com.util.entity.CommodityBaseExamine";
+	public static final String BEAN_COMMODITY_BASE = "com.entity.CommodityBase";
+	public static final String BEAN_HANDICAPPED = "com.entity.Handicapped";
+	public static final String BEAN_ORDERS = "com.entity.Orders";
+	public static final String BEAN_REJECTED = "com.entity.Rejected";
+	public static final String BEAN_SHOPPING_CART = "com.entity.ShoppingCart";
+	public static final String BEAN_USER = "com.entity.User";
+	public static final String BEAN_COMMENT = "com.entity.Comment";
+	public static final String BEAN_COMMODITY_SHOPPING_CART = "com.entity.CommodityShoppingCart";
+	public static final String BEAN_COMMODITY_BASE_EXAMINE = "com.entity.CommodityBaseExamine";
 
 	// 商品表字段
 	public static final String COLUNM_COMMODITY_ID = "commodityId";
