@@ -36,36 +36,28 @@
 			    <input class="" type="text" name="commodityPress" value="" placeholder="请输入地址2"/>
 			  </span>
 			</div>
-			
+			<div class="subgrzl ml40"><span>作者：</span>
+			  <span>
+			    <input class="" type="text" name="commodityAuthor" value="" placeholder="请输入地址2"/>
+			  </span>
+			</div>
+			<div class="subgrzl ml40"><span>上传商品图片:</span>
+			  <span>
+			     <input type="file" name="commodityPicture" />
+			  </span>
+			</div>
+			<div class="subgrzl ml40"><span>商品介绍图片:</span>
+			  <span>
+			     <input type="file" name="commodityIntroduce" />
+			  </span>
+			</div>
+   
 		</div>
 		<div class="login_submit">
-					<input class="submit" type="submit" name="submit" value="提交" >
+					<input class="submit" type="submit" name="submit" value="新增商品" >
 		</div>
 </form>
-            <!-- 
-            <form action="/onlineBookStore/saveCommodity"
-                method="post" enctype="multipart/form-data">
-                商品名称：
-                <input type="text" name="commodityName" value="">
-                 商品类型：
-                <input type="text" name="commodityType" value="">
-                 商品价格：
-                <input type="text" name="commodityPrice" value="">
-                 出版社：
-                <input type="text" name="commodityPress" value="">
-                作者：
-                <input type="text" name="commodityAuthor" value="">
-                 上传商品图片：
-                <input type="file" name="commodityPicture" value="">
-                商品介绍图片：
-                <input type="file" name="commodityIntroduce" value="">
-                
-                
-                
-                <br>
-                <input type="submit" value="新增商品">
-            </form> -->
-            
+
             
         <hr />
         
