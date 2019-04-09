@@ -25,8 +25,7 @@ import com.service.ExamineService;
 public class SaveCommodityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// 上传文件存储目录
-	public final static String SAVEPATH = "C:\\Users\\qinhaoran\\Desktop\\xiangmu\\onlineBookStore\\WebContent\\pages\\mall\\bookImage";
-
+	public final static String SAVEPATH = "D:\\毕业设计\\onlineBookStore\\WebContent\\pages\\mall\\bookImage";
 	// 上传配置
 	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
@@ -90,7 +89,7 @@ public class SaveCommodityServlet extends HttpServlet {
 		// 如果目录不存在则创建
 		File uploadDir = new File(uploadPath);
 		if (!uploadDir.exists()) {
-			uploadDir.mkdir();
+			uploadDir.mkdirs();
 		}
 
 		try {
@@ -146,7 +145,6 @@ public class SaveCommodityServlet extends HttpServlet {
 							item.write(storeFile);
 							request.setAttribute("message", "文件上传成功!");
 							commodityBaseExamine.setCommodityIntroduce(fileName);
-
 						}
 						break;
 					}
@@ -155,6 +153,7 @@ public class SaveCommodityServlet extends HttpServlet {
 			}
 			examineService.addExamine(commodityBaseExamine);
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			request.setAttribute("message", "错误信息: " + ex.getMessage());
 		}
 		// 跳转到 message.jsp

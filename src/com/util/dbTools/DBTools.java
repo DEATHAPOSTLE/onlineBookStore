@@ -410,6 +410,9 @@ public class DBTools {
 		case Const.BEAN_COMMODITY_SHOPPING_CART:
 			tableName = Const.TABLE_COMMENT;
 			break;
+		case Const.BEAN_COMMODITY_BASE_EXAMINE:
+			tableName = Const.TABLE_EXAMINE;
+			break;
 		default:
 			break;
 		}

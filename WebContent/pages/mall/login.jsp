@@ -12,15 +12,15 @@
 		<!-- login -->
 		<div class="top center">
 			<div class="logo center">
-				<a href="./index.html" target="_blank"><img src="./image/mistore_logo.png" alt=""></a>
+				<a href="${pageContext.request.contextPath}/pages/mall/index.jsp" target="_blank"><img src="${pageContext.request.contextPath}/pages/mall/image/mistore_logo.png" alt=""></a>
 			</div>
 		</div>
-		<form  method="post" action="/onlineBookStore/toLogin" class="form center">
+		<form  method="post" action="/toLogin" class="form center">
 		<div class="login">
 			<div class="login_center">
 				<div class="login_top">
 					<div class="left fl">会员登录</div>
-					<div class="right fr">您还不是我们的会员？<a href="./register.jsp" target="_self">立即注册</a></div>
+					<div class="right fr">您还不是我们的会员？<a href="${pageContext.request.contextPath}/pages/mall/register.jsp" target="_self">立即注册</a></div>
 					<div class="clear"></div>
 					<div class="xian center"></div>
 				</div>

@@ -89,7 +89,7 @@ public class IndexServlet extends HttpServlet {
 				}
 				request.setAttribute("recommendShoplist", recommendCommoditylist);
 
-				request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+				request.getRequestDispatcher("/pages/mall/index.jsp").forward(request, response);
 			}
 
 		} catch (SQLException e) {
