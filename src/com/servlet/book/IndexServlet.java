@@ -52,7 +52,7 @@ public class IndexServlet extends HttpServlet {
 			if (allCommoditylist.size() == 0) {
 				System.out.println("未查询到商品结果");
 				request.setAttribute("warn", "未查询到商品");
-				request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+				request.getRequestDispatcher("/pages/mall/index.jsp").forward(request, response);
 			} else {
 				if (user == null) {
 					// 按销量检索
