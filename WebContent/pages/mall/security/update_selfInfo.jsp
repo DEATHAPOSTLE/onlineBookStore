@@ -79,7 +79,7 @@
 		</div>
 	</div>
 	<form  method="post" action="/onlineBookStore/saveUserInformation" class="">
-		<div class="rtcont fr">
+		<div class="rtcont fr" style="height: auto;">
 			<div class="grzlbt ml40">我的资料</div>
 			<div class="subgrzl ml40"><span>昵称</span><span>${user.userName}</span></div>
 			<div class="subgrzl ml40"><span>密码</span>

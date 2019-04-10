@@ -79,7 +79,7 @@
 		</div>
 	</div>
 	
-		<div class="rtcont fr">
+		<div class="rtcont fr" style="height: auto;">
 			<div class="grzlbt ml40">我的资料</div>
 			<div class="subgrzl ml40"><span>昵称</span><span>${user.userName}</span><span><a href="/onlineBookStore/updateUserInformation">编辑个人资料</a></span></div>
 			<div class="subgrzl ml40"><span>密码</span><span>【已隐藏】</span></div>
