@@ -215,9 +215,9 @@ public class CommodityService {
 	}
 
 	// 模糊搜索
-	public List<CommodityBase> getCommodityLikeName(String name) throws SQLException {
+	public List<CommodityBase> getCommodityLikeName(String fieldName, String conditionName) throws SQLException {
 		DBTools dbTools = new DBTools();
-		ResultSet rs = dbTools.fuzzySearch(Const.TABLE_COMMODITY_BASE, Const.COLUNM_COMMODITY_NAME, name);
+		ResultSet rs = dbTools.fuzzySearch(Const.TABLE_COMMODITY_BASE, fieldName, conditionName);
 		List<CommodityBase> list = new ArrayList<CommodityBase>();
 		rs.beforeFirst();
 		while (rs.next()) {
@@ -233,6 +233,8 @@ public class CommodityService {
 			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
 			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
 
 			list.add(shop);
 		}

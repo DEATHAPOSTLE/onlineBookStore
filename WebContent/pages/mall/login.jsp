@@ -15,7 +15,7 @@
 				<a href="${pageContext.request.contextPath}/pages/mall/index.jsp" target="_blank"><img src="${pageContext.request.contextPath}/pages/mall/image/mistore_logo.png" alt=""></a>
 			</div>
 		</div>
-		<form  method="post" action="/toLogin" class="form center">
+		<form  method="post" action="/onlineBookStore/toLogin" class="form center">
 		<div class="login">
 			<div class="login_center">
 				<div class="login_top">

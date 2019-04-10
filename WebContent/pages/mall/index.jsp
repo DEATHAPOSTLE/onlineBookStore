@@ -47,11 +47,12 @@
 				</ul>
 			</div>
 			<div class="search fr">
-				<form action="" method="post">
+				<form action="/onlineBookStore/findCommodity" method="post">
 					<div class="text fl">
 						<input type="text" class="shuru"  placeholder="">
 					</div>
 					<div class="submit fl">
+					
 						<input type="submit" class="sousuo" value="搜索"/>
 					</div>
 					<div class="clear"></div>

@@ -120,4 +120,13 @@ public class CommodityBase {
 	public void setCommodityAuthor(String commodityAuthor) {
 		this.commodityAuthor = commodityAuthor;
 	}
+
+	@Override
+	public String toString() {
+		return "CommodityBase [commodityId=" + commodityId + ", commodityName=" + commodityName + ", commodityPicture="
+				+ commodityPicture + ", commodityType=" + commodityType + ", commodityPrice=" + commodityPrice
+				+ ", commodityIntroduce=" + commodityIntroduce + ", commoditySurplus=" + commoditySurplus
+				+ ", commodityRate=" + commodityRate + ", commodityShelves=" + commodityShelves + ", commodityPress="
+				+ commodityPress + ", commodityAuthor=" + commodityAuthor + "]";
+	}
 }
