@@ -224,10 +224,10 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .grzxbj .selfinfo .rtcont .ddzxbt{width: 938px;height: 60px;line-height: 60px;font-size: 22px;font-weight:bold;color:rgb(117,117,117);padding-left: 40px;border-bottom: 1px solid #ccc;}
 .grzxbj .selfinfo .rtcont .grzlbt{width:938px;height: 60px;line-height: 60px;font-size: 20px;color:rgb(117,117,117);}
 .grzxbj .selfinfo .rtcont .subgrzl{height: 45px;line-height: 45px;width: 900px;background: rgb(253,253,253);border:1px solid #aaa;margin-top: 10px;margin-bottom: 10px;border-radius: 3px;}
-.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(1){display: inline-block;font-size: 15px;font-weight: bold;color:rgb(117,117,117);width: 70px;height: 45px;line-height: 45px;padding-left: 20px;}
+.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(1){display: inline-block;font-size: 15px;font-weight: bold;color:rgb(117,117,117);width: 70px;height: 45px;line-height: 45px;padding-left: 20px;float: left;}
 .grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(2){display: inline-block;font-size: 15px;color:rgb(117,117,117);width: 480px;height: 45px;line-height: 45px;padding-left: 120px;
 }
-.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(3){display: inline-block;font-size: 15px;width: 160px;height: 45px;line-height: 45px;text-align: right;}
+.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(3){display: inline-block;font-size: 15px;width: 160px;height: 45px;line-height: 45px;text-align: center;float: right;}
 .grzxbj .selfinfo .rtcont .subgrzl span a{color:teal; }
 .grzxbj .selfinfo .rtcont .subgrzl span a:hover{color:#ff6700; }
 

@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<title>图书商城</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/style.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/bootstrap.css">
 	</head>
 	<body>
 	<!-- start header -->
@@ -47,9 +48,15 @@
 				</ul>
 			</div>
 			<div class="search fr">
-				<form action="/onlineBookStore/findCommodity" method="post">
+				<form action="/onlineBookStore/findCommodity" method="post" style="position: relative;">
+					<div class="radio-box" style="position: absolute;top: -35px;left: 0;">
+						<input type="radio" name="type" id="type-radio1" checked><label for="type-radio1" style="margin-right: 10px;">书名</label>
+						<input type="radio" name="type" id="type-radio2"><label for="type-radio2" style="margin-right: 10px;">出版社</label>
+						<input type="radio" name="type" id="type-radio3"><label for="type-radio3" style="margin-right: 10px;">分类</label>
+						<input type="radio" name="type" id="type-radio4"><label for="type-radio4" style="margin-right: 10px;">作者</label>
+					</div>
 					<div class="text fl">
-						<input type="text" class="shuru"  placeholder="">
+						<input type="text" class="shuru"  placeholder="" name="conditionName">
 					</div>
 					<div class="submit fl">
 					

@@ -83,25 +83,25 @@
 			<div class="grzlbt ml40">我的资料</div>
 			<div class="subgrzl ml40"><span>昵称</span><span>${user.userName}</span></div>
 			<div class="subgrzl ml40"><span>余额：</span>${user.money}
-			  <span>
-			   充值
-			   <input class="" type="text" name="money" value="" placeholder="请输入金额"/>
-			  元
-			  </span>
+			  	<span>
+			  	充值
+			   	<input class="" type="text" name="money" value="" placeholder="请输入金额"/>
+			  	元
+			  	</span>
 			
 			</div>
-			  <span>
-			  注：一次性充值500元及以上，可以成为会员并享受折扣。
-			  </span>  
+			  	<span>
+			  	注：一次性充值500元及以上，可以成为会员并享受折扣。
+				</span>  
 			<div class="login_submit">
-					<input class="submit" type="submit" name="submit" value="提交" >
-		     </div>
-		
-</form>
+				<input class="submit" type="submit" name="submit" value="提交" >
+		    </div>
+		</div>
+	</form>
 		
 		<div class="clear"></div>
-		</div>
 	</div>
+</div>
 <!-- self_info -->
 		
 <footer class="mt20 center">			
