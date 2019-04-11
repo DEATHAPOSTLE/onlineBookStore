@@ -41,7 +41,7 @@ public class RefuseRejectedServlet extends HttpServlet {
 
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		if (!"2".equals(user.getUserType()))
-			response.sendRedirect("/handicappedmall/index");
+			response.sendRedirect("/onlineBookStore/index");
 		else {
 			String rejectedId = request.getParameter("rejectedId");
 			// 修改退货表状态
@@ -59,7 +59,7 @@ public class RefuseRejectedServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			System.out.println("拒绝退货");
-			response.sendRedirect("/handicappedmall/rejectedList");
+			response.sendRedirect("/onlineBookStore/rejectedList");
 
 		}
 	}

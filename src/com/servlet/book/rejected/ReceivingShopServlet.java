@@ -43,7 +43,7 @@ public class ReceivingShopServlet extends HttpServlet {
 		orders.setOrderStatus("3");
 		orders.setReceiveDTime(sdf.format(new Date()));
 		orderService.UpdateOrder(orders);
-		response.sendRedirect("/handicappedmall/getUserOrder");
+		response.sendRedirect("/onlineBookStore/getUserOrder");
 
 	}
 

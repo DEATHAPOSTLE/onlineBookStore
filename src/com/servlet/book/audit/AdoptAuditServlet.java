@@ -49,6 +49,8 @@ public class AdoptAuditServlet extends HttpServlet {
 			commodityBase.setCommodityShelves("1");
 			commodityBase.setCommoditySurplus(1);
 			commodityBase.setCommodityType(commodityBaseExamine.getCommodityType());
+			commodityBase.setCommodityPress(commodityBaseExamine.getCommodityPress());
+			commodityBase.setCommodityAuthor(commodityBaseExamine.getCommodityAuthor());
 			commodityBaseExamine.setCommodityExamine(1);
 
 			// 添加商品和修改审核内容
@@ -59,7 +61,7 @@ public class AdoptAuditServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
+		response.sendRedirect("/onlineBookStore/bookAudit");
 	}
 
 	/**

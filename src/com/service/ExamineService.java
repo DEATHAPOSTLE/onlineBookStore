@@ -36,6 +36,27 @@ public class ExamineService {
 
 	}
 
+	// 按待审核
+	public List<CommodityBaseExamine> getNoExamineCommodity(String type) throws SQLException {
+		DBTools dbTools = new DBTools();
+		List<CommodityBaseExamine> list = new ArrayList<CommodityBaseExamine>();
+
+		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_EXAMINE, Const.COLUNM_EXAMINE_EXAMINE, type);
+		while (rs.next()) {
+			CommodityBaseExamine commodityBaseExamine = new CommodityBaseExamine();
+			commodityBaseExamine.setCommodityExamine(rs.getInt(Const.COLUNM_EXAMINE_EXAMINE));
+			commodityBaseExamine.setCommodityPicture(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_PICTURE));
+			commodityBaseExamine.setCommodityType(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_TYPE));
+			commodityBaseExamine.setCommodityPrice(rs.getInt(Const.COLUNM_EXAMINE_COMMODITY_PRICE));
+			commodityBaseExamine.setCommodityIntroduce(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_INTRODUCE));
+			commodityBaseExamine.setCommodityName(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_NAME));
+			commodityBaseExamine.setExamineId(rs.getInt(Const.COLUNM_EXAMINE_ID));
+			list.add(commodityBaseExamine);
+		}
+		dbTools.closeDB();
+		return list;
+	}
+
 	// 修改审核阶段
 	public int updateExamine(CommodityBaseExamine commodityBaseExamine) throws SQLException {
 		DBTools dbTools = new DBTools();
@@ -70,6 +91,8 @@ public class ExamineService {
 			commodityBaseExamine.setCommodityIntroduce(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_INTRODUCE));
 			commodityBaseExamine.setCommodityName(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_NAME));
 			commodityBaseExamine.setExamineId(rs.getInt(Const.COLUNM_EXAMINE_ID));
+			commodityBaseExamine.setCommodityAuthor(rs.getString(Const.COLUNM_EXAMINE__AUTHOR));
+			commodityBaseExamine.setCommodityPress(rs.getString(Const.COLUNM_EXAMINE__PRESS));
 		}
 		dbTools.closeDB();
 		return commodityBaseExamine;

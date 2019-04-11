@@ -9,7 +9,7 @@ public class User {
 	// 用户密码
 	private String userPassword;
 
-	// 用户权限（3管理员/1普通/2会员）
+	// 用户权限（4上架者/3管理员/1普通/2会员）
 	private String userType;
 
 	// 用户电话

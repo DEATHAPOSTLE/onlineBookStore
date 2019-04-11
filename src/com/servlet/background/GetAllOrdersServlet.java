@@ -70,7 +70,7 @@ public class GetAllOrdersServlet extends HttpServlet {
 
 			request.setAttribute("orders", orders);
 			request.setAttribute("users", users);
-			request.getRequestDispatcher("pages/manager/order.jsp").forward(request, response);
+			request.getRequestDispatcher("pages/manager/orderManagement.jsp").forward(request, response);
 		}
 	}
 

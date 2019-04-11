@@ -58,7 +58,7 @@ public class SendRejectedServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.sendRedirect("/handicappedmall/getUserOrder");
+		response.sendRedirect("/onlineBookStore/getUserOrder");
 
 	}
 

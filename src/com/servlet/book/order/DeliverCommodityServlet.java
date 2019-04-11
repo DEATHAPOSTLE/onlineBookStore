@@ -42,7 +42,7 @@ public class DeliverCommodityServlet extends HttpServlet {
 		orders.setDeliveryDTime(sdf.format(new Date()));
 
 		orderService.UpdateOrder(orders);
-		response.sendRedirect("/handicappedmall/GetAllOrdersServlet");
+		response.sendRedirect("/onlineBookStore/GetAllOrdersServlet");
 
 	}
 

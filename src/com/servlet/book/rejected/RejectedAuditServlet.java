@@ -59,7 +59,7 @@ public class RejectedAuditServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			System.out.println("同意退货");
-			response.sendRedirect("/handicappedmall/rejectedList");
+			response.sendRedirect("/onlineBookStore/rejectedList");
 
 		}
 	}

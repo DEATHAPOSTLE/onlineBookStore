@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.entity.CommodityBaseExamine;
+import com.entity.User;
 import com.service.ExamineService;
 
 /**
@@ -19,6 +20,7 @@ import com.service.ExamineService;
 @WebServlet("/bookAudit")
 public class BookAuditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public final static String USER_INFORMATION = "user_information";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -34,15 +36,29 @@ public class BookAuditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ExamineService examineService = new ExamineService();
-		try {
-			List<CommodityBaseExamine> list = examineService.getAllExamineCommodity();
-			request.setAttribute("list", list);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
+
+		if (!"3".equals(user.getUserType()))
+			response.sendRedirect("/onlineBookStore/index");
+		else {
+			ExamineService examineService = new ExamineService();
+			try {
+				if ("1".equals(request.getParameter("type"))) {
+					// 查询待审核、
+					List<CommodityBaseExamine> list = examineService.getNoExamineCommodity("3");
+					request.setAttribute("list", list);
+					request.getRequestDispatcher("/pages/manager/safetyAudit.jsp").forward(request, response);
+
+				} else {
+					List<CommodityBaseExamine> list = examineService.getAllExamineCommodity();
+					request.setAttribute("list", list);
+					request.getRequestDispatcher("/pages/manager/safetyAudit.jsp").forward(request, response);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 	}
 
 	/**

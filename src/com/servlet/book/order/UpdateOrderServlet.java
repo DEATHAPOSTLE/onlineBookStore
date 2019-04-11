@@ -49,10 +49,10 @@ public class UpdateOrderServlet extends HttpServlet {
 			if (result == 0) {
 				System.out.println("修改失败");
 				request.setAttribute("warn", "修改失败");
-				response.sendRedirect("/handicappedmall/GetAllOrdersServlet");
+				response.sendRedirect("/onlineBookStore/GetAllOrdersServlet");
 			} else {
 				System.out.println("修改成功");
-				response.sendRedirect("/handicappedmall/GetAllOrdersServlet");
+				response.sendRedirect("/onlineBookStore/GetAllOrdersServlet");
 			}
 
 		}

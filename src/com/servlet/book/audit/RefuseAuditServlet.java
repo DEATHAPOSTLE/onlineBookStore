@@ -40,14 +40,15 @@ public class RefuseAuditServlet extends HttpServlet {
 			CommodityBaseExamine commodityBaseExamine = examineService.getExamineCommodityById(bookId);
 
 			commodityBaseExamine.setCommodityExamine(2);
+			examineService.updateExamine(commodityBaseExamine);
 
 			// 添加商品和修改审核内容
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		response.sendRedirect("/onlineBookStore/bookAudit");
 
-		request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 	}
 
 	/**

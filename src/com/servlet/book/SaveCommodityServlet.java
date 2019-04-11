@@ -151,6 +151,7 @@ public class SaveCommodityServlet extends HttpServlet {
 
 				}
 			}
+			commodityBaseExamine.setCommodityExamine(3);
 			examineService.addExamine(commodityBaseExamine);
 		} catch (Exception ex) {
 			ex.printStackTrace();

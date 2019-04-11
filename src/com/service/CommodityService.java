@@ -330,7 +330,6 @@ public class CommodityService {
 		return commodityBases;
 	}
 
-	// 更新评分
 	public int updateRate(String rate, String commodityId) {
 		DBTools dbTools = new DBTools();
 
@@ -343,7 +342,6 @@ public class CommodityService {
 		return result;
 	}
 
-	// 更新评分
 	public int addCommodity(CommodityBase commodity) {
 		DBTools dbTools = new DBTools();
 		int result = dbTools.insertAll(commodity);

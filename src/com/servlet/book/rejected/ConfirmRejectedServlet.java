@@ -62,7 +62,7 @@ public class ConfirmRejectedServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			System.out.println("退货确认");
-			request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
+			response.sendRedirect("/onlineBookStore/rejectedList");
 
 		}
 

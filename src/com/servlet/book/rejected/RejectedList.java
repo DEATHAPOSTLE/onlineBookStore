@@ -47,7 +47,7 @@ public class RejectedList extends HttpServlet {
 		String type = request.getParameter("type");
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		if (!"2".equals(user.getUserType()))
-			response.sendRedirect("/handicappedmall/index");
+			response.sendRedirect("/onlineBookStore/index");
 		else {
 			RejectedService rejectedService = new RejectedService();
 			OrderService orderService = new OrderService();
@@ -85,7 +85,7 @@ public class RejectedList extends HttpServlet {
 					}
 
 					request.setAttribute("dto", dto);
-					request.getRequestDispatcher("/pages/manager/index.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/manager/customerService.jsp").forward(request, response);
 
 				} else {
 					// 查看待审核的退货单
@@ -112,7 +112,7 @@ public class RejectedList extends HttpServlet {
 					}
 					request.setAttribute("dto", dto);
 
-					request.getRequestDispatcher("/pages/manager/index.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/manager/customerService.jsp").forward(request, response);
 
 				}
 			} catch (SQLException e) {

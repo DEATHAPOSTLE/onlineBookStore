@@ -41,7 +41,7 @@ public class MeetRejectedServlet extends HttpServlet {
 
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		if (!"2".equals(user.getUserType()))
-			response.sendRedirect("/handicappedmall/index");
+			response.sendRedirect("/onlineBookStore/index");
 		else {
 			String rejectedId = request.getParameter("rejectedId");
 			String requirements = request.getParameter("requirements");
@@ -57,7 +57,7 @@ public class MeetRejectedServlet extends HttpServlet {
 					rejected.setRejectedStatus("7");
 					rejectedService.updateRejected(rejected);
 					System.out.println("满足退货要求");
-					response.sendRedirect("/handicappedmall/rejectedList");
+					response.sendRedirect("/onlineBookStore/rejectedList");
 
 				} else if ("6".equals(requirements)) {
 					Rejected rejected = rejectedService.getRejectedListById(rejectedId);
@@ -68,7 +68,7 @@ public class MeetRejectedServlet extends HttpServlet {
 					rejected.setRejectedStatus("6");
 					rejectedService.updateRejected(rejected);
 					System.out.println("不满足退货要求");
-					response.sendRedirect("/handicappedmall/rejectedList");
+					response.sendRedirect("/onlineBookStore/rejectedList");
 
 				}
 
