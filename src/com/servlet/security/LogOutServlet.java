@@ -31,7 +31,7 @@ public class LogOutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getSession().removeAttribute(USER_INFORMATION);
-		response.sendRedirect("/handicappedmall/login");
+		response.sendRedirect("/onlineBookStore/login");
 
 	}
 

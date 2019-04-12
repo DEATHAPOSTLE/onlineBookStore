@@ -62,7 +62,7 @@ public class addShopingCarServlet extends HttpServlet {
 					shoppingCart.setRegisteredDTime(sdf.format(new Date()) + "");
 					shoppingCart.setUserId(user.getUserId() + "");
 					shoppingCarService.addShopByShopCar(shoppingCart);
-					response.sendRedirect("/handicappedmall/shopingCar");
+					response.sendRedirect("/onlineBookStore/shopingCar");
 
 				} else {
 					int numberInShopCar = Integer.parseInt(shoppingCart.getCommodityNumber());
@@ -71,7 +71,7 @@ public class addShopingCarServlet extends HttpServlet {
 					shoppingCart.setCommodityNumber(numberCount + "");
 					shoppingCarService.updateShopByShopCar(shoppingCart);
 					System.out.println("修改");
-					response.sendRedirect("/handicappedmall/shopingCar");
+					response.sendRedirect("/onlineBookStore/shopingCar");
 				}
 
 			} catch (SQLException e) {

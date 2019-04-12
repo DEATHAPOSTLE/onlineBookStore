@@ -34,7 +34,7 @@ public class UpdateCommodityServlet extends HttpServlet {
 			commodityBase.setCommodityId(Integer.parseInt(shopId));
 			commodityBase.setCommoditySurplus(number + commodityBase2.getCommoditySurplus());
 			int result = shopService.updateCommodity(commodityBase);
-			response.sendRedirect("/handicappedmall/commodityAdministration");
+			response.sendRedirect("/shelves/commodityAdministration");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -51,7 +51,7 @@ public class UpdateCommodityServlet extends HttpServlet {
 			CommodityBase commodityBase = shopService.getCommodityById(shopId);
 			commodityBase.setCommodityShelves("2");
 			shopService.updateCommodityShelves(commodityBase);
-			response.sendRedirect("/handicappedmall/commodityAdministration");
+			response.sendRedirect("/shelves/commodityAdministration");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

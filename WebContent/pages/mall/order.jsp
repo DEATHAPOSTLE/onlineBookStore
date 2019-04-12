@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -79,16 +81,92 @@
 		<div class="rtcont fr" style="height: auto">
 			<div class="ddzxbt">交易订单</div>
 			<div class="ddxq">
+			
+			 <c:forEach var="orders" items="${ordersList}" varStatus="status">
 				<div class="ddspt fl"><img src="./image/gwc_xiaomi6.jpg" alt=""></div>
-				<div class="ddbh fl">订单号:1705205643098724</div>
+				<div class="ddbh fl">订单号:${orders.orderId}</div>
 				<div class="ztxx fr">
 					<ul>
-						<li>已发货</li>
-						<li>￥2499.00</li>
-						<li>2017/05/20 13:30</li>
-						<li><a href="">订单详情></a></li>
+					    <li>${orders.orderPrice}</li>
+					    <li>${orders.phoneNumber}</li>
+					    <li>${orders.orderAddr}</li>
+						<li>${orders.orderDTime}</li>
+						<li>${orders.deliveryDTime}</li>
+						<li>${orders.receiveDTime}</li>
+						<li>
+                        <c:if test="${orders.orderStatus eq 1 }">
+		    			   <span>买家已付款</span>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 2 }">
+		    			   <span>商家已发货</span>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 3 }">
+		    			   <span>买家已确认收货，交易成功</span>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 4 }">
+		    			   <span>退货审核中</span>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 5 }">
+		    			   <span>退货审核通过，请寄出商品至店家，并点击寄出</span>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 6 }">
+		    			   <span>退货成功</span>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 7 }">
+		    			   <span>商家拒绝退货</span>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 8 }">
+		    			   <span>满足退货要求，退货成功，金钱将在1-7个工作日返回账户</span>
+		    			</c:if>
+		    		    <c:if test="${orders.orderStatus eq 9 }">
+		    			   <span>不满足退货要求，商品将被寄回至您的发货地址</span>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 10 }">
+		    			   <span>退货商品已寄出，待审核</span>
+		    			</c:if>
+                        </li>
+						<li>
+						<c:if test="${orders.rejectedStatus eq 1 }">
+		    			   <a href="${pageContext.request.contextPath}/rejected?orderId=${orders.orderId}">退货</a>
+		    			</c:if>
+		    			<c:if test="${orders.orderStatus eq 2 }">
+		    			   <a href="${pageContext.request.contextPath}/receivingShop?orderId=${orders.orderId}">确认收货</a>
+		    			</c:if>
+		    			<c:if test="${orders.rejectedStatus eq 2 }">
+		    			   <span>已超过七天，不允许退货</span>
+		    			</c:if>
+		    			<c:if test="${orders.rejectedStatus eq 3 }">
+		    			   <span>退货正在审核中，请耐心等待……</span>
+		    			</c:if>
+		    			<c:if test="${orders.rejectedStatus eq 4 }">
+		    			   <span>同意退货，在寄出商品后，请点击寄回按钮</span>
+		    			   <a href="${pageContext.request.contextPath}/sendreJected?orderId=${orders.orderId}">已寄回</a>
+		    			</c:if>
+		    			<c:if test="${orders.rejectedStatus eq 5 }">
+		    			   <span>商家拒绝退货，请联系残联或拨打客服电话</span>
+		    			   <a href="#">残联页面</a>
+		    			</c:if>
+		    			<c:if test="${orders.rejectedStatus eq 6 }">
+		    			   <span>退货商品已寄出，正在审核。</span>
+		    			</c:if>
+		    			<c:if test="${orders.rejectedStatus eq 7 }">
+		    			   <span>满足退货要求，将会在1-7个工作日将钱返回您的账户</span>
+		    			</c:if>
+		    			<c:if test="${orders.rejectedStatus eq 8 }">
+		    			   <span>不满足退货要求，您的商品将会被寄回您的地址，或与客服协商。</span>
+		    			</c:if>
+						</li>
+						<li>
+						 <c:if test="${orders.rateStatus eq 1 }">
+                            <a href="commentServlet?commodityId=${orders.commodityID}&orderId=${orders.orderId}">评价</a>
+                           </c:if>
+                            <c:if test="${orders.rateStatus eq 0 }">
+                            <span>已评价</span>
+                           </c:if>
+						</li>
 						<div class="clear"></div>
 					</ul>
+				 </c:forEach>
 				</div>
 				<div class="clear"></div>
 			</div>

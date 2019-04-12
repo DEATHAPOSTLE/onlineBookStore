@@ -40,10 +40,10 @@ public class delShopingCarServlet extends HttpServlet {
 			if (result == 0) {
 				System.out.println("删除失败");
 				request.setAttribute("warn", "删除失败");
-				response.sendRedirect("/handicappedmall/shopingCar");
+				response.sendRedirect("/onlineBookStore/shopingCar");
 			} else {
 				System.out.println(result);
-				response.sendRedirect("/handicappedmall/shopingCar");
+				response.sendRedirect("/onlineBookStore/shopingCar");
 
 			}
 

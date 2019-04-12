@@ -32,13 +32,13 @@ public class ShelvesServlet extends HttpServlet {
 				CommodityBase commodityBase = shopService.getCommodityById(shopId);
 				commodityBase.setCommodityShelves("2");
 				shopService.updateCommodityShelves(commodityBase);
-				response.sendRedirect("/handicappedmall/commodityAdministration");
+				response.sendRedirect("/onlineBookStore/commodityAdministration");
 
 			} else {
 				CommodityBase commodityBase = shopService.getCommodityById(shopId);
 				commodityBase.setCommodityShelves("1");
 				shopService.updateCommodityShelves(commodityBase);
-				response.sendRedirect("/handicappedmall/commodityAdministration");
+				response.sendRedirect("/onlineBookStore/commodityAdministration");
 
 			}
 
@@ -57,7 +57,7 @@ public class ShelvesServlet extends HttpServlet {
 			CommodityBase commodityBase = shopService.getCommodityById(shopId);
 			commodityBase.setCommodityShelves("2");
 			shopService.updateCommodityShelves(commodityBase);
-			response.sendRedirect("/handicappedmall/commodityAdministration");
+			response.sendRedirect("/onlineBookStore/commodityAdministration");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

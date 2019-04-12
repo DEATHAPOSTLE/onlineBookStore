@@ -25,7 +25,7 @@ import com.service.ExamineService;
 public class SaveCommodityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// 上传文件存储目录
-	public final static String SAVEPATH = "D:\\毕业设计\\onlineBookStore\\WebContent\\pages\\mall\\bookImage";
+	public final static String SAVEPATH = "C:\\Users\\qinhaoran\\Desktop\\xiangmu\\onlineBookStore\\WebContent\\pages\\mall\\bookImage";
 	// 上传配置
 	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
@@ -158,7 +158,8 @@ public class SaveCommodityServlet extends HttpServlet {
 			request.setAttribute("message", "错误信息: " + ex.getMessage());
 		}
 		// 跳转到 message.jsp
-		getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
+		request.setAttribute("info", "添加成功");
+		response.sendRedirect("/onlineBookStore/addCommodity");
 	}
 }
 

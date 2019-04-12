@@ -49,7 +49,7 @@ public class OrderServlet extends HttpServlet {
 		List<OrdersDto> OrdersDtoList = new ArrayList<OrdersDto>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		if (user == null) {
-			response.sendRedirect("/handicappedmall/index");
+			response.sendRedirect("/onlineBookStore/index");
 		} else {
 
 			try {
@@ -144,10 +144,10 @@ public class OrderServlet extends HttpServlet {
 				if (ordersList.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
-					request.getRequestDispatcher("/pages/manager/user-order.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/mall/order.jsp").forward(request, response);
 				} else {
 					request.setAttribute("ordersList", OrdersDtoList);
-					request.getRequestDispatcher("/pages/manager/user-order.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/mall/order.jsp").forward(request, response);
 
 				}
 

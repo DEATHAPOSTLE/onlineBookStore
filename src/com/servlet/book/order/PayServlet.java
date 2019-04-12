@@ -69,7 +69,7 @@ public class PayServlet extends HttpServlet {
 				if (commodityBasess.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
-					response.sendRedirect("/handicappedmall/index");
+					response.sendRedirect("/onlineBookStore/index");
 				} else {
 					int i = 0;
 					for (CommodityBase commodityBases : commodityBasess) {
@@ -108,12 +108,12 @@ public class PayServlet extends HttpServlet {
 						} else {
 							i++;
 							System.out.println("数量不足");
-							response.sendRedirect("/handicappedmall/commodityDetail?shopId="
+							response.sendRedirect("/onlineBookStore/commodityDetail?shopId="
 									+ commodityBases.getCommodityId() + "&warn=lazyWeight");
 							return;
 						}
 					}
-					response.sendRedirect("/handicappedmall/getUserOrder");
+					response.sendRedirect("/onlineBookStore/getUserOrder");
 					return;
 				}
 

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -46,9 +48,9 @@
 		</ul>
 	</div>
 	<div class="search fr">
-		<form action="" method="post">
+		<form action="${pageContext.request.contextPath}/findCommodity" method="post">
 			<div class="text fl">
-				<input type="text" class="shuru"  placeholder="">
+				<input type="text" class="shuru" name="conditionName" placeholder="">
 			</div>
 			<div class="submit fl">
 				<input type="submit" class="sousuo" value="搜索"/>
@@ -68,13 +70,20 @@
 			
 			<div class="biaoti center">图书列表</div>
 			<div class="main center">
+			<c:forEach var="commodity" items="${commodityList}" varStatus="status">
+			
 				<div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
-					<div class="sub_mingxing"><a href="./xiangqing.html" target="_blank"><img src="./image/liebiao_xiaomi6.jpg" alt=""></a></div>
-					<div class="pinpai"><a href="./xiangqing.html" target="_blank">图书</a></div>
-					<div class="youhui">5.16早10点开售</div>
-					<div class="jiage">2499.00元</div>
+					<div class="sub_mingxing">
+					  <a href="${pageContext.request.contextPath}/commodityDetail?shopId=${commodity.commodityId}" target="_blank">
+					  <img src="${pageContext.request.contextPath}/pages/mall/bookImage/${commodity.commodityPicture}" alt=""></a>
+					</div>
+					<div class="pinpai"><a href="./xiangqing.html" target="_blank">${commodity.commodityName}</a></div>
+					<div class="youhui">剩余数量：${commodity.commoditySurplus}</div>
+					<div class="youhui">评价：${commodity.commodityRate}星</div>
+					
+					<div class="jiage">${commodity.commodityPrice}元</div>
 				</div>
-
+            </c:forEach>
 
 				<div class="clear"></div>
 			</div>

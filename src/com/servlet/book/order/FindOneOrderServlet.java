@@ -48,10 +48,10 @@ public class FindOneOrderServlet extends HttpServlet {
 				if (orders.getOrderId() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
-					request.getRequestDispatcher("/pages/manager/user-order.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/mall/order.jsp").forward(request, response);
 				} else {
 					request.setAttribute("orders", orders);
-					request.getRequestDispatcher("/pages/manager/user-order.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/mall/order.jsp").forward(request, response);
 				}
 
 			} catch (SQLException e) {

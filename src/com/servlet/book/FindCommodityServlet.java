@@ -37,7 +37,7 @@ public class FindCommodityServlet extends HttpServlet {
 			if (name == null || "".equals(name)) {
 				list = shopService.getAllCommodity();
 				request.setAttribute("commodityList", list);
-				request.getRequestDispatcher("/pages/mall/commodity-list.jsp").forward(request, response);
+				request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
 			} else {
 				switch (type) {
 				case 1:
@@ -60,7 +60,7 @@ public class FindCommodityServlet extends HttpServlet {
 				if (list.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
-					request.getRequestDispatcher("/pages/mall/commodity-list.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
 				} else {
 					for (CommodityBase a : list) {
 						System.out.println(list.toString());
@@ -68,7 +68,7 @@ public class FindCommodityServlet extends HttpServlet {
 					request.setAttribute("type", type);
 
 					request.setAttribute("commodityList", list);
-					request.getRequestDispatcher("/pages/mall/commodity-list.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
 				}
 			}
 
@@ -90,7 +90,8 @@ public class FindCommodityServlet extends HttpServlet {
 			if (name == null || "".equals(name)) {
 				list = shopService.getAllCommodity();
 				request.setAttribute("commodityList", list);
-				request.getRequestDispatcher("/pages/mall/commodity-list.jsp").forward(request, response);
+				request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
+				return;
 			} else {
 				switch (type) {
 				case 1:
@@ -113,11 +114,14 @@ public class FindCommodityServlet extends HttpServlet {
 				if (list.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
-					request.getRequestDispatcher("/pages/mall/commodity-list.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
+					return;
 				} else {
 					request.setAttribute("commodityList", list);
-					request.getRequestDispatcher("/pages/mall/commodity-list.jsp").forward(request, response);
+					request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
+					return;
 				}
+
 			}
 
 		} catch (SQLException e) {

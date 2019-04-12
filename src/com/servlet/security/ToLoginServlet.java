@@ -65,7 +65,7 @@ public class ToLoginServlet extends HttpServlet {
 				System.out.println("登陆成功");
 				if ("2".equals(user.getUserType())) {
 					System.out.println("管理员");
-					response.sendRedirect("/onlineBookStore/rejectedList");
+					response.sendRedirect("/onlineBookStore/GetAllOrdersServlet");
 					return;
 				} else {
 					System.out.println("用户");

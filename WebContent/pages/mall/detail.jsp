@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -65,7 +67,7 @@
 	<form action="post" method="">
 	<div class="xiangqing">
 		<div class="neirong w">
-			<div class="xiaomi6 fl">图书</div>
+			<div class="xiaomi6 fl">图书详情</div>
 			<!-- <nav class="fr">
 				<li><a href="">概述</a></li>
 				<li>|</li>
@@ -85,40 +87,62 @@
 	</div>
 	
 	<div class="jieshao mt20 w">
-		<div class="left fl"><img src="./image/liebiao_xiaomi6.jpg"></div>
+		<div class="left fl"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${commodityBase.commodityPicture}"></div>
 		<div class="right fr">
-			<div class="h3 ml20 mt20">图书</div>
-			<div class="jianjie mr40 ml20 mt10">图书简介</div>
-			<div class="jiage ml20 mt10">2499.00元</div>
-			<div class="ft20 ml20 mt20">选择版本</div>
-			<div class="xzbb ml20 mt10">
-				<div class="banben fl">
-					<a>
-						<span>中文版 </span>
-						<span>2499元</span>
-					</a>
-				</div>
-				<div class="banben fr">
-					<a>
-						<span>英文版</span>
-						<span>2899元</span>
-					</a>
-				</div>
-				<div class="clear"></div>
-			</div>
-			<div class="xqxq mt20 ml20">
-				<div class="top1 mt10">
-					<div class="left1 fl">图书名称</div>
-					<div class="right1 fr">2499.00元</div>
-					<div class="clear"></div>
-				</div>
-				<div class="bot mt20 ft20 ftbc">总计：2499元</div>
-			</div>
+			<div class="h3 ml20 mt20">${commodityBase.commodityName}</div>
+			<div class="jianjie mr40 ml20 mt10">书籍分类：${commodityBase.commodityType}</div>
+			<div class="jiage ml20 mt10">${commodityBase.commodityPrice}元</div>
+			<div class="ft20 ml20 mt10">剩余数量：${commodityBase.commoditySurplus}</div>
+			<div class="jiage ml20 mt10">评分：${commodityBase.commodityRate}星</div>
+			<div class="jianjie ml20 mt20">出版社：${commodityBase.commodityPress}</div>
+			<div class="jianjie ml20 mt20">作者：${commodityBase.commodityAuthor}</div>
+			
+		
 			<div class="xiadan ml20 mt20">
 					<input class="jrgwc"  type="button" name="jrgwc" value="立即选购" />
 					<input class="jrgwc" type="button" name="jrgwc" value="加入购物车" />
-				
+					
+				<form action="${pageContext.request.contextPath}/pay" style="display: inline-block">
+                    <div class="quantity_box">
+                        <ul class="product-qty">
+                            <span>数量</span>
+                            <input type="number" class="form-control shopNumber" id="" placeholder="请输入数量"  name="shopNumber" value="1">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    
+                    <c:if test="${sessionScope.user_information.idCard != null}">
+                    <div class="row" style="margin: 0;margin-bottom: 15px">
+                    <span style="color: #555;font-size: 0.85em;padding-bottom: 0.5em;display: block;text-transform: uppercase;">地址</span>
+		            	    <select name="userAddr" class="form-control">
+		                       <option value="${sessionScope.user_information.userAddr1}" >${sessionScope.user_information.userAddr1}
+		                       <option value="${sessionScope.user_information.userAddr2}" >${sessionScope.user_information.userAddr2}
+		                       <option value="${sessionScope.user_information.userAddr3}" >${sessionScope.user_information.userAddr3}
+		                       <option value="${sessionScope.user_information.userAddr4}" >${sessionScope.user_information.userAddr4}
+		                       <option value="${sessionScope.user_information.userAddr5}" >${sessionScope.user_information.userAddr5}
+		                    </select>
+            	    </div>
+                    
+                    <!-- 这里是隐藏的地址信息 -->
+                     <!--<input type="hidden" name="userAddr" value=""> -->                    
+                    </c:if>
+                    
+                    
+                    
+                    
+                    <input type="hidden" value="${commodityBase.commodityId}" name="shopId">
+                    <a href="#" title="购买" class="btn btn-primary btn-normal btn-inline payA" target="_self">购买</a>
+                    <button type="submit" class="payBtn" style="display: none"></button>
+                    </form>
+                    <form action="addShopingCar" style="display: inline-block">
+                    <input type="hidden" value="${commodityBase.commodityId}" name="commodityId">
+                    <input type="hidden" value="1" name="commodityNumber" class="shopCarNumber">
+                    <a href="#" title="添加购物车" class="btn btn-primary btn-normal btn-inline carA" target="_self">添加购物车</a>
+                    <button type="submit" class="carBtn" style="display: none"></button>
+                    </form>
 			</div>
+			<div class="left fl"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${commodityBase.commodityIntroduce}"></div>
+			
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -130,3 +154,60 @@
 
 	</body>
 </html>
+
+<script>
+    jQuery(document).ready(function($){
+
+        $('#etalage').etalage({
+            thumb_image_width: 300,
+            thumb_image_height: 400,
+            source_image_width: 900,
+            source_image_height: 1200,
+            show_hint: true,
+            click_callback: function(image_anchor, instance_id){
+                alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+            }
+        });
+        
+        
+        var barWidth = ${commodityBase.commodityRate}
+        var str=Number(barWidth / 5 * 100).toFixed();
+            str+="%";
+            console.log(str)
+        $(".progress-bar").css("width", str)
+
+    });
+</script>
+<script src="${pageContext.request.contextPath}/js/mall/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true   // 100% fit in a container
+        });
+    });
+    $(".payA").on("click", function() {
+    	if ($(".shopNumber").val() == '') {
+    		alert("数量不能为空")
+    		return
+    	} else {
+    		$(".payBtn").click()
+    	}
+    })
+    $(".carA").on("click", function() {
+    	if ($(".shopNumber").val() == '') {
+    		alert("数量不能为空")
+    		return
+    	} else {
+    		$(".carBtn").click()
+    	}
+    
+    })
+    var shopNumber = ''
+    $(".shopNumber").on("change", function () {
+    	shopNumber = $(".shopNumber").val()
+    	$(".shopCarNumber").val(shopNumber)
+    	console.log($(".shopCarNumber").val())
+    })
+</script>

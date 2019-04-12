@@ -42,7 +42,7 @@ public class UpdateOrderServlet extends HttpServlet {
 		String orderAddr = request.getParameter("orderAddr");
 
 		if (!"2".equals(user.getUserType()))
-			request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/mall/index.jsp").forward(request, response);
 		else {
 
 			int result = orderService.updateOrderAddrAndNumber(orderId, phoneNumber, orderAddr);

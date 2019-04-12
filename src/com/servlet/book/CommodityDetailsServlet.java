@@ -48,12 +48,12 @@ public class CommodityDetailsServlet extends HttpServlet {
 			if (commodityBase == null) {
 				System.out.println("未查询到结果");
 				request.setAttribute("warn", "未查询到结果");
-				request.getRequestDispatcher("/pages/mall/commodity-detail.jsp").forward(request, response);
+				request.getRequestDispatcher("/pages/mall/detail.jsp").forward(request, response);
 			} else {
-				System.out.println(commodityBase.getCommodityName());
+				System.out.println(commodityBase.toString());
 				request.setAttribute("commodityBase", commodityBase);
 				request.setAttribute("comments", comments);
-				request.getRequestDispatcher("/pages/mall/commodity-detail.jsp").forward(request, response);
+				request.getRequestDispatcher("/pages/mall/detail.jsp").forward(request, response);
 			}
 
 		} catch (SQLException e) {

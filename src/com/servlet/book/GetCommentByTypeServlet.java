@@ -43,7 +43,7 @@ public class GetCommentByTypeServlet extends HttpServlet {
 			List<CommodityBase> list = commodityService.getCommodityLikeType(type);
 
 			request.setAttribute("commodityList", list);
-			request.getRequestDispatcher("/pages/mall/commodity-list.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

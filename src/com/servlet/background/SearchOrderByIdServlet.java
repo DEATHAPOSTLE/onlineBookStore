@@ -40,7 +40,7 @@ public class SearchOrderByIdServlet extends HttpServlet {
 		}
 		orders.add(order);
 		request.setAttribute("orders", orders);
-		request.getRequestDispatcher("pages/manager/order.jsp").forward(request, response);
+		request.getRequestDispatcher("pages/manager/orderManagement.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

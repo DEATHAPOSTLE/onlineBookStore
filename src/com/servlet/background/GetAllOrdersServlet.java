@@ -38,7 +38,7 @@ public class GetAllOrdersServlet extends HttpServlet {
 		List<User> users = new ArrayList<User>();
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		if (!"2".equals(user.getUserType()))
-			response.sendRedirect("/handicappedmall/index");
+			response.sendRedirect("/onlineBookStore/index");
 		else {
 			// 查看所有订单
 			ResultSet resultSet = orderService.getAllOrders();
@@ -70,7 +70,7 @@ public class GetAllOrdersServlet extends HttpServlet {
 
 			request.setAttribute("orders", orders);
 			request.setAttribute("users", users);
-			request.getRequestDispatcher("pages/manager/orderManagement.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/manager/orderManagement.jsp").forward(request, response);
 		}
 	}
 

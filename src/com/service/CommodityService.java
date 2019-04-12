@@ -42,6 +42,8 @@ public class CommodityService {
 			shop.setCommodityRate(shopRs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(shopRs.getString(Const.COLUNM_COMMODITY_NAME));
 			shop.setCommodityShelves(shopRs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(shopRs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(shopRs.getString(Const.COLUNM_COMMODITY_AUTHOR));
 
 			recommendShoplist.add(shop);
 
@@ -72,6 +74,8 @@ public class CommodityService {
 			shop.setCommodityRate(shopRs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(shopRs.getString(Const.COLUNM_COMMODITY_NAME));
 			shop.setCommodityShelves(shopRs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(shopRs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(shopRs.getString(Const.COLUNM_COMMODITY_AUTHOR));
 
 			recommendShoplist.add(shop);
 
@@ -99,6 +103,8 @@ public class CommodityService {
 			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
 			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
 
 			allShoplist.add(shop);
 		}
@@ -129,6 +135,9 @@ public class CommodityService {
 				shop.setCommodityRate(commdityRs.getString(Const.COLUNM_COMMODITY_RATE));
 				shop.setCommodityName(commdityRs.getString(Const.COLUNM_COMMODITY_NAME));
 				shop.setCommodityShelves(commdityRs.getString(Const.COLUNM_COMMODITY_SHELVES));
+				shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+				shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+
 				allShoplist.add(shop);
 			}
 		}
@@ -181,6 +190,8 @@ public class CommodityService {
 			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
 			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
 
 			allShoplist.add(shop);
 		}
@@ -206,6 +217,8 @@ public class CommodityService {
 			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
 			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
 
 			allShoplist.add(shop);
 		}
@@ -262,6 +275,8 @@ public class CommodityService {
 			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
 			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
 
 			list.add(shop);
 		}
@@ -284,6 +299,9 @@ public class CommodityService {
 			shop.setCommoditySurplus(rs.getInt(Const.COLUNM_COMMODITY_SURPLUS));
 			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+
 		}
 		dbTools.closeDB();
 		return shop;
@@ -303,6 +321,9 @@ public class CommodityService {
 			shop.setCommoditySurplus(rs.getInt(Const.COLUNM_COMMODITY_SURPLUS));
 			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+
 		}
 		dbTools.closeDB();
 		return shop;
@@ -324,6 +345,9 @@ public class CommodityService {
 			shop.setCommoditySurplus(rs.getInt(Const.COLUNM_COMMODITY_SURPLUS));
 			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+
 			commodityBases.add(shop);
 		}
 		dbTools.closeDB();
