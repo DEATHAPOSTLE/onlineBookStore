@@ -7,6 +7,7 @@
 		<meta charset="UTF-8">
 		<title>图书商城</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/style.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/bootstrap.css">
 	</head>
 	<body>
 	<!-- start header -->
@@ -64,7 +65,6 @@
 
 	
 	<!-- xiangqing -->
-	<form action="post" method="">
 	<div class="xiangqing">
 		<div class="neirong w">
 			<div class="xiaomi6 fl">图书详情</div>
@@ -87,7 +87,7 @@
 	</div>
 	
 	<div class="jieshao mt20 w">
-		<div class="left fl"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${commodityBase.commodityPicture}"></div>
+		<div class="left fl" style="padding: 5px"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${commodityBase.commodityPicture}" style="width: 100%;height: 100%"></div>
 		<div class="right fr">
 			<div class="h3 ml20 mt20">${commodityBase.commodityName}</div>
 			<div class="jianjie mr40 ml20 mt10">书籍分类：${commodityBase.commodityType}</div>
@@ -99,8 +99,6 @@
 			
 		
 			<div class="xiadan ml20 mt20">
-					<input class="jrgwc"  type="button" name="jrgwc" value="立即选购" />
-					<input class="jrgwc" type="button" name="jrgwc" value="加入购物车" />
 					
 				<form action="${pageContext.request.contextPath}/pay" style="display: inline-block">
                     <div class="quantity_box">
@@ -111,9 +109,9 @@
                         <div class="clearfix"></div>
                     </div>
                     
-                    <c:if test="${sessionScope.user_information.idCard != null}">
+                    <c:if test="${sessionScope.user_information.userName != null}">
                     <div class="row" style="margin: 0;margin-bottom: 15px">
-                    <span style="color: #555;font-size: 0.85em;padding-bottom: 0.5em;display: block;text-transform: uppercase;">地址</span>
+                    <span style="color: #555;">地址</span>
 		            	    <select name="userAddr" class="form-control">
 		                       <option value="${sessionScope.user_information.userAddr1}" >${sessionScope.user_information.userAddr1}
 		                       <option value="${sessionScope.user_information.userAddr2}" >${sessionScope.user_information.userAddr2}
@@ -131,22 +129,30 @@
                     
                     
                     <input type="hidden" value="${commodityBase.commodityId}" name="shopId">
-                    <a href="#" title="购买" class="btn btn-primary btn-normal btn-inline payA" target="_self">购买</a>
+                    <button title="购买" class="jrgwc" type="submit">购买</button>
                     <button type="submit" class="payBtn" style="display: none"></button>
                     </form>
                     <form action="addShopingCar" style="display: inline-block">
                     <input type="hidden" value="${commodityBase.commodityId}" name="commodityId">
                     <input type="hidden" value="1" name="commodityNumber" class="shopCarNumber">
-                    <a href="#" title="添加购物车" class="btn btn-primary btn-normal btn-inline carA" target="_self">添加购物车</a>
+                    <button title="添加购物车" class="jrgwc" type="submit">添加购物车</a>
                     <button type="submit" class="carBtn" style="display: none"></button>
                     </form>
 			</div>
-			<div class="left fl"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${commodityBase.commodityIntroduce}"></div>
 			
 		</div>
 		<div class="clear"></div>
+
+
+		<div class="panel panel-default" style="margin-top: 15px;">
+				<div class="panel-heading">图书详情</div>
+				<div class="panel-body">
+					<img src="${pageContext.request.contextPath}/pages/mall/bookImage/${commodityBase.commodityIntroduce}" style="padding: 15px;">
+				</div>
+			  </div>
+		<div class="clear"></div>
 	</div>
-	</form>
+	<div class="clear"></div>
 	<!-- footer -->
 	<footer class="mt20 center">			
 		<div class="mt20">Copyright © 2019 - 2019 All Rights Reserved.图书公司 版权所有</div>
@@ -155,59 +161,7 @@
 	</body>
 </html>
 
+<script src="${pageContext.request.contextPath}/pages/mall/js/jquery-1.11.1.min.js"></script>
 <script>
-    jQuery(document).ready(function($){
 
-        $('#etalage').etalage({
-            thumb_image_width: 300,
-            thumb_image_height: 400,
-            source_image_width: 900,
-            source_image_height: 1200,
-            show_hint: true,
-            click_callback: function(image_anchor, instance_id){
-                alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
-            }
-        });
-        
-        
-        var barWidth = ${commodityBase.commodityRate}
-        var str=Number(barWidth / 5 * 100).toFixed();
-            str+="%";
-            console.log(str)
-        $(".progress-bar").css("width", str)
-
-    });
-</script>
-<script src="${pageContext.request.contextPath}/js/mall/easyResponsiveTabs.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#horizontalTab').easyResponsiveTabs({
-            type: 'default', //Types: default, vertical, accordion
-            width: 'auto', //auto or any width like 600px
-            fit: true   // 100% fit in a container
-        });
-    });
-    $(".payA").on("click", function() {
-    	if ($(".shopNumber").val() == '') {
-    		alert("数量不能为空")
-    		return
-    	} else {
-    		$(".payBtn").click()
-    	}
-    })
-    $(".carA").on("click", function() {
-    	if ($(".shopNumber").val() == '') {
-    		alert("数量不能为空")
-    		return
-    	} else {
-    		$(".carBtn").click()
-    	}
-    
-    })
-    var shopNumber = ''
-    $(".shopNumber").on("change", function () {
-    	shopNumber = $(".shopNumber").val()
-    	$(".shopCarNumber").val(shopNumber)
-    	console.log($(".shopCarNumber").val())
-    })
 </script>

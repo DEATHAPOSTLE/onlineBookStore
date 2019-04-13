@@ -25,7 +25,10 @@ import com.service.ExamineService;
 public class SaveCommodityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// 上传文件存储目录
-	public final static String SAVEPATH = "C:\\Users\\qinhaoran\\Desktop\\xiangmu\\onlineBookStore\\WebContent\\pages\\mall\\bookImage";
+	//public final static String SAVEPATH = "C:\\Users\\qinhaoran\\Desktop\\xiangmu\\onlineBookStore\\WebContent\\pages\\mall\\bookImage";
+	public final static String SAVEPATH = "D:\\workspace\\java_project\\onlineBookStore\\WebContent\\pages\\mall\\bookImage";
+
+	
 	// 上传配置
 	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB

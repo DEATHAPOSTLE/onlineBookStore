@@ -15,7 +15,6 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="article-list.html" title="添加商品"> 添加商品</a></li>
 					<li><a href="article-list.html" title="安全审核"> 安全审核</a></li>
 					<li><a href="article-list.html" title="销售利润"> 销售利润</a></li>
 				</ul>

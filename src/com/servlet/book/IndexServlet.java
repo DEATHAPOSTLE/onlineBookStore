@@ -77,7 +77,8 @@ public class IndexServlet extends HttpServlet {
 					} else if ("evaluate".equals(recommendType)) {
 						recommendCommoditylist = CommodityService.getCommodityByEvaluate();
 					} else {
-						recommendCommoditylist = CommodityService.getCommodityByType(user);
+						//recommendCommoditylist = CommodityService.getCommodityByType(user);
+						recommendCommoditylist =CommodityService.getAllCommodity();
 						if (recommendCommoditylist.size() == 0) {
 							request.setAttribute("warn", "登录后可按需求推荐");
 						}
