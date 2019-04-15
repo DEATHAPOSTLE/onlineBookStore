@@ -101,37 +101,37 @@
 			<div class="subgrzl ml40"><span>昵称</span><span>${user.userName}</span></div>
 			<div class="subgrzl ml40"><span>密码</span>
 			  <span>
-			   <input class="" type="password" name="userPassword" value="${user.userPassword}" placeholder="更改密码"/>
+			   <input class="" type="password" name="userPassword" value="${user.userPassword}" placeholder="更改密码" style="display:inline-block;height: 30px"/>
 			  </span>
 			</div>
 			<div class="subgrzl ml40"><span>手机号</span>
 			  <span> 
-			    <input class="" type="text" name="userPhoneNumber" value="${user.userPhoneNumber}" placeholder="更改电话"/>
+			    <input class="" type="text" name="userPhoneNumber" value="${user.userPhoneNumber}" placeholder="更改电话" style="display:inline-block;height: 30px"/>
 			  </span>
 			</div>
 			<div class="subgrzl ml40"><span>收货地址1</span>
 			  <span>
-			    <input class="" type="text" name="userAddr1" value="${user.userAddr1}" placeholder="请输入地址1"/>
+			    <input class="" type="text" name="userAddr1" value="${user.userAddr1}" placeholder="请输入地址1" style="display:inline-block;height: 30px"/>
 			  </span>
 			</div>
 			<div class="subgrzl ml40"><span>收货地址2</span>
 			  <span>
-			    <input class="" type="text" name="userAddr2" value="${user.userAddr2}" placeholder="请输入地址2"/>
+			    <input class="" type="text" name="userAddr2" value="${user.userAddr2}" placeholder="请输入地址2" style="display:inline-block;height: 30px"/>
 			  </span>
 			</div>
 			<div class="subgrzl ml40"><span>收货地址3</span>
 			  <span>
-                <input class="" type="text" name="userAddr3" value="${user.userAddr3}" placeholder="请输入地址3"/>
+                <input class="" type="text" name="userAddr3" value="${user.userAddr3}" placeholder="请输入地址3" style="display:inline-block;height: 30px"/>
 			  </span>
 			</div>
 			<div class="subgrzl ml40"><span>收货地址4</span>
 			  <span>
-			    <input class="" type="text" name="userAddr4" value="${user.userAddr4}" placeholder="请输入地址4"/>
+			    <input class="" type="text" name="userAddr4" value="${user.userAddr4}" placeholder="请输入地址4" style="display:inline-block;height: 30px"/>
 			  </span>
 			</div>
 			<div class="subgrzl ml40"><span>收货地址5</span>
 			  <span>
-                 <input class="" type="text" name="userAddr5" value="${user.userAddr5}" placeholder="请输入地址5"/> 
+                 <input class="" type="text" name="userAddr5" value="${user.userAddr5}" placeholder="请输入地址5" style="display:inline-block;height: 30px"/> 
 			  </span>
 			</div>
 		</div>
