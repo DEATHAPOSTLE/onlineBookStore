@@ -14,7 +14,7 @@
 			<div class="regist_center">
 				<div class="regist_top">
 					<div class="left fl">会员注册</div>
-					<div class="right fr"><a href="./index" target="_self">图书商城</a></div>
+					<div class="right fr"><a href="./index">图书商城</a></div>
 					<div class="clear"></div>
 					<div class="xian center"></div>
 				</div>

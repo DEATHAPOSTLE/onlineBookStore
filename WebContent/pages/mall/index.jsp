@@ -15,7 +15,7 @@
 			<div class="top center">
 				<div class="left fl">
 					<ul>
-						<li><a href="#" target="_blank">图书商城</a></li>
+						<li><a href="./index">图书商城</a></li>
 						<li>|</li>
 						<div class="clear"></div>
 					</ul>
@@ -29,19 +29,19 @@
 					 <c:if test="${sessionScope.user_information.userName == null}">
 					
 						<ul>
-							<li><a href="./login" target="_blank">登录</a></li>
+							<li><a href="./login">登录</a></li>
 							<li>|</li>
-							<li><a href="./register" target="_blank" >注册</a></li>
+							<li><a href="./register">注册</a></li>
 						</ul>
 					 </c:if>
 					 <c:if test="${sessionScope.user_information.userName != null}">
 						
 						<ul>
-							<li><a href="./userInformation" target="_blank">欢迎，${sessionScope.user_information.userName}</a></li>
+							<li><a href="./userInformation">欢迎，${sessionScope.user_information.userName}</a></li>
 							<li>|</li>
 							<li><a href="./getUserOrder" target="_blank">我的订单</a></li>
 							<li>|</li>
-							<li><a href="./logOut" target="_blank" >退出登录</a></li>
+							<li><a href="./logOut">退出登录</a></li>
 						</ul>
 					</c:if>
 					</div>
@@ -54,10 +54,10 @@
 
 <!-- start banner_x -->
 		<div class="banner_x center">
-			<a href="./index" target="_blank"><div class="ad_top fl"></div></a>
+			<a href="./index"><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
-					<li><a href="./index?recommendType=military" target="_blank">军事</a></li>
+					<li><a href="./index?recommendType=military">军事</a></li>
 					<li><a href="./index?recommendType=entertainment">娱乐</a></li>
 					<li><a href="./index?recommendType=science">科技</a></li>
 					<li><a href="./index?recommendType=life">生活</a></li>
@@ -67,10 +67,10 @@
 			<div class="search fr">
 				<form action="/onlineBookStore/findCommodity" method="post" style="position: relative;">
 					<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
-						<input type="radio" value="1" name="type" id="type-radio1" checked><label for="type-radio1" style="margin-right: 10px;height: 16px;">书名</label>
-						<input type="radio" value="2" name="type" id="type-radio2"><label for="type-radio2" style="margin-right: 10px;height: 16px;">出版社</label>
-						<input type="radio" value="3" name="type" id="type-radio3"><label for="type-radio3" style="margin-right: 10px;height: 16px;">分类</label>
-						<input type="radio" value="4" name="type" id="type-radio4"><label for="type-radio4" style="margin-right: 10px;height: 16px;">作者</label>
+						<input type="radio" value="1" name="type" id="type-radio1" checked><span style="margin-right: 10px;height: 16px;display: inline-block;">书名</span>
+						<input type="radio" value="2" name="type" id="type-radio2"><span style="margin-right: 10px;height: 16px;display: inline-block;">出版社</span>
+						<input type="radio" value="3" name="type" id="type-radio3"><span style="margin-right: 10px;height: 16px;display: inline-block;">分类</span>
+						<input type="radio" value="4" name="type" id="type-radio4"><span style="margin-right: 10px;height: 16px;display: inline-block;">作者</span>
 					</div>
 					<div class="text fl">
 						<input type="text" class="shuru"  placeholder="" name="conditionName">
@@ -103,7 +103,7 @@
 											<div class="clear"></div>
 										</a>
 									</div>
-									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}" target="_blank">选购</a></div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">选购</a></div>
 								</div>
 							 <div class="clear"></div>
 						    </div>
@@ -123,7 +123,7 @@
 											<div class="clear"></div>
 										</a>
 									</div>
-									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}" target="_blank">选购</a></div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">选购</a></div>
 								</div>
 							 <div class="clear"></div>
 						    </div>
@@ -143,7 +143,7 @@
 											<div class="clear"></div>
 										</a>
 									</div>
-									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}" target="_blank">选购</a></div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">选购</a></div>
 								</div>
 							 <div class="clear"></div>
 						    </div>
@@ -163,7 +163,7 @@
 											<div class="clear"></div>
 										</a>
 									</div>
-									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}" target="_blank">选购</a></div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">选购</a></div>
 								</div>
 							 <div class="clear"></div>
 						    </div>
@@ -183,7 +183,7 @@
 			
 			<div class="biaoti center">推荐图书</div>
 			<div class="main center">
-			<c:forEach var="list" items="${recommendShoplist}" varStatus="status">
+			<c:forEach var="list" items="${recommendShoplist}" varStatus="status" begin="0" end="4">
 				<div class="mingxing fl">
 					<div class="sub_mingxing"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}" alt=""></a></div>
 					<div class="pinpai"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">${list.commodityName}</a></div>
@@ -200,9 +200,9 @@
 			<div class="biaoti center">图书</div>
 			<div class="main center">
 				<div class="content">
-				 <c:forEach var="list" items="${allCommoditylist}" varStatus="status">
+				 <c:forEach var="list" items="${allCommoditylist}" varStatus="status" begin="0" end="9">
 				
-					<div class="remen fl">
+					<div class="remen fl" style="margin-bottom: 5px">
 						<div class="xinpin"><span>${list.commodityType}</span></div>
 						<div class="tu"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}"></a></div>
 						<div class="miaoshu"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">${list.commodityName}</a></div>

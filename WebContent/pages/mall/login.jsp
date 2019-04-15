@@ -12,7 +12,7 @@
 		<!-- login -->
 		<div class="top center">
 			<div class="logo center">
-				<a href="${pageContext.request.contextPath}/pages/mall/index.jsp" target="_blank"><img src="${pageContext.request.contextPath}/pages/mall/image/mistore_logo.png" alt=""></a>
+				<a href="./index"><img src="${pageContext.request.contextPath}/pages/mall/image/mistore_logo.png" alt=""></a>
 			</div>
 		</div>
 		<form  method="post" action="/onlineBookStore/toLogin" class="form center">
