@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.entity.CommodityBase;
-import com.entity.User;
 import com.service.CommodityService;
+import com.uitl.content.Const;
 
 /**
  * Servlet implementation class Test
@@ -40,55 +40,59 @@ public class IndexServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		// 推荐商品
 		CommodityService CommodityService = new CommodityService();
-		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		String recommendType = request.getParameter("recommendType");
 
 		// 获取所有的商品，显示。
 		try {
 			// 所有商品列表
 			List<CommodityBase> allCommoditylist = CommodityService.getCommodityWithOutUnShelves();
-			// 推荐商品列表
+			// 按类别
 			List<CommodityBase> recommendCommoditylist = new ArrayList<CommodityBase>();
 			if (allCommoditylist.size() == 0) {
 				System.out.println("未查询到商品结果");
 				request.setAttribute("warn", "未查询到商品");
 				request.getRequestDispatcher("/pages/mall/index.jsp").forward(request, response);
 			} else {
-				if (user == null) {
-					// 按销量检索
-					if ("salesVolume".equals(recommendType)) {
-						recommendCommoditylist = CommodityService.getShopBySalesCount();
-						for (CommodityBase commodityBase : recommendCommoditylist) {
-							System.out.println("商品名：" + commodityBase.getCommodityName());
-						}
-						// 按评价检索
-					} else if ("evaluate".equals(recommendType)) {
-						recommendCommoditylist = CommodityService.getCommodityByEvaluate();
-					} else {
-						recommendCommoditylist = CommodityService.getAllCommodity();
 
-					}
+				if ("military".equals(recommendType)) {
+					// 军事类
+					recommendCommoditylist = CommodityService.getCommodityByType("军事", Const.COLUNM_COMMODITY_TYPE);
+				} else if ("entertainment".equals(recommendType)) {
+					// 娱乐
+					recommendCommoditylist = CommodityService.getCommodityByType("娱乐", Const.COLUNM_COMMODITY_TYPE);
+				} else if ("science".equals(recommendType)) {
+					// 科技类
+					recommendCommoditylist = CommodityService.getCommodityByType("科技", Const.COLUNM_COMMODITY_TYPE);
+				} else if ("life".equals(recommendType)) {
+					// 生活
+					recommendCommoditylist = CommodityService.getCommodityByType("生活", Const.COLUNM_COMMODITY_TYPE);
+				} else if ("literature".equals(recommendType)) {
+					// 文学
+					recommendCommoditylist = CommodityService.getCommodityByType("文学", Const.COLUNM_COMMODITY_TYPE);
 				} else {
-					if ("salesVolume".equals(recommendType)) {
-						recommendCommoditylist = CommodityService.getShopBySalesCount();
-						for (CommodityBase commodityBase : recommendCommoditylist) {
-							System.out.println("商品名：" + commodityBase.getCommodityName());
-						}
-					} else if ("evaluate".equals(recommendType)) {
-						recommendCommoditylist = CommodityService.getCommodityByEvaluate();
-					} else {
-						//recommendCommoditylist = CommodityService.getCommodityByType(user);
-						recommendCommoditylist =CommodityService.getAllCommodity();
-						if (recommendCommoditylist.size() == 0) {
-							request.setAttribute("warn", "登录后可按需求推荐");
-						}
-					}
+					recommendCommoditylist = CommodityService.getCommodityWithOutUnShelves();
+
 				}
+
+				List<CommodityBase> listHistory = CommodityService.getCommodityByType("历史",
+						Const.COLUNM_COMMODITY_TYPE);
+				List<CommodityBase> listTeaching = CommodityService.getCommodityByType("教学",
+						Const.COLUNM_COMMODITY_TYPE);
+				List<CommodityBase> listTale = CommodityService.getCommodityByType("儿童", Const.COLUNM_COMMODITY_TYPE);
+				List<CommodityBase> listMagazine = CommodityService.getCommodityByType("杂志",
+						Const.COLUNM_COMMODITY_TYPE);
+
 				System.out.println("执行!!!!!");
 				for (CommodityBase bBase : recommendCommoditylist) {
 					System.out.println(bBase.toString());
 				}
+
 				request.setAttribute("recommendShoplist", recommendCommoditylist);
+				request.setAttribute("allCommoditylist", allCommoditylist);
+				request.setAttribute("listHistory", listHistory);
+				request.setAttribute("listTeaching", listTeaching);
+				request.setAttribute("listTale", listTale);
+				request.setAttribute("listMagazine", listMagazine);
 
 				request.getRequestDispatcher("/pages/mall/index.jsp").forward(request, response);
 			}

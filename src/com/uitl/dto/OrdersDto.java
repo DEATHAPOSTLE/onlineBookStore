@@ -14,7 +14,7 @@ public class OrdersDto {
 	private int userId;
 
 	// 用户姓名
-	private int userName;
+	private String userName;
 
 	// 订单状态
 	private String orderStatus;
@@ -47,6 +47,14 @@ public class OrdersDto {
 
 	public int getCommodityID() {
 		return this.commodityID;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public void setCommodityID(int commodityID) {
@@ -125,20 +133,12 @@ public class OrdersDto {
 		this.orderAddr = orderAddr;
 	}
 
-	public int getUserName() {
-		return userName;
-	}
-
 	public String getRateStatus() {
 		return rateStatus;
 	}
 
 	public void setRateStatus(String rateStatus) {
 		this.rateStatus = rateStatus;
-	}
-
-	public void setUserName(int userName) {
-		this.userName = userName;
 	}
 
 }

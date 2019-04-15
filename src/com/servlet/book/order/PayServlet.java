@@ -79,32 +79,50 @@ public class PayServlet extends HttpServlet {
 						if (shopCartIds != null) {
 							shopCartIdInt = Integer.parseInt(shopCartIds[i]);
 						}
-						if (shopNumberInt <= commodityBases.getCommoditySurplus()) {
-							Orders orders = new Orders();
 
-							orders.setCommodityID(commodityBases.getCommodityId());
-							orders.setDeliveryDTime("");
-							orders.setOrderDTime(sdf.format(new Date()));
-							double priceCount = commodityBases.getCommodityPrice() * shopNumberInt;
-							orders.setOrderPrice(priceCount);
-							orders.setOrderStatus("1");
-							orders.setUserId(user.getUserId());
-							orders.setReceiveDTime("");
-							orders.setOrderRate("");
-							orders.setOrderAddr(userAddr);
-							orders.setPhoneNumber(user.getUserPhoneNumber());
-							int result = orderService.setOrder(orders);
-							if (shopCartIds != null) {
-								shoppingCarService.delShopByShopCar(String.valueOf(shopCartIdInt));
+						double price = shopNumberInt * commodityBases.getCommodityPrice();
+						if ("2".equals(user.getUserType())) {
+							price = price * 0.8;
+						}
+
+						if (shopNumberInt <= commodityBases.getCommoditySurplus()) {
+							if (user.getMoney() >= price) {
+								Orders orders = new Orders();
+
+								orders.setCommodityID(commodityBases.getCommodityId());
+								orders.setDeliveryDTime("");
+								orders.setOrderDTime(sdf.format(new Date()));
+								double priceCount = commodityBases.getCommodityPrice() * shopNumberInt;
+								orders.setOrderPrice(priceCount);
+								orders.setOrderStatus("1");
+								orders.setUserId(user.getUserId());
+								orders.setReceiveDTime("");
+								orders.setOrderRate("");
+								orders.setOrderAddr(userAddr);
+								orders.setPhoneNumber(user.getUserPhoneNumber());
+
+								int result = orderService.setOrder(orders);
+								if (shopCartIds != null) {
+									shoppingCarService.delShopByShopCar(String.valueOf(shopCartIdInt));
+								}
+								if (result > 0) {
+
+									user.setMoney(user.getMoney() - price);
+									userService.updateUserById(user);
+									commodityBases
+											.setCommoditySurplus(commodityBases.getCommoditySurplus() - shopNumberInt);
+									commodityService.updateCommodity(commodityBases);
+								}
+								System.out.println("下单成功");
+								request.setAttribute("info", "下单成功");
+								i++;
+							} else {
+								i++;
+								System.out.println("余额不足");
+								response.sendRedirect("/onlineBookStore/commodityDetail?shopId="
+										+ commodityBases.getCommodityId() + "&warn=lazyWeight");
+								return;
 							}
-							if (result > 0) {
-								commodityBases
-										.setCommoditySurplus(commodityBases.getCommoditySurplus() - shopNumberInt);
-								commodityService.updateCommodity(commodityBases);
-							}
-							System.out.println("下单成功");
-							request.setAttribute("info", "下单成功");
-							i++;
 						} else {
 							i++;
 							System.out.println("数量不足");

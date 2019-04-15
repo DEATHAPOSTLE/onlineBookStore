@@ -36,7 +36,7 @@
 					<th>商品图片</th>
 					<th>商品价格</th>
 					
-					<th>姓名</th>
+					<th>买家用户名</th>
 					<th>收货地址</th>
 					<th>电话号码</th>
 					<th>用户类型</th>
@@ -58,7 +58,7 @@
 		    			<td>${rejected.commodityPicture}</td>
 		    			<td>${rejected.commodityPrice}</td>
 		    			
-		    			<td>${rejected.handicappedName}</td>
+		    			<td>${rejected.userName}</td>
 		    			<td>${rejected.userAddr1}</td>
 		    			<td>${rejected.userPhoneNumber}</td>
 		    			<td>${rejected.userType}</td>

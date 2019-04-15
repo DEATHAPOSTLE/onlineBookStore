@@ -77,6 +77,7 @@ public class RejectedList extends HttpServlet {
 						rejectedDto.setUserAddr1(users.getUserAddr1());
 						rejectedDto.setUserPhoneNumber(users.getUserPhoneNumber());
 						rejectedDto.setUserType(users.getUserType());
+						rejectedDto.setUserName(users.getUserName());
 
 						System.out.println(rejectedDto.getCommodityName());
 						System.out.println(rejectedDto.getRejectedStatus());
@@ -108,6 +109,8 @@ public class RejectedList extends HttpServlet {
 						rejectedDto.setUserAddr1(users.getUserAddr1());
 						rejectedDto.setUserPhoneNumber(users.getUserPhoneNumber());
 						rejectedDto.setUserType(users.getUserType());
+						rejectedDto.setUserName(users.getUserName());
+
 						dto.add(rejectedDto);
 					}
 					request.setAttribute("dto", dto);

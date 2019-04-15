@@ -22,25 +22,27 @@
 		<div class="wxts fl ml20">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</div>
 		<div class="dlzc fr">
 			<c:if test="${sessionScope.user_information.userName == null}">
-					
-						<ul>
-							<li><a href="./login" target="_blank">登录</a></li>
-							<li>|</li>
-							<li><a href="./register" target="_blank" >注册</a></li>
-						</ul>
-					 </c:if>
-					 <c:if test="${sessionScope.user_information.userName != null}">
-						
-						<ul>
-							<li><a href="./userInformation" target="_blank">欢迎，${sessionScope.user_information.userName}</a></li>
-							<li>|</li>
-							<li><a href="./logOut" target="_blank" >退出登录</a></li>
-						</ul>
-					</c:if>
+
+				<ul>
+					<li><a href="./login" target="_blank">登录</a></li>
+					<li>|</li>
+					<li><a href="./register" target="_blank">注册</a></li>
+				</ul>
+			</c:if>
+			<c:if test="${sessionScope.user_information.userName != null}">
+
+				<ul>
+					<li><a href="./userInformation" target="_blank">欢迎，${sessionScope.user_information.userName}</a></li>
+					<li>|</li>
+					<li><a href="./logOut" target="_blank">退出登录</a></li>
+				</ul>
+			</c:if>
 
 		</div>
 		<div class="clear"></div>
 	</div>
+
+
 	<div class="xiantiao"></div>
 	<div class="gwcxqbj" style="height: auto;">
 		<div class="gwcxd center">
@@ -82,74 +84,75 @@
 							<button type="submit" class="payBtn" style="display: none"></button>
 						</form>
 					</div>
-					<div style="border-top: 1px solid #ccc; margin-top: 30px; padding-top: 30px">
+					<div
+						style="border-top: 1px solid #ccc; margin-top: 30px; padding-top: 30px">
+
+
 						<form action="./shopingCartAccountServlet">
-							<c:if test="${sessionScope.user_information.idCard != null}">
+							<c:if test="${sessionScope.user_information.userName != null}">
 								<div class="col-md-2">
 									<select name="userAddr" class="form-control">
 										<option value="${sessionScope.user_information.userAddr1}">${sessionScope.user_information.userAddr1}
-
-											<option value="${sessionScope.user_information.userAddr2}">${sessionScope.user_information.userAddr2}
-	                       
+										<option value="${sessionScope.user_information.userAddr2}">${sessionScope.user_information.userAddr2}
 										<option value="${sessionScope.user_information.userAddr3}">${sessionScope.user_information.userAddr3}
-	                       
 										<option value="${sessionScope.user_information.userAddr4}">${sessionScope.user_information.userAddr4}
-	                       
 										<option value="${sessionScope.user_information.userAddr5}">${sessionScope.user_information.userAddr5}
-	                    
 									</select>
-            	    </div>
-                    
-                    
-                    <!-- 这里是隐藏的地址信息 -->
-                     <!--<input type="hidden" name="userAddr" value=""> -->                    
-                    </c:if>
-            		<input name="shopCartId" value="" class="shopCartId"
-								type="hidden">
-            		<a href="#" title="Online Reservation"
-								class="btn btn1 btn-primary btn-normal btn-inline shopCartIdBtn"
-								target="_self">全部结算</a>
-            	</form>
-            	
-            </div>
-				<div class="clear"></div></div>
-										
-				
-			</c:forEach>
-				
-				
-			</div>
-			
-			
-			<div class="jiesuandan mt20 center">
-				<div class="tishi fl ml20">
-					<ul>
-						<li><a href="./liebiao.html">继续购物</a></li>
-						<li>|</li>
-						<li>共<span>2</span>件商品，已选择<span>1</span>件</li>
-						<div class="clear"></div>
-					</ul>
-				</div>
-				<div class="jiesuan fr">
-					<div class="jiesuanjiage fl">合计（不含运费）：<span>2499.00元</span>
-				</div>
-					<div class="jsanniu fr">
-					<input class="jsan" type="submit" name="jiesuan" value="去结算" />
-				</div>
+								</div>
+
+
+								<!-- 这里是隐藏的地址信息 -->
+								<!--<input type="hidden" name="userAddr" value=""> -->
+							</c:if>
+							<input name="shopCartId" value="${shopCar.shoppingCartId}"
+								class="shopCartId" type="hidden">
+							<button title="购买" class="jrgwc" type="submit">结算</button>
+							<button type="submit" class="payBtn" style="display: none"></button>
+						</form>
+
+					</div>
 					<div class="clear"></div>
+				</div>
+
+
+			</c:forEach>
+
+
+		</div>
+
+
+		<div class="jiesuandan mt20 center">
+			<div class="tishi fl ml20">
+				<ul>
+					<li><a href="./liebiao.html">继续购物</a></li>
+					<li>|</li>
+					<li>共<span>2</span>件商品，已选择<span>1</span>件
+					</li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+			<div class="jiesuan fr">
+				<div class="jiesuanjiage fl">
+					合计（不含运费）：<span>2499.00元</span>
+				</div>
+				<div class="jsanniu fr">
+					<input class="jsan" type="submit" name="jiesuan" value="去结算" />
 				</div>
 				<div class="clear"></div>
 			</div>
-			
+			<div class="clear"></div>
 		</div>
 
-  
+	</div>
 
-	
+
+
+
 	<!-- footer -->
-	<footer class="mt20 center">			
-		<div class="mt20">Copyright © 2019 - 2019 All Rights Reserved.图书公司 版权所有</div>
+	<footer class="mt20 center">
+		<div class="mt20">Copyright © 2019 - 2019 All Rights
+			Reserved.图书公司 版权所有</div>
 	</footer>
 
-	</body>
+</body>
 </html>

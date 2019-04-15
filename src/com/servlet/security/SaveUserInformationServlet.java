@@ -44,13 +44,14 @@ public class SaveUserInformationServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
+		String userAddr1 = new String(request.getParameter("userAddr1").getBytes("iso-8859-1"), "utf-8");
+		String userAddr2 = new String(request.getParameter("userAddr2").getBytes("iso-8859-1"), "utf-8");
+		String userAddr3 = new String(request.getParameter("userAddr3").getBytes("iso-8859-1"), "utf-8");
+		String userAddr4 = new String(request.getParameter("userAddr4").getBytes("iso-8859-1"), "utf-8");
+		String userAddr5 = new String(request.getParameter("userAddr5").getBytes("iso-8859-1"), "utf-8");
+
 		String userPassword = request.getParameter("userPassword");
 		String userPhoneNumber = request.getParameter("userPhoneNumber");
-		String userAddr1 = request.getParameter("userAddr1");
-		String userAddr2 = request.getParameter("userAddr2");
-		String userAddr3 = request.getParameter("userAddr3");
-		String userAddr4 = request.getParameter("userAddr4");
-		String userAddr5 = request.getParameter("userAddr5");
 
 		user.setUserPassword(userPassword);
 		user.setUserAddr1(userAddr1);

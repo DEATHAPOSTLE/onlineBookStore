@@ -21,7 +21,10 @@
 					</ul>
 				</div>
 				<div class="right fr">
+				    <c:if test="${sessionScope.user_information.userName != null}">
 					<div class="gouwuche fr"><a href="">购物车</a></div>
+					
+					</c:if>
 					<div class="fr">
 					 <c:if test="${sessionScope.user_information.userName == null}">
 					
@@ -36,6 +39,8 @@
 						<ul>
 							<li><a href="./userInformation" target="_blank">欢迎，${sessionScope.user_information.userName}</a></li>
 							<li>|</li>
+							<li><a href="./getUserOrder" target="_blank">我的订单</a></li>
+							<li>|</li>
 							<li><a href="./logOut" target="_blank" >退出登录</a></li>
 						</ul>
 					</c:if>
@@ -49,14 +54,14 @@
 
 <!-- start banner_x -->
 		<div class="banner_x center">
-			<a href="./index.html" target="_blank"><div class="ad_top fl"></div></a>
+			<a href="./index" target="_blank"><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
-					<li><a href="./liebiao.html" target="_blank">图书</a></li>
-					<li><a href="">图书</a></li>
-					<li><a href="">图书</a></li>
-					<li><a href="">图书</a></li>
-					<li><a href="">图书</a></li>
+					<li><a href="./index?recommendType=military" target="_blank">军事</a></li>
+					<li><a href="./index?recommendType=entertainment">娱乐</a></li>
+					<li><a href="./index?recommendType=science">科技</a></li>
+					<li><a href="./index?recommendType=life">生活</a></li>
+					<li><a href="./index?recommendType=literature">文学</a></li>
 				</ul>
 			</div>
 			<div class="search fr">
@@ -86,22 +91,87 @@
 			<div class="nav">				
 				<ul>
 					<li>
-						<a href="">图书</a>
+						<a href="">历史</a>
 						<div class="pop">
-							<div class="left fl">
+						<c:forEach var="list" items="${listHistory}" varStatus="status">
+							<div class="left fl" style="height:100px;">
 								<div>
 									<div class="xuangou_left fl">
 										<a href="">
-											<div class="img fl"><img src="./image/xm6_80.png" alt=""></div>
-											<span class="fl">小米6</span>
+											<div class="img fl"><img style="width:70px;height:70px;" src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}" alt=""></div>
+											<span class="fl">${list.commodityName}</span>
 											<div class="clear"></div>
 										</a>
 									</div>
-									<div class="xuangou_right fr"><a href="./xiangqing.html" target="_blank">选购</a></div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}" target="_blank">选购</a></div>
 								</div>
-							<div class="clear"></div>
+							 <div class="clear"></div>
+						    </div>
+						</c:forEach>
 						</div>
 					</li>
+					<li>
+						<a href="">教学</a>
+						<div class="pop">
+						 <c:forEach var="list" items="${listTeaching}" varStatus="status">
+							<div class="left fl" style="height:100px;">
+								<div>
+									<div class="xuangou_left fl">
+										<a href="">
+											<div class="img fl"><img style="width:70px;height:70px;" src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}" alt=""></div>
+											<span class="fl">${list.commodityName}</span>
+											<div class="clear"></div>
+										</a>
+									</div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}" target="_blank">选购</a></div>
+								</div>
+							 <div class="clear"></div>
+						    </div>
+						</c:forEach>
+						</div>
+					</li>
+					<li>
+						<a href="">儿童</a>
+						<div class="pop">
+						<c:forEach var="list" items="${listTale}" varStatus="status">
+							<div class="left fl" style="height:100px;">
+								<div>
+									<div class="xuangou_left fl">
+										<a href="">
+											<div class="img fl"><img style="width:70px;height:70px;" src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}" alt=""></div>
+											<span class="fl">${list.commodityName}</span>
+											<div class="clear"></div>
+										</a>
+									</div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}" target="_blank">选购</a></div>
+								</div>
+							 <div class="clear"></div>
+						    </div>
+						</c:forEach>
+					    </div>
+					</li>
+					<li>
+						<a href="">杂志</a>
+						<div class="pop">
+						<c:forEach var="list" items="${listMagazine}" varStatus="status">
+							<div class="left fl" style="height:100px;">
+								<div>
+									<div class="xuangou_left fl">
+										<a href="">
+											<div class="img fl"><img style="width:70px;height:70px;" src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}" alt=""></div>
+											<span class="fl">${list.commodityName}</span>
+											<div class="clear"></div>
+										</a>
+									</div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}" target="_blank">选购</a></div>
+								</div>
+							 <div class="clear"></div>
+						    </div>
+						</c:forEach>
+						
+						</div>
+					</li>
+					
 				</ul>
 			</div>
 		
@@ -111,62 +181,45 @@
 	<!-- start danpin -->
 		<div class="danpin center">
 			
-			<div class="biaoti center">明星单品</div>
+			<div class="biaoti center">推荐图书</div>
 			<div class="main center">
+			<c:forEach var="list" items="${recommendShoplist}" varStatus="status">
 				<div class="mingxing fl">
-					<div class="sub_mingxing"><a href=""><img src="./image/pinpai1.png" alt=""></a></div>
-					<div class="pinpai"><a href="">图书</a></div>
-					<div class="youhui">图书图书图书图书图书图书图书图书</div>
-					<div class="jiage">3499元起</div>
+					<div class="sub_mingxing"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}" alt=""></a></div>
+					<div class="pinpai"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">${list.commodityName}</a></div>
+					<div class="youhui">剩余：${list.commoditySurplus}件</div>
+					<div class="jiage">${list.commodityPrice}￥</div>
 				</div>
+			</c:forEach>
 				
 				<div class="clear"></div>
 			</div>
+			
 		</div>
 		<div class="peijian w">
 			<div class="biaoti center">图书</div>
 			<div class="main center">
 				<div class="content">
-					<div class="remen fl"><a href=""><img src="./image/peijian1.jpg"></a>
-					</div>
+				 <c:forEach var="list" items="${allCommoditylist}" varStatus="status">
+				
 					<div class="remen fl">
-						<div class="xinpin"><span>新品</span></div>
-						<div class="tu"><a href=""><img src="./image/peijian2.jpg"></a></div>
-						<div class="miaoshu"><a href="">图书</a></div>
-						<div class="jiage">49元</div>
-						<div class="pingjia">372人评价</div>
+						<div class="xinpin"><span>${list.commodityType}</span></div>
+						<div class="tu"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}"><img src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}"></a></div>
+						<div class="miaoshu"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">${list.commodityName}</a></div>
+						<div class="jiage">${list.commodityPrice}￥</div>
+						<div class="pingjia">剩余：${list.commoditySurplus}件</div>
 						<div class="piao">
 							<a href="">
-								<span>图书图书图书图书</span>
-								<span>图书</span>
-							</a>
-						</div>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="content">
-					<div class="remen fl"><a href=""><img src="./image/peijian6.png"></a>
-					</div>
-					<div class="remen fl">
-						<div class="xinpin"><span>新品</span></div>
-						<div class="tu"><a href=""><img src="./image/peijian2.jpg"></a></div>
-						<div class="miaoshu"><a href="">图书</a></div>
-						<div class="jiage">49元</div>
-						<div class="pingjia">372人评价</div>
-						<div class="piao">
-							<a href="">
-								<span>图书图书图书图书</span>
-								<span>图书</span>
+								<span>作者：${list.commodityAuthor}</span>
+								<span>评价：${list.commodityRate}星</span>
 							</a>
 						</div>
 					</div>
 					
-					<div class="remenlast fr">
-						<div class="hongmi"><a href=""><img src="./image/hongmin4.png" alt=""></a></div>
-						<div class="liulangengduo"><a href=""><img src="./image/liulangengduo.png" alt=""></a></div>					
-					</div>
+					</c:forEach>
 					<div class="clear"></div>
-				</div>				
+				</div>
+						
 			</div>
 		</div>
 		<footer class="mt20 center">			

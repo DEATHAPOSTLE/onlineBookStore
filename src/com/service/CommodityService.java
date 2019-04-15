@@ -94,6 +94,8 @@ public class CommodityService {
 		List<CommodityBase> allShoplist = new ArrayList<CommodityBase>();
 		while (rs.next()) {
 			CommodityBase shop = new CommodityBase();
+			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+				continue;
 			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
 			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
 			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
@@ -126,6 +128,8 @@ public class CommodityService {
 					commodityGroupBy.getCommodityId());
 			while (commdityRs.next()) {
 				CommodityBase shop = new CommodityBase();
+				if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+					continue;
 				shop.setCommodityId(commdityRs.getInt(Const.COLUNM_COMMODITY_ID));
 				shop.setCommodityPicture(commdityRs.getString(Const.COLUNM_COMMODITY_PICTURE));
 				shop.setCommodityType(commdityRs.getString(Const.COLUNM_COMMODITY_TYPE));
@@ -171,6 +175,7 @@ public class CommodityService {
 		return result;
 	}
 
+	// 返回全部商品，不返回下架产品
 	public List<CommodityBase> getCommodityWithOutUnShelves() throws SQLException {
 		DBTools dbTools = new DBTools();
 		// 商品结果集
@@ -199,7 +204,6 @@ public class CommodityService {
 		return allShoplist;
 	}
 
-	// 返回全部商品，不返回下架产品
 	public List<CommodityBase> getAllCommodity() throws SQLException {
 		DBTools dbTools = new DBTools();
 		// 商品结果集
@@ -208,6 +212,8 @@ public class CommodityService {
 		List<CommodityBase> allShoplist = new ArrayList<CommodityBase>();
 		while (rs.next()) {
 			CommodityBase shop = new CommodityBase();
+			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+				continue;
 			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
 			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
 			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
@@ -291,6 +297,8 @@ public class CommodityService {
 		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_COMMODITY_BASE, Const.COLUNM_COMMODITY_NAME, name);
 		CommodityBase shop = new CommodityBase();
 		while (rs.next()) {
+			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+				continue;
 			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
 			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
 			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
@@ -308,11 +316,38 @@ public class CommodityService {
 	}
 
 	// 按条件查询
+	public List<CommodityBase> getCommodityByType(String name, String type) throws SQLException {
+		DBTools dbTools = new DBTools();
+		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_COMMODITY_BASE, type, name);
+		List<CommodityBase> list = new ArrayList<CommodityBase>();
+		while (rs.next()) {
+			CommodityBase shop = new CommodityBase();
+			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+				continue;
+			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
+			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
+			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
+			shop.setCommodityPrice(rs.getInt(Const.COLUNM_COMMODITY_PRICE));
+			shop.setCommodityIntroduce(rs.getString(Const.COLUNM_COMMODITY_INTRODUCE));
+			shop.setCommoditySurplus(rs.getInt(Const.COLUNM_COMMODITY_SURPLUS));
+			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
+			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+			list.add(shop);
+		}
+		dbTools.closeDB();
+		return list;
+	}
+
+	// 按条件查询
 	public CommodityBase getCommodityById(String id) throws SQLException {
 		DBTools dbTools = new DBTools();
 		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_COMMODITY_BASE, Const.COLUNM_COMMODITY_ID, id);
 		CommodityBase shop = new CommodityBase();
 		while (rs.next()) {
+			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+				continue;
 			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
 			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
 			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
@@ -337,6 +372,8 @@ public class CommodityService {
 		;
 		while (rs.next()) {
 			CommodityBase shop = new CommodityBase();
+			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+				continue;
 			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
 			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
 			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));

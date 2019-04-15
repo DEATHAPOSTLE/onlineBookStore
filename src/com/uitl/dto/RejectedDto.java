@@ -26,7 +26,7 @@ public class RejectedDto {
 	private String userPhoneNumber;
 
 	// 姓名
-	private String handicappedName;
+	private String userName;
 
 	// 收货地址1
 	private String userAddr1;
@@ -48,12 +48,12 @@ public class RejectedDto {
 		this.rejectedId = rejectedId;
 	}
 
-	public String getHandicappedName() {
-		return handicappedName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setHandicappedName(String handicappedName) {
-		this.handicappedName = handicappedName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getRejectedStatus() {

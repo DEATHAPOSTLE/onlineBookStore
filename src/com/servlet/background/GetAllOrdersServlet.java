@@ -2,7 +2,6 @@ package com.servlet.background;
 
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.entity.Orders;
 import com.entity.User;
 import com.service.OrderService;
 import com.service.UserService;
 import com.uitl.content.Const;
+import com.uitl.dto.OrdersDto;
 
 @WebServlet("/GetAllOrdersServlet")
 public class GetAllOrdersServlet extends HttpServlet {
@@ -30,12 +29,10 @@ public class GetAllOrdersServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Integer> userIds = new ArrayList<Integer>();
 		request.setCharacterEncoding("UTF-8");
 		OrderService orderService = new OrderService();
 		UserService userService = new UserService();
-		List<Orders> orders = new ArrayList<Orders>();
-		List<User> users = new ArrayList<User>();
+		List<OrdersDto> orders = new ArrayList<OrdersDto>();
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		if (!"3".equals(user.getUserType()))
 			response.sendRedirect("/onlineBookStore/index");
@@ -44,8 +41,8 @@ public class GetAllOrdersServlet extends HttpServlet {
 			ResultSet resultSet = orderService.getAllOrders();
 			try {
 				while (resultSet.next()) {
-					int userId = resultSet.getInt(Const.COLUNM_USER_ID);
-					Orders order = new Orders();
+					OrdersDto order = new OrdersDto();
+
 					order.setCommodityID(resultSet.getInt(Const.COLUNM_COMMODITY_ID));
 					order.setDeliveryDTime(resultSet.getString(Const.COLUNM_DELIVERY_DTIME));
 					order.setOrderDTime(resultSet.getString(Const.COLUNM_ORDER_DTIME));
@@ -55,21 +52,14 @@ public class GetAllOrdersServlet extends HttpServlet {
 					order.setReceiveDTime(resultSet.getString(Const.COLUNM_RECEIVE_DTIME));
 					order.setOrderAddr(resultSet.getString(Const.COLUNM_ORDER_ADDR));
 					order.setPhoneNumber(resultSet.getString(Const.COLUNM_PHONENUMBER));
-					order.setUserId(userId);
-					userIds.add(userId);
+					order.setUserName(userService.getUserById(resultSet.getString(Const.COLUNM_USER_ID)).getUserName());
 					orders.add(order);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			try {
-				users = userService.getUserByIds(userIds);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 
 			request.setAttribute("orders", orders);
-			request.setAttribute("users", users);
 			request.getRequestDispatcher("/pages/manager/orderManagement.jsp").forward(request, response);
 		}
 	}

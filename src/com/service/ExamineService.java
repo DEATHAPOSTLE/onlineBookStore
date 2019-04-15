@@ -28,6 +28,8 @@ public class ExamineService {
 			commodityBaseExamine.setCommodityIntroduce(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_INTRODUCE));
 			commodityBaseExamine.setCommodityName(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_NAME));
 			commodityBaseExamine.setExamineId(rs.getInt(Const.COLUNM_EXAMINE_ID));
+			commodityBaseExamine.setCommodityPress(rs.getString(Const.COLUNM_EXAMINE__PRESS));
+			commodityBaseExamine.setCommodityAuthor(rs.getString(Const.COLUNM_EXAMINE__AUTHOR));
 
 			allShoplist.add(commodityBaseExamine);
 		}
@@ -51,6 +53,8 @@ public class ExamineService {
 			commodityBaseExamine.setCommodityIntroduce(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_INTRODUCE));
 			commodityBaseExamine.setCommodityName(rs.getString(Const.COLUNM_EXAMINE_COMMODITY_NAME));
 			commodityBaseExamine.setExamineId(rs.getInt(Const.COLUNM_EXAMINE_ID));
+			commodityBaseExamine.setCommodityPress(rs.getString(Const.COLUNM_EXAMINE__PRESS));
+			commodityBaseExamine.setCommodityAuthor(rs.getString(Const.COLUNM_EXAMINE__AUTHOR));
 			list.add(commodityBaseExamine);
 		}
 		dbTools.closeDB();

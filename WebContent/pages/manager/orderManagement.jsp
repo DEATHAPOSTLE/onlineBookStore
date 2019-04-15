@@ -38,7 +38,7 @@
 					<th>订单编号</th>
 					<th>商品编号</th>
 					<th>金额</th>
-					<th>用户ID</th>
+					<th>买家用户名</th>
 					<th>收货人电话</th>
 					<th>收货地址</th>
 					<th>订单状态</th>
@@ -55,7 +55,7 @@
 		    			<td>${order.orderId}</td>
 		    			<td>${order.commodityID}</td>
 		    			<td>${order.orderPrice}</td>
-		    			<td>${order.userId}</td>
+		    			<td>${order.userName}</td>
 		    			<td><input type="text" class="input-text radius phoneNumber" value="${order.phoneNumber}"></td>
 		    			<td><input type="text" class="input-text radius orderAddr" value="${order.orderAddr}"></td>
 		    			<td>
