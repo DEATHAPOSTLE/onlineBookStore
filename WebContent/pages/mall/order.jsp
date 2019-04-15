@@ -22,11 +22,22 @@
 				<div class="right fr">
 					<div class="gouwuche fr"><a href="">购物车</a></div>
 					<div class="fr">
+						<c:if test="${sessionScope.user_information.userName == null}">
+					
 						<ul>
-							<li><a href="./login.html" target="_blank">登录</a></li>
+							<li><a href="./login" target="_blank">登录</a></li>
 							<li>|</li>
-							<li><a href="./register.html" target="_blank" >注册</a></li>
+							<li><a href="./register" target="_blank" >注册</a></li>
 						</ul>
+					 </c:if>
+					 <c:if test="${sessionScope.user_information.userName != null}">
+						
+						<ul>
+							<li><a href="./userInformation" target="_blank">欢迎，${sessionScope.user_information.userName}</a></li>
+							<li>|</li>
+							<li><a href="./logOut" target="_blank" >退出登录</a></li>
+						</ul>
+					</c:if>
 					</div>
 					<div class="clear"></div>
 				</div>

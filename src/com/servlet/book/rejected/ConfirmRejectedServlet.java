@@ -39,7 +39,7 @@ public class ConfirmRejectedServlet extends HttpServlet {
 			throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 
-		if (!"2".equals(user.getUserType()))
+		if (!"3".equals(user.getUserType()))
 			request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
 		else {
 			String rejectedId = request.getParameter("rejectedId");

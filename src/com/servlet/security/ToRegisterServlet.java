@@ -18,13 +18,16 @@ import com.service.UserService;
 @WebServlet("/toRegister")
 public class ToRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	public ToRegisterServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -36,6 +39,8 @@ public class ToRegisterServlet extends HttpServlet {
 
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
+		String tel = request.getParameter("tel");
+
 		UserService userService = new UserService();
 		try {
 			User users = userService.getUserByName(userName);
@@ -46,7 +51,7 @@ public class ToRegisterServlet extends HttpServlet {
 				request.getRequestDispatcher("/pages/mall/register.jsp").forward(request, response);
 				return;
 			} else {
-				userService.setUser(password, userName);
+				userService.setUser(password, userName, tel);
 				System.out.println("注册成功");
 				request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 			}

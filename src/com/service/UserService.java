@@ -93,18 +93,18 @@ public class UserService {
 	}
 
 	// 注册
-	public User setUser(String password, String userName) throws SQLException {
+	public User setUser(String password, String userName, String tel) throws SQLException {
 		DBTools dbTools = new DBTools();
 		User user = new User();
 		user.setUserName(userName);
 		user.setUserPassword(password);
-		user.setUserPhoneNumber("");
+		user.setUserPhoneNumber(tel);
 		user.setUserAddr1("");
 		user.setUserAddr2("");
 		user.setUserAddr3("");
 		user.setUserAddr4("");
 		user.setUserAddr5("");
-		// 1为用户，2为管理员，默认注册为用户。
+		// 1为用户，3为管理员，4为供货商默认注册为用户。
 		user.setUserType("1");
 		user.setMoney(0);
 		dbTools.insertAll(user);

@@ -23,12 +23,11 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a> <span class="c-999 en">&gt;</span><span class="c-666">订单管理</span></nav>
+	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="./index" class="maincolor">首页</a> <span class="c-999 en">&gt;</span><span class="c-666">订单管理</span></nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
 			订单管理
 		</article>
-	</div>
 	<form role="form" class="form-inline" style="margin-bottom: 15px"  action="searchOrderByIdServlet" method="post">
 		<input type="text" placeholder="请输入订单编号" class="input-text radius size-M" style="width: 30%" id="orderId" name="orderId">
 		<input class="btn btn-primary radius" type="submit" value="搜索">
@@ -125,13 +124,13 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	    
+	    </div>
 </section>
+<script type="text/javascript" src="${pageContext.request.contextPath}/pages/manager/lib/jquery/1.9.1/jquery.min.js"></script>
 
 <!--_footer 作为公共模版分离出去-->
 <%@ include file="_footer.jsp" %>
 <!--/_footer /作为公共模版分离出去-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/pages/manager/lib/jquery/1.9.1/jquery.min.js"></script>
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript">

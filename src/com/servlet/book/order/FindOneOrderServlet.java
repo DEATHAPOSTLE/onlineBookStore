@@ -40,7 +40,7 @@ public class FindOneOrderServlet extends HttpServlet {
 		OrderService orderService = new OrderService();
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		String orderId = request.getParameter("orderId");
-		if (!"2".equals(user.getUserType()))
+		if (!"3".equals(user.getUserType()))
 			request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
 		else {
 			try {

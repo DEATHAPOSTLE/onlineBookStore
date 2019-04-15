@@ -63,9 +63,13 @@ public class ToLoginServlet extends HttpServlet {
 			} else {
 				request.getSession().setAttribute(USER_INFORMATION, user);
 				System.out.println("登陆成功");
-				if ("2".equals(user.getUserType())) {
+				if ("3".equals(user.getUserType())) {
 					System.out.println("管理员");
 					response.sendRedirect("/onlineBookStore/GetAllOrdersServlet");
+					return;
+				} else if ("4".equals(user.getUserType())) {
+					System.out.println("商家");
+					response.sendRedirect("/onlineBookStore/addShopingCar");
 					return;
 				} else {
 					System.out.println("用户");
