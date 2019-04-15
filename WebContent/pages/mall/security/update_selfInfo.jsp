@@ -22,7 +22,7 @@
 				</div>
 				<div class="right fr">
 				    <c:if test="${sessionScope.user_information.userName != null}">
-					<div class="gouwuche fr"><a href="">购物车</a></div>
+								<div class="gouwuche fr"><a href="./shopingCar">购物车</a></div>
 					
 					</c:if>
 					<div class="fr">
