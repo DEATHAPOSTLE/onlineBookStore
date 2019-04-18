@@ -62,7 +62,7 @@
 				<tbody>
 				<c:forEach var="shopCar" items="${shopCart}" varStatus="status">
 					<tr>
-						<td><input type="checkbox"></td>
+						<td><input type="checkbox" class="shop-check-id" value="${shopCar.shoppingCartId}"></td>
 						<td>
 							<a href="#">${shopCar.commodityName}</a>
 						</td>
@@ -133,7 +133,23 @@
 					合计（不含运费）：<span>2499.00元</span>
 				</div> -->
 				<div class="jsanniu fr">
+				<form action="./shopingCartAccountServlet">
+            	    <c:if test="${sessionScope.user_information.userName != null}">
+            	    <div class="col-md-2">
+	            	    <select name="userAddr" class="form-control">
+	                       <option value="${sessionScope.user_information.userAddr1}" >${sessionScope.user_information.userAddr1}
+	                       <option value="${sessionScope.user_information.userAddr2}" >${sessionScope.user_information.userAddr2}
+	                       <option value="${sessionScope.user_information.userAddr3}" >${sessionScope.user_information.userAddr3}
+	                       <option value="${sessionScope.user_information.userAddr4}" >${sessionScope.user_information.userAddr4}
+	                       <option value="${sessionScope.user_information.userAddr5}" >${sessionScope.user_information.userAddr5}
+	                    </select>
+            	    </div>
+                    <!-- 这里是隐藏的地址信息 -->
+                     <!--<input type="hidden" name="userAddr" value=""> -->                    
+                    </c:if>
+                    <input name="shopCartId" value="" class="shopCartId" type="hidden">
 					<input class="jsan" type="submit" name="jiesuan" value="去结算" />
+				</form>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -153,3 +169,21 @@
 
 </body>
 </html>
+<script type="text/javascript" src="${pageContext.request.contextPath}/pages/manager/lib/jquery/1.9.1/jquery.min.js"></script> 
+
+<script>
+var checkbox = []
+$(".shop-check-id").on("change", function () {
+	checkbox = []
+	$('input[type=checkbox]:checked').each(function(i){
+	    if ($(this).prop("checked") == true){
+		    checkbox.push($(this).val());
+		} 
+
+	})
+	$(".shopCartId").val(checkbox)
+	console.log(checkbox)
+})
+
+</script>
+
