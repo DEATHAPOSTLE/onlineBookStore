@@ -21,10 +21,10 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a> <span class="c-999 en">&gt;</span><span class="c-666">物流查询</span></nav>
+	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a> <span class="c-999 en">&gt;</span><span class="c-666">商品上下架</span></nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
-			物流查询
+			商品上下架
 		</article>
 	</div>
 </section>

@@ -7,7 +7,7 @@
 				<ul>
 					<li><a href="./GetAllOrdersServlet" title="订单管理"> 订单管理</a></li>
 					<li><a href="./rejectedList" title="售后服务"> 售后服务</a></li>
-					<li><a href="#" title="物流查询"> 物流查询</a></li>
+					<li><a href="#" title="物流查询"> 商品上下架</a></li>
 				</ul>
 			</dd>
 		</dl>
