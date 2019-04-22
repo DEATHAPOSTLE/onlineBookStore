@@ -116,7 +116,7 @@
 		
 			<div class="xiadan ml20 mt20">
 					
-				<form action="${pageContext.request.contextPath}/pay" style="display: inline-block">
+				<form action="${pageContext.request.contextPath}/toPaid" style="display: inline-block">
                     <div class="quantity_box">
                         <ul class="product-qty">
                             <span>数量</span>
@@ -148,6 +148,7 @@
                     <button title="购买" class="jrgwc" type="submit">购买</button>
                     <button type="submit" class="payBtn" style="display: none"></button>
                     </form>
+                    
                     <form action="addShopingCar" style="display: inline-block">
                     <input type="hidden" value="${commodityBase.commodityId}" name="commodityId">
                     <input type="hidden" value="1" name="commodityNumber" class="shopCarNumber">

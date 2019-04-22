@@ -133,7 +133,7 @@
 					合计（不含运费）：<span>2499.00元</span>
 				</div> -->
 				<div class="jsanniu fr">
-				<form action="./shopingCartAccountServlet">
+				<form action="./toPaid">
             	    <c:if test="${sessionScope.user_information.userName != null}">
             	    <div class="col-md-2">
 	            	    <select name="userAddr" class="form-control">

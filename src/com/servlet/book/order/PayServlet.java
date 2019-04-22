@@ -150,58 +150,145 @@ public class PayServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String shopId = request.getParameter("shopId");
-		String shopNumber = request.getParameter("shopNumber");
-		int shopNumberInt = Integer.parseInt(shopNumber);
+		String[] shopIds = request.getParameterValues("shopId");
+		String[] shopNumbers = request.getParameterValues("shopNumber");
+		String[] shopCartIds = request.getParameterValues("shoppingCartIds");
+		String userAddr = new String(request.getParameter("userAddr").getBytes("iso-8859-1"), "utf-8");
+
+		if (shopIds == null || shopNumbers == null) {
+			shopIds = (String[]) request.getAttribute("shopId");
+			shopNumbers = (String[]) request.getAttribute("shopNumber");
+			shopCartIds = (String[]) request.getAttribute("shoppingCartIds");
+		}
+
 		OrderService orderService = new OrderService();
-		CommodityService shopService = new CommodityService();
+		CommodityService commodityService = new CommodityService();
+		ShoppingCarService shoppingCarService = new ShoppingCarService();
+
 		UserService userService = new UserService();
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 		if (user == null) {
-			System.out.println("未登录");
 			request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
-
 		} else {
 			try {
-				CommodityBase commodityBase = shopService.getCommodityById(shopId);
-				if (commodityBase.getCommodityId() == 0) {
+				List<CommodityBase> commodityBasess = commodityService.getCommodityByIds(shopIds);
+				if (commodityBasess.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
-					request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
+					response.sendRedirect("/onlineBookStore/index");
 				} else {
-					if (shopNumberInt < commodityBase.getCommoditySurplus()) {
-						Orders orders = new Orders();
+					int i = 0;
+					for (CommodityBase commodityBases : commodityBasess) {
 
-						orders.setCommodityID(commodityBase.getCommodityId());
-						orders.setDeliveryDTime("");
-						orders.setOrderDTime(sdf.format(new Date()));
-						double priceCount = commodityBase.getCommodityPrice() * shopNumberInt;
-						orders.setOrderPrice(priceCount);
-						orders.setOrderStatus("1");
-						orders.setUserId(user.getUserId());
-						orders.setReceiveDTime("");
-						int result = orderService.setOrder(orders);
-						if (result > 0) {
-							commodityBase.setCommoditySurplus(commodityBase.getCommoditySurplus() - shopNumberInt);
-							shopService.updateCommodity(commodityBase);
+						int shopNumberInt = Integer.parseInt(shopNumbers[i]);
+						int shopCartIdInt = 0;
+						if (shopCartIds != null) {
+							shopCartIdInt = Integer.parseInt(shopCartIds[i]);
 						}
-						System.out.println("下单成功");
-						request.setAttribute("info", "下单成功");
-						request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
-					} else {
-						System.out.println("数量不足");
-						request.setAttribute("warn", "数量不足");
-						request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 
+						double price = shopNumberInt * commodityBases.getCommodityPrice();
+						if ("2".equals(user.getUserType())) {
+							price = price * 0.8;
+						}
+
+						if (shopNumberInt <= commodityBases.getCommoditySurplus()) {
+							if (user.getMoney() >= price) {
+								Orders orders = new Orders();
+
+								orders.setCommodityID(commodityBases.getCommodityId());
+								orders.setDeliveryDTime("");
+								orders.setOrderDTime(sdf.format(new Date()));
+								double priceCount = commodityBases.getCommodityPrice() * shopNumberInt;
+								orders.setOrderPrice(priceCount);
+								orders.setOrderStatus("1");
+								orders.setUserId(user.getUserId());
+								orders.setReceiveDTime("");
+								orders.setOrderRate("");
+								orders.setOrderAddr(userAddr);
+								orders.setPhoneNumber(user.getUserPhoneNumber());
+
+								int result = orderService.setOrder(orders);
+								if (shopCartIds != null) {
+									shoppingCarService.delShopByShopCar(String.valueOf(shopCartIdInt));
+								}
+								if (result > 0) {
+
+									user.setMoney(user.getMoney() - price);
+									userService.updateUserById(user);
+									commodityBases
+											.setCommoditySurplus(commodityBases.getCommoditySurplus() - shopNumberInt);
+									commodityService.updateCommodity(commodityBases);
+								}
+								System.out.println("下单成功");
+								request.setAttribute("info", "下单成功");
+								i++;
+							} else {
+								i++;
+								System.out.println("余额不足");
+								response.sendRedirect("/onlineBookStore/commodityDetail?shopId="
+										+ commodityBases.getCommodityId() + "&warn=lazyWeight");
+								return;
+							}
+						} else {
+							i++;
+							System.out.println("数量不足");
+							response.sendRedirect("/onlineBookStore/commodityDetail?shopId="
+									+ commodityBases.getCommodityId() + "&warn=lazyWeight");
+							return;
+						}
 					}
+					response.sendRedirect("/onlineBookStore/getUserOrder");
+					return;
 				}
 
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
+
 	}
 
+	/*
+	 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	 * String shopId = request.getParameter("shopId"); String shopNumber =
+	 * request.getParameter("shopNumber"); int shopNumberInt =
+	 * Integer.parseInt(shopNumber); OrderService orderService = new
+	 * OrderService(); CommodityService shopService = new CommodityService();
+	 * UserService userService = new UserService(); User user = (User)
+	 * request.getSession().getAttribute(USER_INFORMATION); if (user == null) {
+	 * System.out.println("未登录");
+	 * request.getRequestDispatcher("/pages/mall/login.jsp").forward(request,
+	 * response);
+	 * 
+	 * } else { try { CommodityBase commodityBase =
+	 * shopService.getCommodityById(shopId); if (commodityBase.getCommodityId()
+	 * == 0) { System.out.println("未查询到结果"); request.setAttribute("warn",
+	 * "未查询到结果");
+	 * request.getRequestDispatcher("/pages/mall/login.jsp").forward(request,
+	 * response); } else { if (shopNumberInt <
+	 * commodityBase.getCommoditySurplus()) { Orders orders = new Orders();
+	 * 
+	 * orders.setCommodityID(commodityBase.getCommodityId());
+	 * orders.setDeliveryDTime(""); orders.setOrderDTime(sdf.format(new
+	 * Date())); double priceCount = commodityBase.getCommodityPrice() *
+	 * shopNumberInt; orders.setOrderPrice(priceCount);
+	 * orders.setOrderStatus("1"); orders.setUserId(user.getUserId());
+	 * orders.setReceiveDTime(""); int result = orderService.setOrder(orders);
+	 * if (result > 0) {
+	 * commodityBase.setCommoditySurplus(commodityBase.getCommoditySurplus() -
+	 * shopNumberInt); shopService.updateCommodity(commodityBase); }
+	 * System.out.println("下单成功"); request.setAttribute("info", "下单成功");
+	 * request.getRequestDispatcher("/pages/mall/login.jsp").forward(request,
+	 * response); } else { System.out.println("数量不足");
+	 * request.setAttribute("warn", "数量不足");
+	 * request.getRequestDispatcher("/pages/mall/login.jsp").forward(request,
+	 * response);
+	 * 
+	 * } }
+	 * 
+	 * } catch (SQLException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 }

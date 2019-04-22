@@ -52,6 +52,7 @@ public class addShopingCarServlet extends HttpServlet {
 		} else {
 
 			try {
+
 				CommodityBase commodityBase = shopService.getCommodityById(commodityId);
 				ShoppingCart shoppingCart = shoppingCarService.getShopById(commodityId, user.getUserId() + "");
 
