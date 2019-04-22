@@ -98,6 +98,9 @@
  <c:if test="${type == 2}">
 	<form  method="post" action="./shopingCartAccountServlet" class="">
 	<span>合计：${priceCount}元</span>
+	<c:if test="${sessionScope.user_information.userType ==2}">
+	您是会员，享有八折优惠
+	</c:if>
 		    <input name="shopCartId" value="${shopCartId}" class="shopCartId" type="hidden">
 		    <input name="userAddr" value="${userAddr}" class="userAddr" type="hidden">
 			<input class="jsan" type="submit" name="jiesuan" value="支付" />
@@ -106,6 +109,9 @@
  <c:if test="${type == 1}">
 	<form  method="post" action="${pageContext.request.contextPath}/pay" class="">
 	<span>总价：${priceCount}元</span>
+	<c:if test="${sessionScope.user_information.userType ==2}">
+	您是会员，享有八折优惠
+	</c:if>
 		    <input name="shopId" value="${shopId}" class="shopCartId" type="hidden">
 		    <input name="userAddr" value="${userAddr}" class="userAddr" type="hidden">
 		     <input name="shopNumber" value="${shopNumber}" class="userAddr" type="hidden">

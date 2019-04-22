@@ -45,59 +45,63 @@ public class toPaidServlet extends HttpServlet {
 		String shopNumber = request.getParameter("shopNumber");
 
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
-		ShoppingCarService shoppingCarService = new ShoppingCarService();
-		CommodityService commodityService = new CommodityService();
-		double priceCount = 0;
-
-		if (shopNumber == null || "".equals(shopNumber)) {
-
-			try {
-				String[] shopCartIds = shopCartId.split(",");
-				List<ShoppingCart> shoppingCarts = new ArrayList<>();
-				shoppingCarts = shoppingCarService.getShoppingCartByIds(shopCartIds);
-				for (ShoppingCart a : shoppingCarts) {
-					double price = commodityService.getCommodityById(a.getCommodityId() + "").getCommodityPrice();
-					int number = Integer.parseInt(a.getCommodityNumber());
-					double priceNumber = price * number;
-					priceCount = priceCount + priceNumber;
-				}
-				if ("2".equals(user.getUserType())) {
-					priceCount = priceCount * 0.8;
-				}
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			request.setAttribute("userAddr", userAddr);
-			request.setAttribute("priceCount", priceCount);
-			request.setAttribute("shopCartId", shopCartId);
-			request.setAttribute("type", "2");
-			request.getRequestDispatcher("/pages/mall/pay.jsp").forward(request, response);
-			return;
+		if (user == null) {
+			request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 
 		} else {
-			try {
-				CommodityBase commodityBase = commodityService.getCommodityById(shopId);
-				priceCount = commodityBase.getCommodityPrice() * Integer.parseInt(shopNumber);
-				if ("2".equals(user.getUserType())) {
-					priceCount = priceCount * 0.8;
+			ShoppingCarService shoppingCarService = new ShoppingCarService();
+			CommodityService commodityService = new CommodityService();
+			double priceCount = 0;
+
+			if (shopNumber == null || "".equals(shopNumber)) {
+
+				try {
+					String[] shopCartIds = shopCartId.split(",");
+					List<ShoppingCart> shoppingCarts = new ArrayList<>();
+					shoppingCarts = shoppingCarService.getShoppingCartByIds(shopCartIds);
+					for (ShoppingCart a : shoppingCarts) {
+						double price = commodityService.getCommodityById(a.getCommodityId() + "").getCommodityPrice();
+						int number = Integer.parseInt(a.getCommodityNumber());
+						double priceNumber = price * number;
+						priceCount = priceCount + priceNumber;
+					}
+					if ("2".equals(user.getUserType())) {
+						priceCount = priceCount * 0.8;
+					}
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.setAttribute("userAddr", userAddr);
+				request.setAttribute("priceCount", priceCount);
+				request.setAttribute("shopCartId", shopCartId);
+				request.setAttribute("type", "2");
+				request.getRequestDispatcher("/pages/mall/pay.jsp").forward(request, response);
+				return;
+
+			} else {
+				try {
+					CommodityBase commodityBase = commodityService.getCommodityById(shopId);
+					priceCount = commodityBase.getCommodityPrice() * Integer.parseInt(shopNumber);
+					if ("2".equals(user.getUserType())) {
+						priceCount = priceCount * 0.8;
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				request.setAttribute("userAddr", userAddr);
+				request.setAttribute("shopNumber", shopNumber);
+				request.setAttribute("shopId", shopId);
+				request.setAttribute("priceCount", priceCount);
+
+				request.setAttribute("type", "1");
+				request.getRequestDispatcher("/pages/mall/pay.jsp").forward(request, response);
+				return;
+
 			}
-			request.setAttribute("userAddr", userAddr);
-			request.setAttribute("shopNumber", shopNumber);
-			request.setAttribute("shopId", shopId);
-			request.setAttribute("priceCount", priceCount);
-
-			request.setAttribute("type", "1");
-			request.getRequestDispatcher("/pages/mall/pay.jsp").forward(request, response);
-			return;
-
 		}
-
 	}
 
 	/**
