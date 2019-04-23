@@ -27,16 +27,35 @@
 		<article class="cl pd-20">
 			销售利润
 		</article>
-		<c:forEach var="list" items="${commoditys}" varStatus="status">
-		  商品ID ： ${list.commodityId}
-		  商品名称 ： ${list.commodityName}
-		  商品类型 ： ${list.commodityType}
-		 商品价格 ： ${list.commodityPrice}
-		  出版社 ： ${list.commodityPress}
-		  作者 ： ${list.commodityAuthor}
-		  进价 ： ${list.commodityInPrice}
-		  利润 ： ${list.commodityProfit}
-		</c:forEach>
+		<table class="table table-border table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>商品ID</th>
+					<th>商品名称</th>
+					<th>商品类型</th>
+					<th>商品价格</th>
+					<th>出版社</th>
+					<th>作者</th>
+					<th>进价</th>
+					<th>利润</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="list" items="${commoditys}" varStatus="status">
+					<tr>
+						<td>${list.commodityId}</td>
+						<td>${list.commodityName}</td>
+						<td>${list.commodityType}</td>
+						<td>${list.commodityPrice}</td>
+						<td>${list.commodityPress}</td>
+						<td>${list.commodityAuthor}</td>
+						<td>${list.commodityInPrice}</td>
+						<td>${list.commodityProfit}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
 	</div>
 </section>
 
