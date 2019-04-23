@@ -119,8 +119,7 @@ public class PayServlet extends HttpServlet {
 							} else {
 								i++;
 								System.out.println("余额不足");
-								response.sendRedirect("/onlineBookStore/commodityDetail?shopId="
-										+ commodityBases.getCommodityId() + "&warn=lazyWeight");
+								response.sendRedirect("/onlineBookStore/moneyInsufficient");
 								return;
 							}
 						} else {
@@ -225,8 +224,7 @@ public class PayServlet extends HttpServlet {
 							} else {
 								i++;
 								System.out.println("余额不足");
-								response.sendRedirect("/onlineBookStore/commodityDetail?shopId="
-										+ commodityBases.getCommodityId() + "&warn=lazyWeight");
+								response.sendRedirect("/onlineBookStore/moneyInsufficient");
 								return;
 							}
 						} else {
