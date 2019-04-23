@@ -69,7 +69,7 @@
 						<td>
 							<img
 								src="${pageContext.request.contextPath}/images/${shopCar.commodityPicture}"
-								alt="" / style="width: 30px; height: 30px;display: block">
+								alt="" style="width: 30px; height: 30px;display: block">
 						</td>
 
 						<td>${shopCar.commoditySurplus}</td>
