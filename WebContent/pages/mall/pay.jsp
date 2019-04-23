@@ -23,7 +23,7 @@
 							<img src="${pageContext.request.contextPath}/pages/mall/images/ys_head2.jpg">
 							<p>帐号：
 								<a>${sessionScope.user_information.userName}</a>
-								余额:<a>${sessionScope.user_information.money}</a>
+								<span style="margin-left: 20px">余额：<a>${sessionScope.user_information.money}</a></span>
 								<c:if test="${sessionScope.user_information.userType ==2}">
 						          <span>您是会员，享有八折优惠</span>
 					            </c:if>
@@ -65,7 +65,7 @@
 						<div class="tr_rechcho am-form-group am-form-success">
 							<span>充值方式：</span>
 							<label class="am-radio">
-							        <input type="radio" name="radio1"><img src="${pageContext.request.contextPath}/pages/mall/images/wechatpay.png">
+							        <input type="radio" name="radio1" checked><img src="${pageContext.request.contextPath}/pages/mall/images/wechatpay.png">
 							    </label>
 							<label class="am-radio" style="margin: 10px 0 0 0;">
 							        <input type="radio" name="radio1"><img src="${pageContext.request.contextPath}/pages/mall/images/zfbpay.png">

@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/bootstrap.css">
 	</head>
 	<body>
-	<!-- start header -->
+		<!-- start header -->
 		<header>
 			<div class="top center">
 				<div class="left fl">
@@ -52,34 +52,39 @@
 		</header>
 	<!--end header -->
 
-	<!-- start banner_x -->
-	<div class="banner_x center">
-		<a href="./index.html" target="_blank">
-			<div class="ad_top fl"></div>
-		</a>
-		<div class="nav fl">
-			<ul>
-				<li><a href="./liebiao.html" target="_blank">图书</a></li>
-				<li><a href="">图书</a></li>
-				<li><a href="">图书</a></li>
-				<li><a href="">图书</a></li>
-				<li><a href="">图书</a></li>
-			</ul>
-		</div>
-		<div class="search fr">
-			<form action="" method="post">
-				<div class="text fl">
-					<input type="text" class="shuru" placeholder="">
-				</div>
-				<div class="submit fl">
-					<input type="submit" class="sousuo" value="搜索" />
-				</div>
+<!-- start banner_x -->
+		<div class="banner_x center">
+			<a href="./index"><div class="ad_top fl"></div></a>
+			<div class="nav fl">
+				<ul>
+					<li><a href="./findCommodity?conditionName=军事&&type=3">军事</a></li>
+					<li><a href="./findCommodity?conditionName=娱乐&&type=3">娱乐</a></li>
+					<li><a href="./findCommodity?conditionName=科技&&type=3">科技</a></li>
+					<li><a href="./findCommodity?conditionName=生活&&type=3">生活</a></li>
+					<li><a href="./findCommodity?conditionName=文学&&type=3">文学</a></li>
+				</ul>
+			</div>
+			<div class="search fr">
+				<form action="/onlineBookStore/findCommodity" method="post" style="position: relative;">
+					<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
+						<input type="radio" value="1" name="type" id="type-radio1" checked><span style="margin-right: 10px;height: 16px;display: inline-block;">书名</span>
+						<input type="radio" value="2" name="type" id="type-radio2"><span style="margin-right: 10px;height: 16px;display: inline-block;">出版社</span>
+						<input type="radio" value="3" name="type" id="type-radio3"><span style="margin-right: 10px;height: 16px;display: inline-block;">分类</span>
+						<input type="radio" value="4" name="type" id="type-radio4"><span style="margin-right: 10px;height: 16px;display: inline-block;">作者</span>
+					</div>
+					<div class="text fl">
+						<input type="text" class="shuru"  placeholder="" name="conditionName">
+					</div>
+					<div class="submit fl">
+					
+						<input type="submit" class="sousuo" value="搜索"/>
+					</div>
+					<div class="clear"></div>
+				</form>
 				<div class="clear"></div>
-			</form>
-			<div class="clear"></div>
+			</div>
 		</div>
-	</div>
-	<!-- end banner_x -->
+<!-- end banner_x -->
 	<!-- self_info -->
 	<div class="grzxbj">
 		<div class="selfinfo center">
