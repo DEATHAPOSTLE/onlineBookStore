@@ -35,9 +35,11 @@ public class Const {
 	public static final String COLUNM_COMMODITY_SHELVES = "commodityShelves";
 	public static final String COLUNM_COMMODITY_PRESS = "commodityPress";
 	public static final String COLUNM_COMMODITY_AUTHOR = "commodityAuthor";
+	public static final String COLUNM_COMMODITY_LIST = "commodityList";
+	public static final String COLUNM_COMMODITY_CONTENT = "commodityContent";
+	public static final String COLUNM_COMMODITY_INPRICE = "commodityInPrice";
 
 	// 审核表
-
 	public static final String COLUNM_EXAMINE_ID = "examineId";
 	public static final String COLUNM_EXAMINE_COMMODITY_PICTURE = "commodityPicture";
 	public static final String COLUNM_EXAMINE_COMMODITY_TYPE = "commodityType";

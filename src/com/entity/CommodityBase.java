@@ -32,6 +32,46 @@ public class CommodityBase {
 	private String commodityPress;
 	// 作者
 	private String commodityAuthor;
+	// 目录
+	private String commodityList;
+	// 试读
+	private String commodityContent;
+	// 进价
+	private double commodityInPrice;
+	// 利润
+	private double commodityProfit;
+	
+	public double getCommodityProfit() {
+		return commodityProfit;
+	}
+
+	public void setCommodityProfit(double commodityProfit) {
+		this.commodityProfit = commodityProfit;
+	}
+
+	public String getCommodityList() {
+		return commodityList;
+	}
+
+	public void setCommodityList(String commodityList) {
+		this.commodityList = commodityList;
+	}
+
+	public String getCommodityContent() {
+		return commodityContent;
+	}
+
+	public void setCommodityContent(String commodityContent) {
+		this.commodityContent = commodityContent;
+	}
+
+	public double getCommodityInPrice() {
+		return commodityInPrice;
+	}
+
+	public void setCommodityInPrice(double commodityInPrice) {
+		this.commodityInPrice = commodityInPrice;
+	}
 
 	public int getCommodityId() {
 		return this.commodityId;

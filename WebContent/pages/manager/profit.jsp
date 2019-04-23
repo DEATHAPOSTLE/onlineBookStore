@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
@@ -26,6 +27,16 @@
 		<article class="cl pd-20">
 			销售利润
 		</article>
+		<c:forEach var="list" items="${commoditys}" varStatus="status">
+		  商品ID ： ${list.commodityId}
+		  商品名称 ： ${list.commodityName}
+		  商品类型 ： ${list.commodityType}
+		 商品价格 ： ${list.commodityPrice}
+		  出版社 ： ${list.commodityPress}
+		  作者 ： ${list.commodityAuthor}
+		  进价 ： ${list.commodityInPrice}
+		  利润 ： ${list.commodityProfit}
+		</c:forEach>
 	</div>
 </section>
 

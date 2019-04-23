@@ -26,6 +26,16 @@ public class CommodityBaseExamine {
 	private String commodityPress;
 	// 作者
 	private String commodityAuthor;
+	// 进价
+	private String commodityInPrice;
+
+	public String getCommodityInPrice() {
+		return commodityInPrice;
+	}
+
+	public void setCommodityInPrice(String commodityInPrice) {
+		this.commodityInPrice = commodityInPrice;
+	}
 
 	public int getExamineId() {
 		return examineId;

@@ -223,6 +223,7 @@ public class CommodityService {
 			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
 			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
 			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_INPRICE));
 
 			allShoplist.add(shop);
 		}
