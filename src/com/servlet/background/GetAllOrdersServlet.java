@@ -34,7 +34,7 @@ public class GetAllOrdersServlet extends HttpServlet {
 		UserService userService = new UserService();
 		List<OrdersDto> orders = new ArrayList<OrdersDto>();
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
-		if (!"3".equals(user.getUserType()))
+		if (!"4".equals(user.getUserType()))
 			response.sendRedirect("/onlineBookStore/index");
 		else {
 			// 查看所有订单

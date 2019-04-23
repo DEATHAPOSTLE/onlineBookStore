@@ -86,6 +86,9 @@
 		<div class="subddzx">
 			<ul>
 				<li><a href="" style="color:#ff6700;font-weight:bold;">新增商品</a></li>
+				<li><a href="./commodityAdministration" style="color:#ff6700;font-weight:bold;">管理商品</a></li>
+			
+			
 			</ul>
 		</div>
 	</div>

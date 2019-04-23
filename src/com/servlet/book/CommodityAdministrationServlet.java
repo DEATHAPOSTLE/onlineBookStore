@@ -28,17 +28,17 @@ public class CommodityAdministrationServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
-		if (!"2".equals(user.getUserType()))
-			response.sendRedirect("/handicappedmall/index");
+		if (!"4".equals(user.getUserType()))
+			response.sendRedirect("/onlineBookStore/index");
 		else {
-			CommodityService shopService = new CommodityService();
+			CommodityService commodityService = new CommodityService();
 
 			List<CommodityBase> allList = null;
 			try {
-				allList = shopService.getAllCommodityOnAdmin();
+				allList = commodityService.getAllCommodityOnAdmin();
 				request.setAttribute("allList", allList);
 
-				request.getRequestDispatcher("/pages/manager/product.jsp").forward(request, response);
+				request.getRequestDispatcher("/pages/manager/logistics.jsp").forward(request, response);
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -56,7 +56,7 @@ public class CommodityAdministrationServlet extends HttpServlet {
 			allList = shopService.getAllCommodityOnAdmin();
 			request.setAttribute("allList", allList);
 
-			request.getRequestDispatcher("/pages/manager/product.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/manager/logistics.jsp").forward(request, response);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

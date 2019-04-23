@@ -40,7 +40,7 @@ public class RejectedAuditServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
-		if (!"3".equals(user.getUserType()))
+		if (!"4".equals(user.getUserType()))
 			response.sendRedirect("/handicappedmall/index");
 		else {
 			String rejectedId = request.getParameter("rejectedId");

@@ -13,7 +13,7 @@ import com.entity.User;
 /**
  * Servlet implementation class Test 通过审核
  */
-@WebServlet("/addCommodity")
+@WebServlet("/addCommoditys")
 public class AddCommodityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public final static String USER_INFORMATION = "user_information";

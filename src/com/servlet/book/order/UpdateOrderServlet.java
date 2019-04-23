@@ -41,7 +41,7 @@ public class UpdateOrderServlet extends HttpServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String orderAddr = request.getParameter("orderAddr");
 
-		if (!"3".equals(user.getUserType()))
+		if (!"4".equals(user.getUserType()))
 			request.getRequestDispatcher("/pages/mall/index.jsp").forward(request, response);
 		else {
 

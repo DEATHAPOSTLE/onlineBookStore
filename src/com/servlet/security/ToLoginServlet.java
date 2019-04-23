@@ -65,11 +65,11 @@ public class ToLoginServlet extends HttpServlet {
 				System.out.println("登陆成功");
 				if ("3".equals(user.getUserType())) {
 					System.out.println("管理员");
-					response.sendRedirect("/onlineBookStore/GetAllOrdersServlet");
+					response.sendRedirect("/onlineBookStore/bookAudit");
 					return;
 				} else if ("4".equals(user.getUserType())) {
 					System.out.println("商家");
-					response.sendRedirect("/onlineBookStore/addShopingCar");
+					response.sendRedirect("/onlineBookStore/commodityAdministration");
 					return;
 				} else {
 					System.out.println("用户");

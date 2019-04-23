@@ -29,13 +29,13 @@ public class ShelvesServlet extends HttpServlet {
 
 		try {
 			if ("1".equals(shelves)) {
-				CommodityBase commodityBase = shopService.getCommodityById(shopId);
+				CommodityBase commodityBase = shopService.getCommodityByIdShelves(shopId);
 				commodityBase.setCommodityShelves("2");
 				shopService.updateCommodityShelves(commodityBase);
 				response.sendRedirect("/onlineBookStore/commodityAdministration");
 
 			} else {
-				CommodityBase commodityBase = shopService.getCommodityById(shopId);
+				CommodityBase commodityBase = shopService.getCommodityByIdShelves(shopId);
 				commodityBase.setCommodityShelves("1");
 				shopService.updateCommodityShelves(commodityBase);
 				response.sendRedirect("/onlineBookStore/commodityAdministration");

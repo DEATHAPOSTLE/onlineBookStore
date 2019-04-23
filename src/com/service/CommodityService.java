@@ -94,8 +94,6 @@ public class CommodityService {
 		List<CommodityBase> allShoplist = new ArrayList<CommodityBase>();
 		while (rs.next()) {
 			CommodityBase shop = new CommodityBase();
-			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
-				continue;
 			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
 			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
 			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
@@ -340,7 +338,7 @@ public class CommodityService {
 		return list;
 	}
 
-	// 按条件查询
+	// 按条件查询不含下架
 	public CommodityBase getCommodityById(String id) throws SQLException {
 		DBTools dbTools = new DBTools();
 		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_COMMODITY_BASE, Const.COLUNM_COMMODITY_ID, id);
@@ -348,6 +346,28 @@ public class CommodityService {
 		while (rs.next()) {
 			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
 				continue;
+			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
+			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
+			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
+			shop.setCommodityPrice(rs.getInt(Const.COLUNM_COMMODITY_PRICE));
+			shop.setCommodityIntroduce(rs.getString(Const.COLUNM_COMMODITY_INTRODUCE));
+			shop.setCommoditySurplus(rs.getInt(Const.COLUNM_COMMODITY_SURPLUS));
+			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
+			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+
+		}
+		dbTools.closeDB();
+		return shop;
+	}
+
+	// 按条件查询含下架
+	public CommodityBase getCommodityByIdShelves(String id) throws SQLException {
+		DBTools dbTools = new DBTools();
+		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_COMMODITY_BASE, Const.COLUNM_COMMODITY_ID, id);
+		CommodityBase shop = new CommodityBase();
+		while (rs.next()) {
 			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
 			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
 			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
