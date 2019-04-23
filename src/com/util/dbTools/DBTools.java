@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
 import com.uitl.content.Const;
 import com.uitl.content.Const.SearchCondition;
 
@@ -218,19 +219,13 @@ public class DBTools {
 		sb.append(" where ");
 
 		for (Object condithon : conditions) {
-			if (condithon instanceof String) {
-				sb.append(colunmName);
-				sb.append(" = ");
-				sb.append("'");
-				sb.append(condithon);
-				sb.append("'");
-				sb.append(" or ");
-			} else {
-				sb.append(colunmName);
-				sb.append(" = ");
-				sb.append(condithon);
-				sb.append(" or ");
-			}
+			String Sconditon = String.valueOf(condithon);
+			sb.append(colunmName);
+			sb.append(" = ");
+			sb.append("'");
+			sb.append(Sconditon);
+			sb.append("'");
+			sb.append(" or ");
 		}
 		String sql = sb.toString();
 		int idx = sql.lastIndexOf("or");
@@ -559,5 +554,47 @@ public class DBTools {
 			} catch (Exception ex) {
 			}
 		}
+	}
+	
+	// 多条件删除
+	public int multiConditionalDelete(String tableName, LinkedHashMap<String, Object> condition) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("delete from ");
+		sb.append(tableName);
+		int result = 0;
+		int i = 0;
+		sb.append(" where ");
+		for (String key : condition.keySet()) {
+			Object value = condition.get(key);
+			if (value instanceof String) {
+				sb.append(key);
+				sb.append(" = '");
+				sb.append(value);
+				sb.append("'");
+			} else {
+				sb.append(key);
+				sb.append(" = ");
+				sb.append(value);
+			}
+			if (i < condition.keySet().size() - 1) {
+				sb.append(" AND ");
+			}
+			i++;
+		}
+		String sql = sb.toString();
+		int idx = sql.lastIndexOf(",");
+		String str1 = sql.substring(0, idx);
+		;// 通过截取逗号前的字符串
+		String str2 = sql.substring(idx + 1, sql.length());// 截取逗号后的字符串
+		sql = str1 + str2;
+		conn = getConnection();
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			System.out.println("executeQuery:" + e.getMessage());
+		}
+
+		return result;
 	}
 }

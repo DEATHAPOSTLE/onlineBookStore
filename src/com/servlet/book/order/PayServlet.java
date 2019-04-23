@@ -3,6 +3,7 @@ package com.servlet.book.order;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +34,6 @@ public class PayServlet extends HttpServlet {
 	 */
 	public PayServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class PayServlet extends HttpServlet {
 			request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 		} else {
 			try {
-				List<CommodityBase> commodityBasess = commodityService.getCommodityByIds(shopIds);
+				List<CommodityBase> commodityBasess = commodityService.getCommodityByIds(Arrays.asList(shopIds));
 				if (commodityBasess.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
@@ -170,7 +170,7 @@ public class PayServlet extends HttpServlet {
 			request.getRequestDispatcher("/pages/mall/login.jsp").forward(request, response);
 		} else {
 			try {
-				List<CommodityBase> commodityBasess = commodityService.getCommodityByIds(shopIds);
+				List<CommodityBase> commodityBasess = commodityService.getCommodityByIds(Arrays.asList(shopIds));
 				if (commodityBasess.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
@@ -245,48 +245,4 @@ public class PayServlet extends HttpServlet {
 		}
 
 	}
-
-	/*
-	 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	 * String shopId = request.getParameter("shopId"); String shopNumber =
-	 * request.getParameter("shopNumber"); int shopNumberInt =
-	 * Integer.parseInt(shopNumber); OrderService orderService = new
-	 * OrderService(); CommodityService shopService = new CommodityService();
-	 * UserService userService = new UserService(); User user = (User)
-	 * request.getSession().getAttribute(USER_INFORMATION); if (user == null) {
-	 * System.out.println("未登录");
-	 * request.getRequestDispatcher("/pages/mall/login.jsp").forward(request,
-	 * response);
-	 * 
-	 * } else { try { CommodityBase commodityBase =
-	 * shopService.getCommodityById(shopId); if (commodityBase.getCommodityId()
-	 * == 0) { System.out.println("未查询到结果"); request.setAttribute("warn",
-	 * "未查询到结果");
-	 * request.getRequestDispatcher("/pages/mall/login.jsp").forward(request,
-	 * response); } else { if (shopNumberInt <
-	 * commodityBase.getCommoditySurplus()) { Orders orders = new Orders();
-	 * 
-	 * orders.setCommodityID(commodityBase.getCommodityId());
-	 * orders.setDeliveryDTime(""); orders.setOrderDTime(sdf.format(new
-	 * Date())); double priceCount = commodityBase.getCommodityPrice() *
-	 * shopNumberInt; orders.setOrderPrice(priceCount);
-	 * orders.setOrderStatus("1"); orders.setUserId(user.getUserId());
-	 * orders.setReceiveDTime(""); int result = orderService.setOrder(orders);
-	 * if (result > 0) {
-	 * commodityBase.setCommoditySurplus(commodityBase.getCommoditySurplus() -
-	 * shopNumberInt); shopService.updateCommodity(commodityBase); }
-	 * System.out.println("下单成功"); request.setAttribute("info", "下单成功");
-	 * request.getRequestDispatcher("/pages/mall/login.jsp").forward(request,
-	 * response); } else { System.out.println("数量不足");
-	 * request.setAttribute("warn", "数量不足");
-	 * request.getRequestDispatcher("/pages/mall/login.jsp").forward(request,
-	 * response);
-	 * 
-	 * } }
-	 * 
-	 * } catch (SQLException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 */
 }

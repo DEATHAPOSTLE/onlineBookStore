@@ -15,7 +15,7 @@ import com.entity.CommodityBase;
 import com.service.CommodityService;
 
 /**
- * Servlet implementation class PofitServlet
+ * 
  */
 @WebServlet("/PofitServlet")
 public class PofitServlet extends HttpServlet {

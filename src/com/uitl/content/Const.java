@@ -11,6 +11,7 @@ public class Const {
 	public static final String TABLE_COMMENT = "comment";
 	public static final String TABLE_USER = "user";
 	public static final String TABLE_EXAMINE = "commodity_base_examine";
+	public static final String TABLE_FAVORITES = "favorites";
 
 	// bean类名
 	public static final String BEAN_COMMODITY_BASE = "com.entity.CommodityBase";
@@ -22,6 +23,7 @@ public class Const {
 	public static final String BEAN_COMMENT = "com.entity.Comment";
 	public static final String BEAN_COMMODITY_SHOPPING_CART = "com.entity.CommodityShoppingCart";
 	public static final String BEAN_COMMODITY_BASE_EXAMINE = "com.entity.CommodityBaseExamine";
+	public static final String BEAN_FAVORITES = "com.entity.Favorites";
 
 	// 商品表字段
 	public static final String COLUNM_COMMODITY_ID = "commodityId";
@@ -89,6 +91,10 @@ public class Const {
 	public static final String COLUNM_COMMENT_CONTENT = "commentContent";
 	public static final String COLUNM_COMMENT_DTIME = "commentDTime";
 
+	// 收藏表字段
+	public static final String COLUNM_FAVORITES_ID = "favoritesId";
+	public static final String COLUNM_FAVORITES_NUM = "num";
+	
 	public enum SearchCondition {
 		// 相等
 		EQUAL,

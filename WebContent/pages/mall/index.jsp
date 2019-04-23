@@ -25,6 +25,10 @@
 							<div class="gouwuche fr"><a href="./shopingCar">购物车</a></div>
 					
 					</c:if>
+					<c:if test="${sessionScope.user_information.userName != null}">
+                            <div class="gouwuche fr"><a href="./FavoriteServlet">收藏夹</a></div>
+                    
+                    </c:if>
 					<div class="fr">
 					 <c:if test="${sessionScope.user_information.userName == null}">
 					
