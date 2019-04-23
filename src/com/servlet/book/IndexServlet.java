@@ -40,7 +40,6 @@ public class IndexServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		// 推荐商品
 		CommodityService CommodityService = new CommodityService();
-		String recommendType = request.getParameter("recommendType");
 
 		// 获取所有的商品，显示。
 		try {
@@ -53,35 +52,17 @@ public class IndexServlet extends HttpServlet {
 				request.setAttribute("warn", "未查询到商品");
 				request.getRequestDispatcher("/pages/mall/index.jsp").forward(request, response);
 			} else {
+				recommendCommoditylist = CommodityService.getCommodityByEvaluate();
 
-				if ("military".equals(recommendType)) {
-					// 军事类
-					recommendCommoditylist = CommodityService.getCommodityByType("军事", Const.COLUNM_COMMODITY_TYPE);
-				} else if ("entertainment".equals(recommendType)) {
-					// 娱乐
-					recommendCommoditylist = CommodityService.getCommodityByType("娱乐", Const.COLUNM_COMMODITY_TYPE);
-				} else if ("science".equals(recommendType)) {
-					// 科技类
-					recommendCommoditylist = CommodityService.getCommodityByType("科技", Const.COLUNM_COMMODITY_TYPE);
-				} else if ("life".equals(recommendType)) {
-					// 生活
-					recommendCommoditylist = CommodityService.getCommodityByType("生活", Const.COLUNM_COMMODITY_TYPE);
-				} else if ("literature".equals(recommendType)) {
-					// 文学
-					recommendCommoditylist = CommodityService.getCommodityByType("文学", Const.COLUNM_COMMODITY_TYPE);
-				} else {
-					recommendCommoditylist = CommodityService.getCommodityWithOutUnShelves();
-
-				}
-
-				List<CommodityBase> listHistory = CommodityService.getCommodityByType("历史",
+				List<CommodityBase> listMilitary = CommodityService.getCommodityByType("军事",
 						Const.COLUNM_COMMODITY_TYPE);
-				List<CommodityBase> listTeaching = CommodityService.getCommodityByType("教学",
+				List<CommodityBase> listEntertainment = CommodityService.getCommodityByType("娱乐",
 						Const.COLUNM_COMMODITY_TYPE);
-				List<CommodityBase> listTale = CommodityService.getCommodityByType("儿童", Const.COLUNM_COMMODITY_TYPE);
-				List<CommodityBase> listMagazine = CommodityService.getCommodityByType("杂志",
+				List<CommodityBase> listScience = CommodityService.getCommodityByType("科技",
 						Const.COLUNM_COMMODITY_TYPE);
-
+				List<CommodityBase> listLife = CommodityService.getCommodityByType("生活", Const.COLUNM_COMMODITY_TYPE);
+				List<CommodityBase> listLiterature = CommodityService.getCommodityByType("文学",
+						Const.COLUNM_COMMODITY_TYPE);
 				System.out.println("执行!!!!!");
 				for (CommodityBase bBase : recommendCommoditylist) {
 					System.out.println(bBase.toString());
@@ -89,10 +70,11 @@ public class IndexServlet extends HttpServlet {
 
 				request.setAttribute("recommendShoplist", recommendCommoditylist);
 				request.setAttribute("allCommoditylist", allCommoditylist);
-				request.setAttribute("listHistory", listHistory);
-				request.setAttribute("listTeaching", listTeaching);
-				request.setAttribute("listTale", listTale);
-				request.setAttribute("listMagazine", listMagazine);
+				request.setAttribute("listMilitary", listMilitary);
+				request.setAttribute("listEntertainment", listEntertainment);
+				request.setAttribute("listScience", listScience);
+				request.setAttribute("listLife", listLife);
+				request.setAttribute("listLiterature", listLiterature);
 
 				request.getRequestDispatcher("/pages/mall/index.jsp").forward(request, response);
 			}

@@ -57,11 +57,11 @@
 			<a href="./index"><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
-					<li><a href="./index?recommendType=military">军事</a></li>
-					<li><a href="./index?recommendType=entertainment">娱乐</a></li>
-					<li><a href="./index?recommendType=science">科技</a></li>
-					<li><a href="./index?recommendType=life">生活</a></li>
-					<li><a href="./index?recommendType=literature">文学</a></li>
+					<li><a href="./findCommodity?conditionName=军事&&type=3">军事</a></li>
+					<li><a href="./findCommodity?conditionName=娱乐&&type=3">娱乐</a></li>
+					<li><a href="./findCommodity?conditionName=科技&&type=3">科技</a></li>
+					<li><a href="./findCommodity?conditionName=生活&&type=3">生活</a></li>
+					<li><a href="./findCommodity?conditionName=文学&&type=3">文学</a></li>
 				</ul>
 			</div>
 			<div class="search fr">
@@ -91,9 +91,9 @@
 			<div class="nav">				
 				<ul>
 					<li>
-						<a href="">历史</a>
+						<a href="">军事</a>
 						<div class="pop">
-						<c:forEach var="list" items="${listHistory}" varStatus="status">
+						<c:forEach var="list" items="${listMilitary}" varStatus="status">
 							<div class="left fl" style="height:100px;">
 								<div>
 									<div class="xuangou_left fl">
@@ -111,9 +111,9 @@
 						</div>
 					</li>
 					<li>
-						<a href="">教学</a>
+						<a href="">娱乐</a>
 						<div class="pop">
-						 <c:forEach var="list" items="${listTeaching}" varStatus="status">
+						 <c:forEach var="list" items="${listEntertainment}" varStatus="status">
 							<div class="left fl" style="height:100px;">
 								<div>
 									<div class="xuangou_left fl">
@@ -131,9 +131,9 @@
 						</div>
 					</li>
 					<li>
-						<a href="">儿童</a>
+						<a href="">科技</a>
 						<div class="pop">
-						<c:forEach var="list" items="${listTale}" varStatus="status">
+						<c:forEach var="list" items="${listScience}" varStatus="status">
 							<div class="left fl" style="height:100px;">
 								<div>
 									<div class="xuangou_left fl">
@@ -151,9 +151,9 @@
 					    </div>
 					</li>
 					<li>
-						<a href="">杂志</a>
+						<a href="">生活</a>
 						<div class="pop">
-						<c:forEach var="list" items="${listMagazine}" varStatus="status">
+						<c:forEach var="list" items="${listLife}" varStatus="status">
 							<div class="left fl" style="height:100px;">
 								<div>
 									<div class="xuangou_left fl">
@@ -171,7 +171,27 @@
 						
 						</div>
 					</li>
-					
+					<li>
+						<a href="">文学</a>
+						<div class="pop">
+						<c:forEach var="list" items="${listLiterature}" varStatus="status">
+							<div class="left fl" style="height:100px;">
+								<div>
+									<div class="xuangou_left fl">
+										<a href="">
+											<div class="img fl"><img style="width:70px;height:70px;" src="${pageContext.request.contextPath}/pages/mall/bookImage/${list.commodityPicture}" alt=""></div>
+											<span class="fl">${list.commodityName}</span>
+											<div class="clear"></div>
+										</a>
+									</div>
+									<div class="xuangou_right fr"><a href="${pageContext.request.contextPath}/commodityDetail?shopId=${list.commodityId}">选购</a></div>
+								</div>
+							 <div class="clear"></div>
+						    </div>
+						</c:forEach>
+						
+						</div>
+					</li>
 				</ul>
 			</div>
 		
