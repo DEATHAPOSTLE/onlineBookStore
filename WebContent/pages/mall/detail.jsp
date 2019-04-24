@@ -176,6 +176,18 @@
 		</div>
 		<div class="clear"></div>
 
+         <div class="panel panel-default" style="margin-top: 15px;">
+             <div class="panel-heading">图书评论</div>
+             <div class="panel-body">
+               <c:forEach var="comment" items="${comments}" varStatus="status">
+                用户id ： ${comment.userID}
+                用户id ： ${comment.commentContent}
+                用户id ： ${comment.commentDTime}
+               
+               </c:forEach>
+             
+             </div>
+         </div>
 
 		<div class="panel panel-default" style="margin-top: 15px;">
 				<div class="panel-heading">图书详情</div>
