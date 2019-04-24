@@ -14,20 +14,16 @@
 </head>
 <body>
 <!--_header 作为公共模版分离出去-->
-<%@ include file="_header.jsp" %>
+<%@ include file="_header.jsp"%>
 <!--/_header 作为公共模版分离出去-->
 
 <!--_menu 作为公共模版分离出去-->
-<%@ include file="/pages/manager/_menu.jsp" %>
-<jsp:include page="${pageContext.request.contextPath}/pages/manager/_menu.jsp" flush="true"/> 
+	<%@ include file="_menu.jsp"%>
 <!--/_menu 作为公共模版分离出去-->
-${pageContext.request.contextPath}
 <section class="Hui-article-box">
 	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="./index" class="maincolor">首页</a> <span class="c-999 en">&gt;</span><span class="c-666">销售利润</span></nav>
 	<div class="Hui-article">
-		<article class="cl pd-20">
-			销售利润
-		</article>
+	
 		<table class="table table-border table-bordered table-striped">
 			<thead>
 				<tr>

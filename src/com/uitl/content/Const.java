@@ -93,8 +93,10 @@ public class Const {
 
 	// 收藏表字段
 	public static final String COLUNM_FAVORITES_ID = "favoritesId";
+	public static final String COLUNM_FAVORITES_COMMODITY_ID = "commodityId";
+	public static final String COLUNM_FAVORITES_USER_ID = "userId";
 	public static final String COLUNM_FAVORITES_NUM = "num";
-	
+
 	public enum SearchCondition {
 		// 相等
 		EQUAL,

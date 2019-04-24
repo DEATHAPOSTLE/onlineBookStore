@@ -19,7 +19,7 @@
 				<ul>
 					<li><a href="./commodityAdministration" title="物流查询"> 商品上下架</a></li>
 					<li><a href="./addCommoditys" title="物流查询"> 商品添加</a></li>
-					<li><a href="#" title="销售利润"> 销售利润</a></li>
+					<li><a href="./PofitServlet" title="销售利润"> 销售利润</a></li>
 				</ul>
 			</dd>
 		</dl>

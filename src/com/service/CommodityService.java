@@ -3,7 +3,6 @@ package com.service;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -224,7 +223,7 @@ public class CommodityService {
 			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
 			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
 			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
-			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_INPRICE));
+			shop.setCommodityInPrice(rs.getDouble(Const.COLUNM_COMMODITY_INPRICE));
 
 			allShoplist.add(shop);
 		}
@@ -430,42 +429,59 @@ public class CommodityService {
 		int result = dbTools.insertAll(commodity);
 		return result;
 	}
-	
-	// 查询收藏夹
-		public List<Favorites> getUserFavorites (Integer uid) throws SQLException{
-			DBTools dbTools = new DBTools();
-			List<Favorites> favoritess = new ArrayList<Favorites>();
-			ResultSet rs = dbTools.conditionalSearch(Const.TABLE_FAVORITES, Const.COLUNM_USER_ID, String.valueOf(uid));
-			while (rs.next()){
-				Favorites favorites = new Favorites();
-				favorites.setUserid(Integer.valueOf(rs.getString(Const.COLUNM_USER_ID)));
-				favorites.setFavoritesId(Integer.valueOf(rs.getString(Const.COLUNM_FAVORITES_ID)));
-				favorites.setNum(Integer.valueOf(rs.getString(Const.COLUNM_FAVORITES_NUM)));
-				favorites.setCommodityId(rs.getString(Const.COLUNM_COMMODITY_ID));
-				favoritess.add(favorites);
-			}
-			return favoritess;
-		}
-		
-		// 插入收藏
-		public int insertFavorites(Integer userId, Integer commodityId){
-			Favorites favorites = new Favorites();
-			DBTools dbTools = new DBTools();
-			favorites.setCommodityId(String.valueOf(commodityId));
-			favorites.setNum(1);
-			favorites.setUserid(userId);
-			int result = dbTools.insertAll(favorites);
-			return result;
-		}
 
-		// 删除收藏
-		public int deleteFavorites(Integer userId, Integer commodityId){
-			LinkedHashMap<String, Object> condition = new LinkedHashMap<>();
-			DBTools dbTools = new DBTools();
-			condition.put(Const.COLUNM_USER_ID, userId);
-			condition.put(Const.COLUNM_COMMODITY_ID, String.valueOf(commodityId));
-			int result = dbTools.multiConditionalDelete(Const.TABLE_FAVORITES, condition);
-			return result;
+	// 查询收藏夹
+	public List<Favorites> getUserFavorites(Integer uid) throws SQLException {
+		DBTools dbTools = new DBTools();
+		List<Favorites> favoritess = new ArrayList<Favorites>();
+		ResultSet rs = dbTools.conditionalSearch(Const.TABLE_FAVORITES, Const.COLUNM_USER_ID, String.valueOf(uid));
+		while (rs.next()) {
+			Favorites favorites = new Favorites();
+			favorites.setUserId(Integer.valueOf(rs.getString(Const.COLUNM_USER_ID)));
+			favorites.setFavoritesId(Integer.valueOf(rs.getString(Const.COLUNM_FAVORITES_ID)));
+			favorites.setNum(Integer.valueOf(rs.getString(Const.COLUNM_FAVORITES_NUM)));
+			favorites.setCommodityId(rs.getString(Const.COLUNM_COMMODITY_ID));
+			favoritess.add(favorites);
 		}
+		return favoritess;
+	}
+
+	// 查询单独收藏夹
+	public Favorites getUserOneFavorites(Integer uid, Integer commodityId) throws SQLException {
+		DBTools dbTools = new DBTools();
+		LinkedHashMap<String, Object> condition = new LinkedHashMap<String, Object>();
+		condition.put(Const.COLUNM_FAVORITES_USER_ID, uid);
+		condition.put(Const.COLUNM_FAVORITES_COMMODITY_ID, commodityId);
+		ResultSet rs = dbTools.multiConditionalSearch(Const.TABLE_FAVORITES, condition);
+		Favorites favorites = new Favorites();
+		while (rs.next()) {
+			favorites.setUserId(Integer.valueOf(rs.getString(Const.COLUNM_USER_ID)));
+			favorites.setFavoritesId(Integer.valueOf(rs.getString(Const.COLUNM_FAVORITES_ID)));
+			favorites.setNum(Integer.valueOf(rs.getString(Const.COLUNM_FAVORITES_NUM)));
+			favorites.setCommodityId(rs.getString(Const.COLUNM_COMMODITY_ID));
+		}
+		return favorites;
+	}
+
+	// 插入收藏
+	public int insertFavorites(Integer userId, Integer commodityId) {
+		Favorites favorites = new Favorites();
+		DBTools dbTools = new DBTools();
+		favorites.setCommodityId(String.valueOf(commodityId));
+		favorites.setNum(1);
+		favorites.setUserId(userId);
+		int result = dbTools.insertAll(favorites);
+		return result;
+	}
+
+	// 删除收藏
+	public int deleteFavorites(Integer userId, Integer commodityId) {
+		LinkedHashMap<String, Object> condition = new LinkedHashMap<>();
+		DBTools dbTools = new DBTools();
+		condition.put(Const.COLUNM_USER_ID, userId);
+		condition.put(Const.COLUNM_COMMODITY_ID, String.valueOf(commodityId));
+		int result = dbTools.multiConditionalDelete(Const.TABLE_FAVORITES, condition);
+		return result;
+	}
 
 }

@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
-import com.sun.org.apache.bcel.internal.classfile.Code;
 import com.uitl.content.Const;
 import com.uitl.content.Const.SearchCondition;
 
@@ -408,6 +407,9 @@ public class DBTools {
 		case Const.BEAN_COMMODITY_BASE_EXAMINE:
 			tableName = Const.TABLE_EXAMINE;
 			break;
+		case Const.BEAN_FAVORITES:
+			tableName = Const.TABLE_FAVORITES;
+			break;
 		default:
 			break;
 		}
@@ -555,7 +557,7 @@ public class DBTools {
 			}
 		}
 	}
-	
+
 	// 多条件删除
 	public int multiConditionalDelete(String tableName, LinkedHashMap<String, Object> condition) {
 		StringBuffer sb = new StringBuffer();
@@ -582,11 +584,6 @@ public class DBTools {
 			i++;
 		}
 		String sql = sb.toString();
-		int idx = sql.lastIndexOf(",");
-		String str1 = sql.substring(0, idx);
-		;// 通过截取逗号前的字符串
-		String str2 = sql.substring(idx + 1, sql.length());// 截取逗号后的字符串
-		sql = str1 + str2;
 		conn = getConnection();
 		try {
 			stmt = conn.createStatement();

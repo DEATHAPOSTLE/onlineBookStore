@@ -63,7 +63,7 @@ public class FindCommodityServlet extends HttpServlet {
 					request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
 				} else {
 					for (CommodityBase a : list) {
-						System.out.println(list.toString());
+						System.out.println(a.toString());
 					}
 					request.setAttribute("type", type);
 

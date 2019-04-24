@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.entity.Comment;
 import com.entity.CommodityBase;
+import com.entity.Favorites;
+import com.entity.User;
 import com.service.CommentService;
 import com.service.CommodityService;
 
@@ -21,6 +23,7 @@ import com.service.CommodityService;
 @WebServlet("/commodityDetail")
 public class CommodityDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public final static String USER_INFORMATION = "user_information";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -39,11 +42,22 @@ public class CommodityDetailsServlet extends HttpServlet {
 		String id = request.getParameter("shopId");
 		CommodityService shopService = new CommodityService();
 		int commodityId = Integer.valueOf(id);
+		User user = (User) request.getSession().getAttribute(USER_INFORMATION);
 
 		try {
+			Favorites favorites;
+			String haveFavorites = null;
 			CommodityBase commodityBase = shopService.getCommodityById(id);
 			CommentService commentService = new CommentService();
 			List<Comment> comments = commentService.getComments(commodityId);
+			if (user != null) {
+				favorites = shopService.getUserOneFavorites(user.getUserId(), commodityId);
+				if (favorites.getCommodityId() != null) {
+					haveFavorites = "1";
+				} else {
+					haveFavorites = "2";
+				}
+			}
 
 			if (commodityBase == null) {
 				System.out.println("未查询到结果");
@@ -53,6 +67,7 @@ public class CommodityDetailsServlet extends HttpServlet {
 				System.out.println(commodityBase.toString());
 				request.setAttribute("commodityBase", commodityBase);
 				request.setAttribute("comments", comments);
+				request.setAttribute("haveFavorites", haveFavorites);
 				request.getRequestDispatcher("/pages/mall/detail.jsp").forward(request, response);
 			}
 

@@ -143,6 +143,15 @@
 		                       <option value="${sessionScope.user_information.userAddr5}" >${sessionScope.user_information.userAddr5}
 		                    </select>
             	    </div>
+                    <div class="row" style="margin: 0;margin-bottom: 15px">
+                    
+                        <c:if test="${haveFavorites == 1}">
+                         <a href="./delFavoriteServlet?commodityId=${commodityBase.commodityId}">取消收藏</a>
+              	        </c:if>
+              	        <c:if test="${haveFavorites == 2}">
+              	          <a href="./addFavoriteServlet?commodityId=${commodityBase.commodityId}">添加收藏</a>
+              	        </c:if>
+              	    </div>
                     
                     <!-- 这里是隐藏的地址信息 -->
                      <!--<input type="hidden" name="userAddr" value=""> -->                    
