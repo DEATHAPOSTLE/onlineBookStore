@@ -40,6 +40,7 @@ public class Const {
 	public static final String COLUNM_COMMODITY_LIST = "commodityList";
 	public static final String COLUNM_COMMODITY_CONTENT = "commodityContent";
 	public static final String COLUNM_COMMODITY_INPRICE = "commodityInPrice";
+	public static final String COLUNM_SALES_COUNT = "salesCount";
 
 	// 审核表
 	public static final String COLUNM_EXAMINE_ID = "examineId";

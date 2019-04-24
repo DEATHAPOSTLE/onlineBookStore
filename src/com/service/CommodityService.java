@@ -5,12 +5,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.entity.CommodityBase;
 import com.entity.CommodityGroupBy;
 import com.entity.Favorites;
 import com.entity.User;
 import com.uitl.content.Const;
+import com.uitl.dto.CommoditySalesDto;
 import com.util.dbTools.DBTools;
 
 public class CommodityService {
@@ -231,6 +233,36 @@ public class CommodityService {
 		return allShoplist;
 
 	}
+	
+	public List<CommodityBase> getAllCommoditySalesVolume() throws SQLException {
+		DBTools dbTools = new DBTools();
+		// 商品结果集
+		ResultSet rs = dbTools.selectAll(Const.TABLE_COMMODITY_BASE);
+		// 全部商品
+		List<CommodityBase> allShoplist = new ArrayList<CommodityBase>();
+		while (rs.next()) {
+			CommodityBase shop = new CommodityBase();
+			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+				continue;
+			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
+			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
+			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
+			shop.setCommodityPrice(rs.getInt(Const.COLUNM_COMMODITY_PRICE));
+			shop.setCommodityIntroduce(rs.getString(Const.COLUNM_COMMODITY_INTRODUCE));
+			shop.setCommoditySurplus(rs.getInt(Const.COLUNM_COMMODITY_SURPLUS));
+			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
+			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
+			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+			shop.setCommodityInPrice(rs.getDouble(Const.COLUNM_COMMODITY_INPRICE));
+
+			allShoplist.add(shop);
+		}
+		dbTools.closeDB();
+		return allShoplist;
+
+	}
 
 	// 模糊搜索
 	public List<CommodityBase> getCommodityLikeName(String fieldName, String conditionName) throws SQLException {
@@ -357,7 +389,8 @@ public class CommodityService {
 			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
 			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
 			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
-
+			shop.setCommodityContent(rs.getString(Const.COLUNM_COMMODITY_CONTENT));
+			shop.setCommodityList(rs.getString(Const.COLUNM_COMMODITY_LIST));
 		}
 		dbTools.closeDB();
 		return shop;
@@ -482,6 +515,34 @@ public class CommodityService {
 		condition.put(Const.COLUNM_COMMODITY_ID, String.valueOf(commodityId));
 		int result = dbTools.multiConditionalDelete(Const.TABLE_FAVORITES, condition);
 		return result;
+	}
+	
+	public List<CommoditySalesDto> selectCountOrdersByCommodityId() throws SQLException {
+		List<CommoditySalesDto> commoditySalesDtos = new ArrayList<CommoditySalesDto>();
+		DBTools dbTools = new DBTools();
+		String sql = "select * from commodity_base t1 join (select commodityID, count(*) as salesCount from orders group by commodityID) t2 on t1.commodityId = t2.commodityID;";
+		ResultSet rs = dbTools.selectBySql(sql);
+		// 全部商品
+		while (rs.next()) {
+			CommoditySalesDto commoditySalesDto = new CommoditySalesDto();
+			commoditySalesDto.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
+			commoditySalesDto.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
+			commoditySalesDto.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
+			commoditySalesDto.setCommodityPrice(rs.getInt(Const.COLUNM_COMMODITY_PRICE));
+			commoditySalesDto.setCommodityIntroduce(rs.getString(Const.COLUNM_COMMODITY_INTRODUCE));
+			commoditySalesDto.setCommoditySurplus(rs.getInt(Const.COLUNM_COMMODITY_SURPLUS));
+			commoditySalesDto.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
+			commoditySalesDto.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
+			commoditySalesDto.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			commoditySalesDto.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			commoditySalesDto.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+			commoditySalesDto.setCommodityInPrice(rs.getDouble(Const.COLUNM_COMMODITY_INPRICE));
+			commoditySalesDto.setSalesCount(rs.getInt(Const.COLUNM_SALES_COUNT));
+			commoditySalesDtos.add(commoditySalesDto);
+		}
+		dbTools.closeDB();
+		
+		return commoditySalesDtos;
 	}
 
 }

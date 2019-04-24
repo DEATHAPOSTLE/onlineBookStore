@@ -153,6 +153,19 @@ public class DBTools {
 
 		return rs;
 	}
+	
+	// 自定义sql
+	public ResultSet selectBySql(String sql) {
+		conn = getConnection();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			System.out.println("executeQuery:" + e.getMessage());
+		}
+
+		return rs;
+	}
 
 	// 条件检索
 	public ResultSet conditionalSearch(String tableName, String colunmName, Object codition) {

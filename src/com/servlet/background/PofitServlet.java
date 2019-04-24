@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.entity.CommodityBase;
 import com.service.CommodityService;
+import com.uitl.dto.CommoditySalesDto;
 
 /**
  * 
@@ -30,17 +31,17 @@ public class PofitServlet extends HttpServlet {
 	/**
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<CommodityBase> bases = new ArrayList<CommodityBase>();
-		List<CommodityBase> result = new ArrayList<CommodityBase>();
+		List<CommoditySalesDto> bases = new ArrayList<CommoditySalesDto>();
+		List<CommoditySalesDto> result = new ArrayList<CommoditySalesDto>();
 		CommodityService commodityService = new CommodityService();
 		try {
-			bases = commodityService.getAllCommodity();
+			bases = commodityService.selectCountOrdersByCommodityId();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		for(CommodityBase commodityBase : bases){
-			commodityBase.setCommodityProfit(commodityBase.getCommodityPrice() - commodityBase.getCommodityInPrice());
-			result.add(commodityBase);
+		for(CommoditySalesDto CommoditySalesDto : bases){
+			CommoditySalesDto.setCommodityProfit((CommoditySalesDto.getCommodityPrice() - CommoditySalesDto.getCommodityInPrice()) * CommoditySalesDto.getSalesCount());
+			result.add(CommoditySalesDto);
 		}
 		request.setAttribute("commoditys", result);
 		request.getRequestDispatcher("pages/manager/profit.jsp").forward(request, response);

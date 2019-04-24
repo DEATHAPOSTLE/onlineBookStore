@@ -184,6 +184,20 @@
 				</div>
 			  </div>
 		<div class="clear"></div>
+		<div class="panel panel-default" style="margin-top: 15px;">
+           <div class="panel-heading">图书目录</div>
+              <div class="panel-body">
+                  ${commodityBase.commodityList}
+              </div>
+         </div>
+         
+         <div class="panel panel-default" style="margin-top: 15px;">
+           <div class="panel-heading">图书试读</div>
+              <div class="panel-body">
+                  ${commodityBase.commodityContent}
+              </div>
+         </div>
+        <div class="clear"></div>
 	</div>
 	<div class="clear"></div>
 	<!-- footer -->

@@ -18,42 +18,42 @@
 <!--/_header 作为公共模版分离出去-->
 
 <!--_menu 作为公共模版分离出去-->
-	<%@ include file="_menu.jsp"%>
+    <%@ include file="_menu.jsp"%>
 <!--/_menu 作为公共模版分离出去-->
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="./index" class="maincolor">首页</a> <span class="c-999 en">&gt;</span><span class="c-666">销售利润</span></nav>
-	<div class="Hui-article">
-	
-		<table class="table table-border table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>商品ID</th>
-					<th>商品名称</th>
-					<th>商品类型</th>
-					<th>商品价格</th>
-					<th>出版社</th>
-					<th>作者</th>
-					<th>进价</th>
-					<th>利润</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="list" items="${commoditys}" varStatus="status">
-					<tr>
-						<td>${list.commodityId}</td>
-						<td>${list.commodityName}</td>
-						<td>${list.commodityType}</td>
-						<td>${list.commodityPrice}</td>
-						<td>${list.commodityPress}</td>
-						<td>${list.commodityAuthor}</td>
-						<td>${list.commodityInPrice}</td>
-						<td>${list.commodityProfit}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		
-	</div>
+    <nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="./index" class="maincolor">首页</a> <span class="c-999 en">&gt;</span><span class="c-666">销售利润</span></nav>
+    <div class="Hui-article">
+    
+        <table class="table table-border table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>商品ID</th>
+                    <th>商品名称</th>
+                    <th>商品类型</th>
+                    <th>商品价格</th>
+                    <th>出版社</th>
+                    <th>作者</th>
+                    <th>进价</th>
+                    <th>利润</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="list" items="${commoditys}" varStatus="status">
+                    <tr>
+                        <td>${list.commodityId}</td>
+                        <td>${list.commodityName}</td>
+                        <td>${list.commodityType}</td>
+                        <td>${list.commodityPrice}</td>
+                        <td>${list.commodityPress}</td>
+                        <td>${list.commodityAuthor}</td>
+                        <td>${list.commodityInPrice}</td>
+                        <td>${list.commodityProfit}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+        
+    </div>
 </section>
 
 <!--_footer 作为公共模版分离出去-->

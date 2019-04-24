@@ -25,7 +25,7 @@ public class FindCommodityServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String name = request.getParameter("conditionName");
+		String name = new String(request.getParameter("conditionName").getBytes("ISO-8859-1"),"UTF-8");
 		// String name = new
 		// String(request.getParameter("commodityName").getBytes("iso-8859-1"),
 		// "utf-8");
