@@ -70,12 +70,12 @@
 			</div>
 			<div class="search fr">
 				<form action="/onlineBookStore/findCommodity" method="post" style="position: relative;">
-					<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
+				<!-- 	<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
 						<input type="radio" value="1" name="type" id="type-radio1" checked><span style="margin-right: 10px;height: 16px;display: inline-block;">书名</span>
 						<input type="radio" value="2" name="type" id="type-radio2"><span style="margin-right: 10px;height: 16px;display: inline-block;">出版社</span>
 						<input type="radio" value="3" name="type" id="type-radio3"><span style="margin-right: 10px;height: 16px;display: inline-block;">分类</span>
 						<input type="radio" value="4" name="type" id="type-radio4"><span style="margin-right: 10px;height: 16px;display: inline-block;">作者</span>
-					</div>
+					</div> -->
 					<div class="text fl">
 						<input type="text" class="shuru"  placeholder="" name="conditionName">
 					</div>
@@ -85,6 +85,7 @@
 					</div>
 					<div class="clear"></div>
 				</form>
+				<a href="./toAdvancedQuery">高级查询</a>
 				<div class="clear"></div>
 			</div>
 		</div>

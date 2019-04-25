@@ -25,13 +25,12 @@ public class FindCommodityServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String name = new String(request.getParameter("conditionName").getBytes("ISO-8859-1"),"UTF-8");
+		String name = new String(request.getParameter("conditionName").getBytes("ISO-8859-1"), "UTF-8");
 		// String name = new
 		// String(request.getParameter("commodityName").getBytes("iso-8859-1"),
 		// "utf-8");
 		CommodityService shopService = new CommodityService();
 		List<CommodityBase> list = new ArrayList<CommodityBase>();
-		int type = Integer.parseInt(request.getParameter("type"));
 		try {
 
 			if (name == null || "".equals(name)) {
@@ -39,24 +38,9 @@ public class FindCommodityServlet extends HttpServlet {
 				request.setAttribute("commodityList", list);
 				request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
 			} else {
-				switch (type) {
-				case 1:
-					// 按书名搜索
-					list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_NAME, name);
-					break;
-				case 2:
-					// 按出版社搜索
-					list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_PRESS, name);
-					break;
-				case 3:
-					// 按分类搜索
-					list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_TYPE, name);
-					break;
-				case 4:
-					// 按作者搜索
-					list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_AUTHOR, name);
-					break;
-				}
+				// 按书名搜索
+				list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_NAME, name);
+
 				if (list.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");
@@ -65,7 +49,6 @@ public class FindCommodityServlet extends HttpServlet {
 					for (CommodityBase a : list) {
 						System.out.println(a.toString());
 					}
-					request.setAttribute("type", type);
 
 					request.setAttribute("commodityList", list);
 					request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
@@ -84,7 +67,6 @@ public class FindCommodityServlet extends HttpServlet {
 		String name = new String(request.getParameter("conditionName").getBytes("iso-8859-1"), "utf-8");
 		CommodityService shopService = new CommodityService();
 		List<CommodityBase> list = new ArrayList<CommodityBase>();
-		int type = Integer.parseInt(request.getParameter("type"));
 		try {
 
 			if (name == null || "".equals(name)) {
@@ -93,24 +75,9 @@ public class FindCommodityServlet extends HttpServlet {
 				request.getRequestDispatcher("/pages/mall/list.jsp").forward(request, response);
 				return;
 			} else {
-				switch (type) {
-				case 1:
-					// 按书名搜索
-					list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_NAME, name);
-					break;
-				case 2:
-					// 按出版社搜索
-					list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_PRESS, name);
-					break;
-				case 3:
-					// 按分类搜索
-					list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_TYPE, name);
-					break;
-				case 4:
-					// 按作者搜索
-					list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_AUTHOR, name);
-					break;
-				}
+				// 按书名搜索
+				list = shopService.getCommodityLikeName(Const.COLUNM_COMMODITY_NAME, name);
+
 				if (list.size() == 0) {
 					System.out.println("未查询到结果");
 					request.setAttribute("warn", "未查询到结果");

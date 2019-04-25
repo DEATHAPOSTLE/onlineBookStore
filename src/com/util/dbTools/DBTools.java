@@ -153,7 +153,7 @@ public class DBTools {
 
 		return rs;
 	}
-	
+
 	// 自定义sql
 	public ResultSet selectBySql(String sql) {
 		conn = getConnection();
@@ -606,5 +606,41 @@ public class DBTools {
 		}
 
 		return result;
+	}
+
+	// 多条件模糊检索
+	public ResultSet multiConditionalSearchLike(String tableName, LinkedHashMap<String, Object> condition) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("select * from ");
+		sb.append(tableName);
+		sb.append(" where ");
+		int i = 0;
+		for (String key : condition.keySet()) {
+			Object value = condition.get(key);
+			if (value instanceof String) {
+				sb.append(key);
+				sb.append(" like '%");
+				sb.append(value);
+				sb.append("%'");
+			} else {
+				sb.append(key);
+				sb.append(" = ");
+				sb.append(value);
+			}
+			if (i < condition.keySet().size() - 1) {
+				sb.append(" AND ");
+			}
+			i++;
+		}
+		String sql = sb.toString();
+		conn = getConnection();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			System.out.println("executeQuery:" + e.getMessage());
+		}
+
+		return rs;
 	}
 }

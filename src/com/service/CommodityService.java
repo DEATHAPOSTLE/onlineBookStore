@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.entity.CommodityBase;
 import com.entity.CommodityGroupBy;
@@ -233,7 +232,7 @@ public class CommodityService {
 		return allShoplist;
 
 	}
-	
+
 	public List<CommodityBase> getAllCommoditySalesVolume() throws SQLException {
 		DBTools dbTools = new DBTools();
 		// 商品结果集
@@ -291,6 +290,32 @@ public class CommodityService {
 		dbTools.closeDB();
 		return list;
 
+	}
+
+	// 多条件模糊查询
+	public List<CommodityBase> getCommoditysLike(LinkedHashMap<String, Object> condition) throws SQLException {
+		DBTools dbTools = new DBTools();
+		ResultSet rs = dbTools.multiConditionalSearchLike(Const.TABLE_COMMODITY_BASE, condition);
+		List<CommodityBase> list = new ArrayList<CommodityBase>();
+		while (rs.next()) {
+			CommodityBase shop = new CommodityBase();
+			if ("2".equals(rs.getString(Const.COLUNM_COMMODITY_SHELVES)))
+				continue;
+			shop.setCommodityId(rs.getInt(Const.COLUNM_COMMODITY_ID));
+			shop.setCommodityPicture(rs.getString(Const.COLUNM_COMMODITY_PICTURE));
+			shop.setCommodityType(rs.getString(Const.COLUNM_COMMODITY_TYPE));
+			shop.setCommodityPrice(rs.getInt(Const.COLUNM_COMMODITY_PRICE));
+			shop.setCommodityIntroduce(rs.getString(Const.COLUNM_COMMODITY_INTRODUCE));
+			shop.setCommoditySurplus(rs.getInt(Const.COLUNM_COMMODITY_SURPLUS));
+			shop.setCommodityRate(rs.getString(Const.COLUNM_COMMODITY_RATE));
+			shop.setCommodityName(rs.getString(Const.COLUNM_COMMODITY_NAME));
+			shop.setCommodityShelves(rs.getString(Const.COLUNM_COMMODITY_SHELVES));
+			shop.setCommodityPress(rs.getString(Const.COLUNM_COMMODITY_PRESS));
+			shop.setCommodityAuthor(rs.getString(Const.COLUNM_COMMODITY_AUTHOR));
+
+			list.add(shop);
+		}
+		return list;
 	}
 
 	// 模糊搜索type
@@ -516,7 +541,7 @@ public class CommodityService {
 		int result = dbTools.multiConditionalDelete(Const.TABLE_FAVORITES, condition);
 		return result;
 	}
-	
+
 	public List<CommoditySalesDto> selectCountOrdersByCommodityId() throws SQLException {
 		List<CommoditySalesDto> commoditySalesDtos = new ArrayList<CommoditySalesDto>();
 		DBTools dbTools = new DBTools();
@@ -541,7 +566,7 @@ public class CommodityService {
 			commoditySalesDtos.add(commoditySalesDto);
 		}
 		dbTools.closeDB();
-		
+
 		return commoditySalesDtos;
 	}
 
