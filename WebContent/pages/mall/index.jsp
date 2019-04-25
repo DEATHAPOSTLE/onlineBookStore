@@ -62,11 +62,11 @@
 			<a href="./index"><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
-					<li><a href="./findCommodity?conditionName=军事&&type=3">军事</a></li>
-					<li><a href="./findCommodity?conditionName=娱乐&&type=3">娱乐</a></li>
-					<li><a href="./findCommodity?conditionName=科技&&type=3">科技</a></li>
-					<li><a href="./findCommodity?conditionName=生活&&type=3">生活</a></li>
-					<li><a href="./findCommodity?conditionName=文学&&type=3">文学</a></li>
+					<li><a href="./getCommentByType?conditionName=军事">军事</a></li>
+					<li><a href="./getCommentByType?conditionName=娱乐">娱乐</a></li>
+					<li><a href="./getCommentByType?conditionName=科技">科技</a></li>
+					<li><a href="./getCommentByType?conditionName=生活">生活</a></li>
+					<li><a href="./getCommentByType?conditionName=文学">文学</a></li>
 				</ul>
 			</div>
 			<div class="search fr" style="position: relative;">
@@ -97,7 +97,7 @@
 			<div class="nav" style="float:left">				
 				<ul>
 					<li>
-						<a href="">军事</a>
+						<a href="./getCommentByType?conditionName=军事">军事</a>
 						<div class="pop">
 						<c:forEach var="list" items="${listMilitary}" varStatus="status">
 							<div class="left fl" style="height:100px;">
@@ -117,7 +117,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="">娱乐</a>
+						<a href="./getCommentByType?conditionName=娱乐">娱乐</a>
 						<div class="pop">
 						 <c:forEach var="list" items="${listEntertainment}" varStatus="status">
 							<div class="left fl" style="height:100px;">
@@ -137,7 +137,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="">科技</a>
+						<a href="./getCommentByType?conditionName=科技">科技</a>
 						<div class="pop">
 						<c:forEach var="list" items="${listScience}" varStatus="status">
 							<div class="left fl" style="height:100px;">
@@ -157,7 +157,7 @@
 					    </div>
 					</li>
 					<li>
-						<a href="">生活</a>
+						<a href="./getCommentByType?conditionName=生活">生活</a>
 						<div class="pop">
 						<c:forEach var="list" items="${listLife}" varStatus="status">
 							<div class="left fl" style="height:100px;">
@@ -178,7 +178,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="">文学</a>
+						<a href="./getCommentByType?conditionName=文学">文学</a>
 						<div class="pop">
 						<c:forEach var="list" items="${listLiterature}" varStatus="status">
 							<div class="left fl" style="height:100px;">
