@@ -203,13 +203,13 @@
 			<div class="swiper-container" style="float:left;width: 992px;height: 460px;">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<img src="${pageContext.request.contextPath}/pages/mall/image/banner2.jpg" alt="">
+							<img src="${pageContext.request.contextPath}/pages/mall/image/banner2.jpg" alt="" style="width: 100%;height: 100%">
 						</div>
 						<div class="swiper-slide">
-							<img src="${pageContext.request.contextPath}/pages/mall/image/banner2.jpg" alt="">
+							<img src="${pageContext.request.contextPath}/pages/mall/image/banner3.jpg" alt="" style="width: 100%;height: 100%">
 						</div>
 						<div class="swiper-slide">
-							<img src="${pageContext.request.contextPath}/pages/mall/image/banner2.jpg" alt="">
+							<img src="${pageContext.request.contextPath}/pages/mall/image/banner1.jpg" alt="" style="width: 100%;height: 100%">
 						</div>
 					</div>
 					<!-- 如果需要分页器 -->
