@@ -35,7 +35,7 @@ public class GetCommentByTypeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String type = new String(request.getParameter("commoditytype").getBytes("iso-8859-1"), "utf-8");
+		String type = new String(request.getParameter("conditionName").getBytes("iso-8859-1"), "utf-8");
 		// 商品ID
 		CommodityService commodityService = new CommodityService();
 		System.out.println(type);
