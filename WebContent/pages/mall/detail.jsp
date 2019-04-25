@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/bootstrap.css">
 	</head>
 	<body>
-		<!-- start header -->
+	<!-- start header -->
 		<header>
 			<div class="top center">
 				<div class="left fl">
@@ -25,6 +25,10 @@
 							<div class="gouwuche fr"><a href="./shopingCar">购物车</a></div>
 					
 					</c:if>
+					<c:if test="${sessionScope.user_information.userName != null}">
+                            <div class="gouwuche fr"><a href="./FavoriteServlet">收藏夹</a></div>
+                    
+                    </c:if>
 					<div class="fr">
 					 <c:if test="${sessionScope.user_information.userName == null}">
 					
@@ -64,14 +68,14 @@
 					<li><a href="./findCommodity?conditionName=文学&&type=3">文学</a></li>
 				</ul>
 			</div>
-			<div class="search fr">
+			<div class="search fr" style="position: relative;">
 				<form action="/onlineBookStore/findCommodity" method="post" style="position: relative;">
-					<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
+				<!-- 	<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
 						<input type="radio" value="1" name="type" id="type-radio1" checked><span style="margin-right: 10px;height: 16px;display: inline-block;">书名</span>
 						<input type="radio" value="2" name="type" id="type-radio2"><span style="margin-right: 10px;height: 16px;display: inline-block;">出版社</span>
 						<input type="radio" value="3" name="type" id="type-radio3"><span style="margin-right: 10px;height: 16px;display: inline-block;">分类</span>
 						<input type="radio" value="4" name="type" id="type-radio4"><span style="margin-right: 10px;height: 16px;display: inline-block;">作者</span>
-					</div>
+					</div> -->
 					<div class="text fl">
 						<input type="text" class="shuru"  placeholder="" name="conditionName">
 					</div>
@@ -81,6 +85,7 @@
 					</div>
 					<div class="clear"></div>
 				</form>
+				<a href="./toAdvancedQuery" style="position: absolute;top: 45px;left: -64px;font-size: 14px;height: 14px;line-height: 14px">高级查询</a>
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -179,15 +184,23 @@
          <div class="panel panel-default" style="margin-top: 15px;">
              <div class="panel-heading">图书评论</div>
              <div class="panel-body">
-               <c:forEach var="comment" items="${comments}" varStatus="status">
-                用户id ： ${comment.userID}
-                用户id ： ${comment.commentContent}
-                用户id ： ${comment.commentDTime}
-               
-               </c:forEach>
-             
-             </div>
-         </div>
+                <c:forEach var="comment" items="${comments}" varStatus="status">
+				<div style="margin-bottom: 15px;border-bottom: 1px dashed #ccc">
+					<div style="height: 40px;margin-top: 15px;line-height: 40px;font-size: 14px;">
+							<span style="font-weight: 900">用户名：</span>
+							<span style="margin-right: 30px">${comment.userID}</span>
+							<span style="font-weight: 900">评论时间：</span>
+							<span>${comment.commentDTime}</span>
+						</div>
+						<div class="panel panel-default">
+								<div class="panel-body">
+								${comment.commentContent}
+								</div>
+						</div>
+				</div>
+			    </c:forEach>
+			</div>
+		</div>
 
 		<div class="panel panel-default" style="margin-top: 15px;">
 				<div class="panel-heading">图书详情</div>

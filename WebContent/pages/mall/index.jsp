@@ -8,6 +8,7 @@
 		<title>图书商城</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/style.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/swiper.css">
 	</head>
 	<body>
 	<!-- start header -->
@@ -68,7 +69,7 @@
 					<li><a href="./findCommodity?conditionName=文学&&type=3">文学</a></li>
 				</ul>
 			</div>
-			<div class="search fr">
+			<div class="search fr" style="position: relative;">
 				<form action="/onlineBookStore/findCommodity" method="post" style="position: relative;">
 				<!-- 	<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
 						<input type="radio" value="1" name="type" id="type-radio1" checked><span style="margin-right: 10px;height: 16px;display: inline-block;">书名</span>
@@ -85,7 +86,7 @@
 					</div>
 					<div class="clear"></div>
 				</form>
-				<a href="./toAdvancedQuery">高级查询</a>
+				<a href="./toAdvancedQuery" style="position: absolute;top: 45px;left: -64px;font-size: 14px;height: 14px;line-height: 14px">高级查询</a>
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -93,7 +94,7 @@
 
 	<!-- start banner_y -->
 		<div class="banner_y center">
-			<div class="nav">				
+			<div class="nav" style="float:left">				
 				<ul>
 					<li>
 						<a href="">军事</a>
@@ -199,7 +200,22 @@
 					</li>
 				</ul>
 			</div>
-		
+			<div class="swiper-container" style="float:left;width: 992px;height: 460px;">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="${pageContext.request.contextPath}/pages/mall/image/banner2.jpg" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="${pageContext.request.contextPath}/pages/mall/image/banner2.jpg" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="${pageContext.request.contextPath}/pages/mall/image/banner2.jpg" alt="">
+						</div>
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination"></div>
+
+				</div>
 		</div>	
 	<!-- end banner -->
 
@@ -252,3 +268,19 @@
 		</footer>
 	</body>
 </html>
+
+
+<script src="${pageContext.request.contextPath}/pages/mall/js/swiper.js"></script>
+<script>        
+	var mySwiper = new Swiper ('.swiper-container', {
+		direction: 'vertical', // 垂直切换选项
+		loop: true, // 循环模式选项
+		autoplay: {
+			disableOnInteraction: false,
+		},
+		// 如果需要分页器
+		pagination: {
+		el: '.swiper-pagination',
+		},
+	})        
+</script>

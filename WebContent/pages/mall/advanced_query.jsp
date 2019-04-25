@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/mall/css/bootstrap.css">
 	</head>
 	<body>
-		<!-- start header -->
+	<!-- start header -->
 		<header>
 			<div class="top center">
 				<div class="left fl">
@@ -25,6 +25,10 @@
 							<div class="gouwuche fr"><a href="./shopingCar">购物车</a></div>
 					
 					</c:if>
+					<c:if test="${sessionScope.user_information.userName != null}">
+                            <div class="gouwuche fr"><a href="./FavoriteServlet">收藏夹</a></div>
+                    
+                    </c:if>
 					<div class="fr">
 					 <c:if test="${sessionScope.user_information.userName == null}">
 					
@@ -64,14 +68,14 @@
 					<li><a href="./findCommodity?conditionName=文学&&type=3">文学</a></li>
 				</ul>
 			</div>
-			<div class="search fr">
+			<div class="search fr" style="position: relative;">
 				<form action="/onlineBookStore/findCommodity" method="post" style="position: relative;">
-					<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
+				<!-- 	<div class="" style="position: absolute;top: -35px;left: 0;height: 16px;">
 						<input type="radio" value="1" name="type" id="type-radio1" checked><span style="margin-right: 10px;height: 16px;display: inline-block;">书名</span>
 						<input type="radio" value="2" name="type" id="type-radio2"><span style="margin-right: 10px;height: 16px;display: inline-block;">出版社</span>
 						<input type="radio" value="3" name="type" id="type-radio3"><span style="margin-right: 10px;height: 16px;display: inline-block;">分类</span>
 						<input type="radio" value="4" name="type" id="type-radio4"><span style="margin-right: 10px;height: 16px;display: inline-block;">作者</span>
-					</div>
+					</div> -->
 					<div class="text fl">
 						<input type="text" class="shuru"  placeholder="" name="conditionName">
 					</div>
@@ -81,37 +85,77 @@
 					</div>
 					<div class="clear"></div>
 				</form>
+				<a href="./toAdvancedQuery" style="position: absolute;top: 45px;left: -64px;font-size: 14px;height: 14px;line-height: 14px">高级查询</a>
 				<div class="clear"></div>
 			</div>
 		</div>
 <!-- end banner_x -->
+<!-- self_info -->
+<div class="grzxbj">
+	<div class="selfinfo center">
+	<div class="lfnav fl">
 
+		<div class="ddzx">高级查询</div>
+		<div class="subddzx">
+			<ul>
+				<li><a href="./toAdvancedQuery" style="color:#ff6700;font-weight:bold;">高级查询</a></li>
+			</ul>
+		</div>
+	</div>
 	
-	<!-- xiangqing -->
-	<div class="xiangqing">
-		<div class="neirong w">
-			
-			<form action="./advancedQuery" method="post" style="position: relative;">
-		         <p><span>作者:</span><input type="text" name="author" class="" ></p>
-				 <p><span>分类:</span><input type="text" name="type" class="" ></p>
-				 <p><span>出版社:</span><input type="text" name="press" class="" ></p>
-				 <p><span>价格区间:</span>￥：<input type="text" name="lowPrice" class="" >
-				 ---￥：<input type="text" name="highPrice" class="" ></p>
-			    
-			     <p><input type="submit" class="sousuo" value="搜索"/></p>
-		  </form>
+		<div class="rtcont fr" style="height: auto;">
+			<div class="grzlbt ml40">高级查询</div>
+			<form action="./advancedQuery" method="post" style="position: relative;" class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">作者:</label>
+					<div class="col-md-8">
+						<input type="text" name="author" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">分类:</label>
+					<div class="col-md-8">
+						<input type="text" name="type" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">出版社:</label>
+					<div class="col-md-8">
+						<input type="text" name="press" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">价格区间:</label>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">￥</div>
+							<input type="text" name="lowPrice" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-2" style="text-align: center;font-size: 26px;line-height: 22px">
+						<i class="glyphicon glyphicon-minus" style="font-weight: 900;"></i>
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">￥</div>
+							<input type="text" name="highPrice" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-2 col-md-offset-5">
+						<input type="submit" class="sousuo btn btn-primary" value="搜索" style="width: 100%"/>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="clear"></div>
+		</div>
+	</div>
+<!-- self_info -->
 		
-			<div class="clear"></div>
-		</div>	
-	</div>
-	
-	<div class="jieshao mt20 w">
-	</div>
-
+<footer class="mt20 center">			
+	<div class="mt20">Copyright © 2019 - 2019 All Rights Reserved.图书公司 版权所有</div>
+</footer>
 	</body>
 </html>
-
-<script src="${pageContext.request.contextPath}/pages/mall/js/jquery-1.11.1.min.js"></script>
-<script>
-
-</script>
