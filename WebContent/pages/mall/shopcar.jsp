@@ -68,7 +68,7 @@
 						</td>
 						<td>
 							<img
-								src="${pageContext.request.contextPath}/images/${shopCar.commodityPicture}"
+								src="${pageContext.request.contextPath}/pages/mall/bookImage/${shopCar.commodityPicture}"
 								alt="" style="width: 30px; height: 30px;display: block">
 						</td>
 

@@ -64,7 +64,7 @@ CREATE TABLE `commodity_base` (
   `commodityContent` varchar(3072) DEFAULT NULL,
   `commodityInPrice` double DEFAULT '0',
   PRIMARY KEY (`commodityId`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `favorites` (
   `commodityId` varchar(20) DEFAULT NULL,
   `num` int(11) DEFAULT '1',
   PRIMARY KEY (`favoritesId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `rejected` (
   `rejectedStatus` varchar(135) DEFAULT NULL,
   `rejectedDTime` varchar(135) DEFAULT NULL,
   PRIMARY KEY (`rejectedId`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +210,7 @@ CREATE TABLE `shopping_cart` (
   `commodityNumber` varchar(135) DEFAULT NULL,
   `registeredDTime` varchar(135) DEFAULT NULL,
   PRIMARY KEY (`shoppingCartId`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +243,7 @@ CREATE TABLE `user` (
   `userAddr5` varchar(135) DEFAULT NULL,
   `money` varchar(135) DEFAULT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-27  1:11:03
+-- Dump completed on 2019-05-07 23:43:34
