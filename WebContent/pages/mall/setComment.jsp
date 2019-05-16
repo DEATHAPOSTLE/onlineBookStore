@@ -96,7 +96,7 @@
 	<!-- xiangqing -->
 	<div class="xiangqing">
 		<div class="neirong w">
-			<div class="xiaomi6 fl">图书详情</div>
+			<div class="xiaomi6 fl">评论</div>
 			<!-- <nav class="fr">
 				<li><a href="">概述</a></li>
 				<li>|</li>
@@ -138,33 +138,6 @@
                         <div class="clearfix"></div>
                     </div>
                     
-                    <c:if test="${sessionScope.user_information.userName != null}">
-                    <div class="row" style="margin: 0;margin-bottom: 15px">
-                    <span style="color: #555;">地址</span>
-		            	    <select name="userAddr" class="form-control">
-		                       <option value="${sessionScope.user_information.userAddr1}" >${sessionScope.user_information.userAddr1}
-		                       <option value="${sessionScope.user_information.userAddr2}" >${sessionScope.user_information.userAddr2}
-		                       <option value="${sessionScope.user_information.userAddr3}" >${sessionScope.user_information.userAddr3}
-		                       <option value="${sessionScope.user_information.userAddr4}" >${sessionScope.user_information.userAddr4}
-		                       <option value="${sessionScope.user_information.userAddr5}" >${sessionScope.user_information.userAddr5}
-		                    </select>
-            	    </div>
-                    <div class="row" style="margin: 0;margin-bottom: 15px">
-                    
-                        <c:if test="${haveFavorites == 1}">
-                         <a href="./delFavoriteServlet?commodityId=${commodityBase.commodityId}">取消收藏</a>
-              	        </c:if>
-              	        <c:if test="${haveFavorites == 2}">
-              	          <a href="./addFavoriteServlet?commodityId=${commodityBase.commodityId}">添加收藏</a>
-              	        </c:if>
-              	    </div>
-                    
-                    <!-- 这里是隐藏的地址信息 -->
-                     <!--<input type="hidden" name="userAddr" value=""> -->                    
-                    </c:if>
-                    
-                    
-                    
                     
                     <input type="hidden" value="${commodityBase.commodityId}" name="shopId">
                     <button title="购买" class="jrgwc" type="submit">购买</button>
@@ -173,8 +146,7 @@
                     
                     <form action="addShopingCar" style="display: inline-block">
                     <input type="hidden" value="${commodityBase.commodityId}" name="commodityId">
-                    <input type="hidden" value="1" name="commodityNumber" class="shopCarNumber">
-                    <button title="添加购物车" class="jrgwc" type="submit">添加购物车</a>
+                    <button title="添加购物车" class="jrgwc" type="submit">提交评论</a>
                     <button type="submit" class="carBtn" style="display: none"></button>
                     </form>
 			</div>
@@ -182,26 +154,6 @@
 		</div>
 		<div class="clear"></div>
 
-         <div class="panel panel-default" style="margin-top: 15px;">
-             <div class="panel-heading">图书评论</div>
-             <div class="panel-body">
-                <c:forEach var="comment" items="${comments}" varStatus="status">
-				<div style="margin-bottom: 15px;border-bottom: 1px dashed #ccc">
-					<div style="height: 40px;margin-top: 15px;line-height: 40px;font-size: 14px;">
-							<span style="font-weight: 900">用户名：</span>
-							<span style="margin-right: 30px">${comment.userID}</span>
-							<span style="font-weight: 900">评论时间：</span>
-							<span>${comment.commentDTime}</span>
-						</div>
-						<div class="panel panel-default">
-								<div class="panel-body">
-								${comment.commentContent}
-								</div>
-						</div>
-				</div>
-			    </c:forEach>
-			</div>
-		</div>
 
 		<div class="panel panel-default" style="margin-top: 15px;">
 				<div class="panel-heading">图书详情</div>
